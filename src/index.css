@@ -693,7 +693,7 @@ nav {
 
   /* Hero section mobile adjustments */
   .hero-container {
-    padding: 1rem !important;
+    padding: 5rem 1rem 6rem 1rem !important;
   }
 
   .profile-stack {
