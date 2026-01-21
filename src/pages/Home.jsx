@@ -21,7 +21,7 @@ function Home() {
                 {/* Hero / Entry Point */}
                 <section className="container hero-container" style={{
                     minHeight: 'auto', display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingTop: '5rem', paddingBottom: '3rem'
+                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingTop: '5rem', paddingBottom: '6rem'
                 }}>
                     <div className="hero-bg">
                         <div className="hero-lines"></div>
@@ -29,54 +29,24 @@ function Home() {
                     </div>
 
                     <motion.div
-                        initial={{ opacity: 0 }}
-                        animate={{ opacity: 1 }}
-                        transition={{ duration: 1 }}
+                        initial={{ opacity: 0, y: 30 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        style={{ position: 'relative', zIndex: 1, maxWidth: '800px' }}
                     >
                         <p className="text-muted" style={{ fontSize: '0.9rem', marginBottom: '2rem' }}>{currentDate}</p>
 
                         <motion.div
+                            whileHover={{ scale: 1.05 }}
+                            transition={{ type: "spring", stiffness: 300 }}
                             className="profile-stack"
-                            whileHover="hover"
-                            initial="initial"
                         >
-                            {/* Card 1 (Left) */}
-                            <motion.div
-                                className="profile-img-card"
-                                variants={{
-                                    initial: { rotate: 0, x: 0 },
-                                    hover: { rotate: -15, x: -60, y: 10 }
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            >
-                                <img src="/profile-0.png" alt="Meeday" />
-                            </motion.div>
-
-                            {/* Card 2 (Center) */}
-                            <motion.div
-                                className="profile-img-card"
-                                variants={{
-                                    initial: { rotate: 0, y: 0, scale: 1 },
-                                    hover: { rotate: 0, y: -20, scale: 1.05 }
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                style={{ zIndex: 2 }}
-                            >
-                                <img src="/profile-1.jpg" alt="Meeday" />
-                            </motion.div>
-
-                            {/* Card 3 (Right) */}
-                            <motion.div
-                                className="profile-img-card"
-                                variants={{
-                                    initial: { rotate: 0, x: 0 },
-                                    hover: { rotate: 15, x: 60, y: 10 }
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                style={{ zIndex: 1 }}
-                            >
-                                <img src="/profile-2.jpg" alt="Meeday" />
-                            </motion.div>
+                            <div className="profile-img-card" style={{ transform: 'rotate(-5deg) translateX(-10px)' }}>
+                                <img src="/src/assets/profile.jpg" alt="Profile 1" />
+                            </div>
+                            <div className="profile-img-card" style={{ transform: 'rotate(3deg) translateX(10px)', zIndex: 2 }}>
+                                <img src="/src/assets/profile-alt.jpg" alt="Profile 2" />
+                            </div>
                         </motion.div>
 
                         <h1 style={{ marginBottom: '1rem' }}>
@@ -95,7 +65,7 @@ function Home() {
                 </section>
 
                 {/* Operational Logs (Projects) */}
-                <section id="work" className="container section-padding" style={{ paddingTop: '2rem' }}>
+                <section id="work" className="container section-padding">
                     <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                         <p className="text-muted" style={{ marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem' }}>Case Studies</p>
                         <h2 style={{ marginBottom: '1.5rem' }}>Selected Projects</h2>
