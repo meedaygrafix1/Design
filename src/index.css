@@ -119,6 +119,12 @@ button {
   padding: 5rem 0;
 }
 
+/* Ensure sticky header doesn't cover section titles */
+#experience,
+#about {
+  scroll-margin-top: 120px;
+}
+
 /* Project Cards Concept */
 /* Tab Switcher */
 .tab-switcher {

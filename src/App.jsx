@@ -20,21 +20,27 @@ function App() {
     e.preventDefault();
     setIsMenuOpen(false);
 
-    if (location.pathname !== '/') {
-      // Navigate to home first, then scroll
-      navigate('/');
-      setTimeout(() => {
-        if (target === 'top') {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-          document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
-        }
-      }, 100);
-    } else {
+    const scrollToTarget = () => {
       if (target === 'top') {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } else {
-        document.getElementById(target)?.scrollIntoView({ behavior: 'smooth' });
+        const element = document.getElementById(target);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }
+    };
+
+    if (location.pathname !== '/') {
+      navigate('/');
+      // Wait for navigation and potential menu closing
+      setTimeout(scrollToTarget, 350);
+    } else {
+      // If menu is open, wait for close animation
+      if (isMenuOpen) {
+        setTimeout(scrollToTarget, 350);
+      } else {
+        scrollToTarget();
       }
     }
   };
