@@ -20,8 +20,8 @@ function Home() {
             <main>
                 {/* Hero / Entry Point */}
                 <section className="container hero-container" style={{
-                    minHeight: '100vh', display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingTop: '2rem'
+                    minHeight: 'auto', display: 'flex', flexDirection: 'column',
+                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingTop: '5rem', paddingBottom: '3rem'
                 }}>
                     <div className="hero-bg">
                         <div className="hero-lines"></div>
@@ -95,7 +95,7 @@ function Home() {
                 </section>
 
                 {/* Operational Logs (Projects) */}
-                <section id="work" className="container section-padding">
+                <section id="work" className="container section-padding" style={{ paddingTop: '2rem' }}>
                     <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                         <p className="text-muted" style={{ marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem' }}>Case Studies</p>
                         <h2 style={{ marginBottom: '1.5rem' }}>Selected Projects</h2>
