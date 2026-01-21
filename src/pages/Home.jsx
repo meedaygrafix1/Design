@@ -37,16 +37,47 @@ function Home() {
                         <p className="text-muted" style={{ fontSize: '0.9rem', marginBottom: '2rem' }}>{currentDate}</p>
 
                         <motion.div
-                            whileHover={{ scale: 1.05 }}
-                            transition={{ type: "spring", stiffness: 300 }}
                             className="profile-stack"
+                            whileHover="hover"
+                            initial="initial"
                         >
-                            <div className="profile-img-card" style={{ transform: 'rotate(-5deg) translateX(-10px)' }}>
-                                <img src="/src/assets/profile.jpg" alt="Profile 1" />
-                            </div>
-                            <div className="profile-img-card" style={{ transform: 'rotate(3deg) translateX(10px)', zIndex: 2 }}>
-                                <img src="/src/assets/profile-alt.jpg" alt="Profile 2" />
-                            </div>
+                            {/* Card 1 (Left) */}
+                            <motion.div
+                                className="profile-img-card"
+                                variants={{
+                                    initial: { rotate: 0, x: 0 },
+                                    hover: { rotate: -15, x: -60, y: 10 }
+                                }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                            >
+                                <img src="/profile-0.png" alt="Meeday" />
+                            </motion.div>
+
+                            {/* Card 2 (Center) */}
+                            <motion.div
+                                className="profile-img-card"
+                                variants={{
+                                    initial: { rotate: 0, y: 0, scale: 1 },
+                                    hover: { rotate: 0, y: -20, scale: 1.05 }
+                                }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                style={{ zIndex: 2 }}
+                            >
+                                <img src="/profile-1.jpg" alt="Meeday" />
+                            </motion.div>
+
+                            {/* Card 3 (Right) */}
+                            <motion.div
+                                className="profile-img-card"
+                                variants={{
+                                    initial: { rotate: 0, x: 0 },
+                                    hover: { rotate: 15, x: 60, y: 10 }
+                                }}
+                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                                style={{ zIndex: 1 }}
+                            >
+                                <img src="/profile-2.jpg" alt="Meeday" />
+                            </motion.div>
                         </motion.div>
 
                         <h1 style={{ marginBottom: '1rem' }}>
