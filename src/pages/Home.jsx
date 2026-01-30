@@ -140,12 +140,12 @@ function Home() {
                                     style={{ cursor: 'pointer' }}
                                 >
                                     <Link
-                                        to={project.type === 'website' && project.link ? project.link : `/project/${project.slug}`}
-                                        target={project.type === 'website' && project.link ? '_blank' : undefined}
-                                        rel={project.type === 'website' && project.link ? 'noopener noreferrer' : undefined}
+                                        to={project.link ? project.link : `/project/${project.slug}`}
+                                        target={project.link ? '_blank' : undefined}
+                                        rel={project.link ? 'noopener noreferrer' : undefined}
                                         style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
                                         onClick={(e) => {
-                                            if (project.type === 'website' && project.link) {
+                                            if (project.link) {
                                                 e.preventDefault();
                                                 window.open(project.link, '_blank', 'noopener,noreferrer');
                                             }
@@ -166,7 +166,7 @@ function Home() {
                                                 <p>{project.desc}</p>
                                                 <div style={{ marginTop: 'auto', paddingTop: '1rem', display: 'flex', justifyContent: 'flex-end' }}>
                                                     <span style={{ fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem', color: project.theme.text }}>
-                                                        {project.type === 'website' ? 'View Live Website' : 'Explore Project'} <ArrowUpRight size={16} />
+                                                        {project.link ? 'View Live Site' : 'Explore Project'} <ArrowUpRight size={16} />
                                                     </span>
                                                 </div>
                                             </div>

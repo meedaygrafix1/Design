@@ -1,6 +1,31 @@
 // Project data
 export const projects = [
     {
+        title: "ArtistPaddy",
+        slug: "artistpaddy",
+        type: "app",
+        category: "Web App • Music Tech",
+        industry: "Music Tech",
+        year: "2025",
+        tool: "Figma",
+        desc: "Your Personal Music Lawyer & Deal Simulator. Protect your rights and visualize your financial future.",
+        image: "/artistpaddy-preview.png",
+        link: "https://artistpaddy.vercel.app/",
+        theme: { bg: 'rgba(88, 28, 135, 0.1)', text: '#581c87' },
+        problem: "Artists often sign contracts without understanding the long-term financial implications, leading to unfair deals and loss of rights.",
+        solution: "A deal simulator and contract analysis tool that helps artists visualize their earnings and understand legal terms before they sign.",
+        challenges: [
+            "Complex Calculations: simplifying royalty split logic into an easy-to-use interface.",
+            "Legal Clarity: Making contract language accessible without losing legal accuracy.",
+            "Visualizing Data: Creating intuitive charts for financial projections."
+        ],
+        impact: [
+            "Empowered independent artists to negotiate better deals.",
+            "Simplified the contract review process for non-legal professionals.",
+            "Provided clear financial visualization for long-term career planning."
+        ]
+    },
+    {
         title: "RealVEST",
         slug: "realvest",
         type: "app",
