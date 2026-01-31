@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Quote } from 'lucide-react';
-import { projects, testimonials, experiences, illustrations } from '../data/projects';
+import { projects, testimonials, experiences, illustrations, designExplorations } from '../data/projects';
 
 function Home() {
     const [projectFilter, setProjectFilter] = useState('app');
@@ -272,7 +272,131 @@ function Home() {
                 </section>
             </main>
 
-            {/* CTA Section */}
+
+            {/* Design Explorations Section */}
+            <section className="section-padding" style={{ overflow: 'hidden' }}>
+                <div className="container">
+                    <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Design Explorations</h2>
+                </div>
+
+                <div style={{
+                    position: 'relative',
+                    width: '100%',
+                    overflow: 'hidden',
+                    maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)'
+                }}>
+                    {/* Fade Gradient Left */}
+                    <div style={{
+                        position: 'absolute',
+                        left: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: '150px',
+                        background: 'linear-gradient(to right, #ffffff, transparent)',
+                        zIndex: 10,
+                        pointerEvents: 'none',
+                        backdropFilter: 'blur(5px)',
+                        WebkitBackdropFilter: 'blur(5px)',
+                        maskImage: 'linear-gradient(to right, black, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to right, black, transparent)'
+                    }}></div>
+
+                    {/* Fade Gradient Right */}
+                    <div style={{
+                        position: 'absolute',
+                        right: 0,
+                        top: 0,
+                        bottom: 0,
+                        width: '150px',
+                        background: 'linear-gradient(to left, #ffffff, transparent)',
+                        zIndex: 10,
+                        pointerEvents: 'none',
+                        backdropFilter: 'blur(5px)',
+                        WebkitBackdropFilter: 'blur(5px)',
+                        maskImage: 'linear-gradient(to left, black, transparent)',
+                        WebkitMaskImage: 'linear-gradient(to left, black, transparent)'
+                    }}></div>
+
+                    {/* Infinite Scrolling Track */}
+                    <div
+                        className="marquee-track"
+                        style={{
+                            display: 'flex',
+                            gap: '2rem',
+                            width: 'max-content'
+                        }}
+                        onMouseEnter={(e) => {
+                            e.currentTarget.style.animationPlayState = 'paused';
+                        }}
+                        onMouseLeave={(e) => {
+                            e.currentTarget.style.animationPlayState = 'running';
+                        }}
+                    >
+                        {/* Duplicate the array to create seamless loop */}
+                        {[...designExplorations, ...designExplorations].map((item, index) => (
+                            <motion.div
+                                key={`${item.id}-${index}`}
+                                whileHover={{ y: -10 }}
+                                className="clean-card"
+                                style={{
+                                    minWidth: '350px',
+                                    height: '240px',
+                                    borderRadius: '12px',
+                                    overflow: 'hidden',
+                                    cursor: 'pointer',
+                                    position: 'relative',
+                                    flexShrink: 0
+                                }}
+                            >
+                                <img
+                                    src={item.image}
+                                    alt={item.title}
+                                    style={{
+                                        width: '100%',
+                                        height: '100%',
+                                        objectFit: 'cover'
+                                    }}
+                                />
+                                <div style={{
+                                    position: 'absolute',
+                                    bottom: 0,
+                                    left: 0,
+                                    right: 0,
+                                    padding: '1rem',
+                                    background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
+                                    color: 'white',
+                                    opacity: 0,
+                                    transition: 'opacity 0.3s ease'
+                                }}
+                                    className="hover-reveal"
+                                >
+                                    <p style={{ margin: 0, fontWeight: 500 }}>{item.title}</p>
+                                </div>
+                            </motion.div>
+                        ))}
+                    </div>
+                </div>
+                <style>{`
+                    @keyframes marquee {
+                        0% { transform: translateX(0); }
+                        100% { transform: translateX(-50%); }
+                    }
+                    .clean-card:hover .hover-reveal {
+                        opacity: 1 !important;
+                    }
+                    .marquee-track {
+                        animation: marquee 40s linear infinite;
+                    }
+                    @media (max-width: 768px) {
+                        .marquee-track {
+                            animation-duration: 60s;
+                        }
+                    }
+                `}</style>
+
+            </section>
+
             {/* CTA Section */}
             <section className="container section-padding" style={{ marginBottom: '4rem' }}>
                 <div className="cta-modern">

@@ -402,3 +402,18 @@ export const illustrations = [
     { id: 16, bgColor: "#fffbeb", image: "/illustration-15.png" },
     { id: 17, bgColor: "#fffbeb", image: "/illustration-16.png" }
 ];
+
+// Design Explorations data (Carousel)
+export const designExplorations = [
+    { id: 1, image: "/design-exp-01.png", title: "Mobile App Concept" },
+    { id: 2, image: "/design-exp-02.jpg", title: "Web Interface Design" },
+    { id: 3, image: "/design-exp-03.png", title: "Dashboard UI" },
+    { id: 4, image: "/design-exp-04.png", title: "Product Layout" },
+    { id: 5, image: "/design-exp-05.png", title: "Interaction Design" },
+    { id: 6, image: "/design-exp-06.png", title: "NFT Marketplace" },
+    { id: 7, image: "/design-exp-07.png", title: "Audio Tech Landing" },
+    { id: 8, image: "/design-exp-08.png", title: "Crypto Game UI" },
+    { id: 9, image: "/design-exp-09.png", title: "Music Platform" },
+    { id: 10, image: "/design-exp-10.jpg", title: "SaaS Landing Page" }
+];
+
