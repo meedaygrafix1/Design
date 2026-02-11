@@ -10,7 +10,6 @@ import { projects, testimonials, experiences, illustrations, designExplorations 
 function Home() {
     const [projectFilter, setProjectFilter] = useState('app');
     const [recentPosts, setRecentPosts] = useState([]);
-    const [loadingPosts, setLoadingPosts] = useState(true);
 
     useEffect(() => {
         const fetchRecentPosts = async () => {
@@ -19,8 +18,6 @@ function Home() {
                 setRecentPosts(data.slice(0, 3));
             } catch (err) {
                 console.error("Failed to fetch recent posts:", err);
-            } finally {
-                setLoadingPosts(false);
             }
         };
         fetchRecentPosts();
@@ -221,27 +218,19 @@ function Home() {
                 </section>
 
                 {/* Recent Writings Section */}
-                {(recentPosts.length > 0 || loadingPosts) && (
+                {recentPosts.length > 0 && (
                     <section className="container section-padding" style={{ textAlign: 'center' }}>
                         <h2 style={{ marginBottom: '3rem' }}>Recent Writings</h2>
 
-                        {loadingPosts ? (
-                            <div style={{ display: 'flex', justifyContent: 'center', margin: '4rem 0' }}>
-                                <div className="loading-spinner"></div>
-                            </div>
-                        ) : (
-                            <>
-                                <div className="articles-grid" style={{ marginBottom: '3rem', textAlign: 'left' }}>
-                                    {recentPosts.map((post) => (
-                                        <BlogCard key={post.id} post={post} />
-                                    ))}
-                                </div>
+                        <div className="articles-grid" style={{ marginBottom: '3rem', textAlign: 'left' }}>
+                            {recentPosts.map((post) => (
+                                <BlogCard key={post.id} post={post} />
+                            ))}
+                        </div>
 
-                                <Link to="/articles" className="pill-btn gray" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
-                                    Read all <ArrowUpRight size={18} />
-                                </Link>
-                            </>
-                        )}
+                        <Link to="/articles" className="pill-btn gray" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                            Read all <ArrowUpRight size={18} />
+                        </Link>
                     </section>
                 )}
 

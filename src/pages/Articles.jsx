@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, Calendar } from 'lucide-react';
 import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
+import BlogCardSkeleton from '../components/BlogCardSkeleton';
 import { getPosts } from '../lib/hygraph';
 
 function Articles() {
@@ -29,22 +30,23 @@ function Articles() {
 
     if (loading) {
         return (
-            <div className="container section-padding" style={{ minHeight: '60vh', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div className="loading-spinner"></div>
-                <style>{`
-                    .loading-spinner {
-                        width: 40px;
-                        height: 40px;
-                        border: 3px solid rgba(255,255,255,0.1);
-                        border-radius: 50%;
-                        border-top-color: var(--accent-color);
-                        animation: spin 1s ease-in-out infinite;
-                    }
-                    @keyframes spin {
-                        to { transform: rotate(360deg); }
-                    }
-                `}</style>
-            </div>
+            <>
+                <main className="container section-padding">
+                    <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '2rem' }}>
+                        <h1 style={{ marginBottom: '1.5rem', fontSize: '3.5rem' }}>Articles & Thoughts</h1>
+                        <p className="text-muted" style={{ maxWidth: '600px', margin: '0 auto', fontSize: '1.15rem' }}>
+                            Sharing insights on design, product development, and the creative process.
+                        </p>
+                    </div>
+
+                    <div className="articles-grid">
+                        {[1, 2, 3, 4, 5, 6].map((n) => (
+                            <BlogCardSkeleton key={n} />
+                        ))}
+                    </div>
+                </main>
+                <Footer />
+            </>
         );
     }
 
