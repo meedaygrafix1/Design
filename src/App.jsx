@@ -8,6 +8,8 @@ import './index.css';
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import Illustrations from './pages/Illustrations';
+import Articles from './pages/Articles';
+import ArticleDetail from './pages/ArticleDetail';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -92,6 +94,7 @@ function App() {
             <div className="nav-links desktop-only" style={{ display: 'flex', gap: '1.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
               <a href="#" onClick={(e) => handleNavClick(e, 'top')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>Home</a>
               <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>Experience</a>
+              <Link to="/articles" style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer', textDecoration: 'none' }}>Articles</Link>
               <a href="#about" onClick={(e) => handleNavClick(e, 'about')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>About Me</a>
             </div>
 
@@ -135,25 +138,44 @@ function App() {
                   paddingTop: '1rem'
                 }}
               >
-                {['Home', 'Experience', 'About Me'].map((item, idx) => (
-                  <a
-                    key={idx}
-                    href={item === 'Experience' ? '#experience' : item === 'About Me' ? '#about' : '#'}
-                    onClick={(e) => handleNavClick(e, item === 'Home' ? 'top' : item === 'Experience' ? 'experience' : 'about')}
-                    style={{
-                      color: '#ffffff',
-                      textDecoration: 'none',
-                      padding: '0.75rem 0.5rem',
-                      borderRadius: '8px',
-                      fontSize: '1rem',
-                      fontWeight: 500,
-                      transition: 'background 0.2s'
-                    }}
-                    onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.1)'}
-                    onMouseLeave={(e) => e.target.style.background = 'transparent'}
-                  >
-                    {item}
-                  </a>
+                {['Home', 'Experience', 'Articles', 'About Me'].map((item, idx) => (
+                  item === 'Articles' ? (
+                    <Link
+                      key={idx}
+                      to="/articles"
+                      onClick={() => setIsMenuOpen(false)}
+                      style={{
+                        color: '#ffffff',
+                        textDecoration: 'none',
+                        padding: '0.75rem 0.5rem',
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        fontWeight: 500,
+                        transition: 'background 0.2s'
+                      }}
+                    >
+                      {item}
+                    </Link>
+                  ) : (
+                    <a
+                      key={idx}
+                      href={item === 'Experience' ? '#experience' : item === 'About Me' ? '#about' : '#'}
+                      onClick={(e) => handleNavClick(e, item === 'Home' ? 'top' : item === 'Experience' ? 'experience' : 'about')}
+                      style={{
+                        color: '#ffffff',
+                        textDecoration: 'none',
+                        padding: '0.75rem 0.5rem',
+                        borderRadius: '8px',
+                        fontSize: '1rem',
+                        fontWeight: 500,
+                        transition: 'background 0.2s'
+                      }}
+                      onMouseEnter={(e) => e.target.style.background = 'rgba(255,255,255,0.1)'}
+                      onMouseLeave={(e) => e.target.style.background = 'transparent'}
+                    >
+                      {item}
+                    </a>
+                  )
                 ))}
                 <a
                   href="mailto:olamidebalogun56@gmail.com"
@@ -182,6 +204,8 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/project/:slug" element={<ProjectDetail />} />
         <Route path="/illustrations" element={<Illustrations />} />
+        <Route path="/articles" element={<Articles />} />
+        <Route path="/articles/:slug" element={<ArticleDetail />} />
       </Routes>
     </div>
   );

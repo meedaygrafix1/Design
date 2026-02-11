@@ -1,11 +1,30 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowUpRight, Quote } from 'lucide-react';
+import Footer from '../components/Footer';
+import BlogCard from '../components/BlogCard';
+import { getPosts } from '../lib/hygraph';
 import { projects, testimonials, experiences, illustrations, designExplorations } from '../data/projects';
 
 function Home() {
     const [projectFilter, setProjectFilter] = useState('app');
+    const [recentPosts, setRecentPosts] = useState([]);
+    const [loadingPosts, setLoadingPosts] = useState(true);
+
+    useEffect(() => {
+        const fetchRecentPosts = async () => {
+            try {
+                const data = await getPosts();
+                setRecentPosts(data.slice(0, 3));
+            } catch (err) {
+                console.error("Failed to fetch recent posts:", err);
+            } finally {
+                setLoadingPosts(false);
+            }
+        };
+        fetchRecentPosts();
+    }, []);
 
     // Get current date formatted
     const currentDate = new Date().toLocaleDateString('en-US', {
@@ -201,6 +220,31 @@ function Home() {
                     </div>
                 </section>
 
+                {/* Recent Writings Section */}
+                {(recentPosts.length > 0 || loadingPosts) && (
+                    <section className="container section-padding" style={{ textAlign: 'center' }}>
+                        <h2 style={{ marginBottom: '3rem' }}>Recent Writings</h2>
+
+                        {loadingPosts ? (
+                            <div style={{ display: 'flex', justifyContent: 'center', margin: '4rem 0' }}>
+                                <div className="loading-spinner"></div>
+                            </div>
+                        ) : (
+                            <>
+                                <div className="articles-grid" style={{ marginBottom: '3rem', textAlign: 'left' }}>
+                                    {recentPosts.map((post) => (
+                                        <BlogCard key={post.id} post={post} />
+                                    ))}
+                                </div>
+
+                                <Link to="/articles" className="pill-btn gray" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>
+                                    Read all <ArrowUpRight size={18} />
+                                </Link>
+                            </>
+                        )}
+                    </section>
+                )}
+
                 {/* Illustrations Section */}
                 <section className="container section-padding" style={{ textAlign: 'center' }}>
                     <h2 style={{ marginBottom: '3rem' }}>Some of my illustrations</h2>
@@ -283,8 +327,8 @@ function Home() {
                     position: 'relative',
                     width: '100%',
                     overflow: 'hidden',
-                    maskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 20%, black 80%, transparent)'
+                    maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
+                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
                 }}>
                     {/* Fade Gradient Left */}
                     <div style={{
@@ -292,7 +336,7 @@ function Home() {
                         left: 0,
                         top: 0,
                         bottom: 0,
-                        width: '150px',
+                        width: '80px',
                         background: 'linear-gradient(to right, #ffffff, transparent)',
                         zIndex: 10,
                         pointerEvents: 'none',
@@ -308,7 +352,7 @@ function Home() {
                         right: 0,
                         top: 0,
                         bottom: 0,
-                        width: '150px',
+                        width: '80px',
                         background: 'linear-gradient(to left, #ffffff, transparent)',
                         zIndex: 10,
                         pointerEvents: 'none',
@@ -434,19 +478,7 @@ function Home() {
                 </div>
             </section>
 
-            <footer className="container footer">
-                <div>
-                    <div className="logo" style={{ fontSize: '1.1rem', fontWeight: 600 }}>MEEDAY</div>
-                    <p className="text-muted" style={{ fontSize: '0.9rem', marginTop: '0.5rem' }}>© 2026. Designed with precision & care.</p>
-                </div>
-                <div className="footer-links">
-                    <a href="https://twitter.com/Meedayyy" target="_blank" rel="noopener noreferrer">Twitter</a>
-                    <a href="https://www.linkedin.com/in/meeday/" target="_blank" rel="noopener noreferrer">LinkedIn</a>
-                    <a href="mailto:olamidebalogun56@gmail.com">Email</a>
-                    <a href="https://meeday.substack.com/" target="_blank" rel="noopener noreferrer">Substack</a>
-                    <a href="https://medium.com/@olamidebalogun56" target="_blank" rel="noopener noreferrer">Medium</a>
-                </div>
-            </footer>
+            <Footer />
         </>
     );
 }
