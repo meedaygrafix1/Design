@@ -770,8 +770,9 @@ nav {
 
   /* Mobile Spacing Adjustments */
   .section-padding {
-    padding: 5rem 0 !important;
-    /* Ensure consistent generous padding */
+    padding-top: 5rem !important;
+    padding-bottom: 5rem !important;
+    /* Only set vertical padding so .container horizontal padding is preserved */
   }
 
   .projects-grid,
