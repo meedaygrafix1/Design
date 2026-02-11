@@ -37,7 +37,7 @@ function Home() {
                 {/* Hero / Entry Point */}
                 <section className="container hero-container" style={{
                     minHeight: 'auto', display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingTop: '5rem', paddingBottom: '6rem'
+                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingBottom: '6rem'
                 }}>
                     <div className="hero-bg">
                         <div className="hero-lines"></div>

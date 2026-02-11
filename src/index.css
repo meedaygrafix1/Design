@@ -16,6 +16,7 @@
 .hero-container {
   position: relative;
   overflow: hidden;
+  padding-top: 5rem;
 }
 
 .hero-bg {
@@ -711,8 +712,9 @@ nav {
   }
 
   /* Hero section mobile adjustments */
-  .hero-container {
-    padding: 5rem 1rem 6rem 1rem !important;
+  .container.hero-container {
+    padding: 10rem 1rem 6rem 1rem !important;
+    /* More specific selector to beat .container padding override */
   }
 
   .profile-stack {
@@ -736,14 +738,15 @@ nav {
 
   .detail-context-grid {
     grid-template-columns: 1fr !important;
-    gap: 1rem !important;
+    gap: 1.5rem !important;
   }
 
   /* Footer Responsive */
   .footer {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 2rem !important;
+    gap: 3rem !important;
+    /* Increased from 2rem */
     text-align: left !important;
     padding: 4rem 1rem !important;
   }
@@ -751,7 +754,8 @@ nav {
   .footer-links {
     flex-wrap: wrap !important;
     column-gap: 2rem !important;
-    row-gap: 1rem !important;
+    row-gap: 1.5rem !important;
+    /* Increased from 1rem */
     width: 100%;
   }
 
@@ -762,6 +766,18 @@ nav {
 
   .container {
     padding: 0 1.5rem !important;
+  }
+
+  /* Mobile Spacing Adjustments */
+  .section-padding {
+    padding: 5rem 0 !important;
+    /* Ensure consistent generous padding */
+  }
+
+  .projects-grid,
+  .articles-grid {
+    gap: 3rem !important;
+    /* Increased gap between cards */
   }
 }
 
