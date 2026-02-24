@@ -271,6 +271,31 @@ export const projects = [
         ]
     },
     {
+        title: "GH Digitals",
+        slug: "gh-digitals",
+        type: "website",
+        category: "Web • Digital Marketing",
+        industry: "Digital Marketing",
+        year: "2025",
+        tool: "Figma",
+        desc: "A digital marketing agency website empowering brands and people through strategic social media management, training, and measurable growth.",
+        image: "/ghdigitals-preview.png",
+        link: "https://ghdigitals.com/",
+        theme: { bg: 'rgba(30, 81, 40, 0.1)', text: '#1e5128' },
+        problem: "Many small businesses and personal brands struggle to establish a strong online presence due to a lack of strategic digital marketing knowledge and accessible professional services.",
+        solution: "A comprehensive agency platform that combines digital marketing services with an academy for training, offering consultations, brand management, and social media strategy under one roof.",
+        challenges: [
+            "Dual Audience: Designing for both potential clients seeking agency services and students enrolling in the academy.",
+            "Trust Building: Creating a professional yet approachable interface that conveys expertise and credibility.",
+            "Content Structure: Organizing diverse service offerings (agency, academy, consultation) into a clear, navigable hierarchy."
+        ],
+        impact: [
+            "Successfully launched the agency's digital presence, driving consultation bookings.",
+            "Streamlined the enrollment process for academy cohorts.",
+            "Increased brand visibility and client inquiries through a compelling, conversion-focused design."
+        ]
+    },
+    {
         title: "Trackly",
         slug: "trackly",
         type: "app",
