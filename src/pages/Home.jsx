@@ -278,8 +278,47 @@ function Home() {
                     <h2 style={{ marginBottom: '2.5rem' }}>About Me</h2>
 
                     <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(0, 255, 65, 0.02)', padding: '3rem', border: '1px solid var(--border-color)' }}>
-                        <p className="text-muted" style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)' }}>
-                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Educator passionate about building digital solutions that balance functionality with human-centered design. I've worked on projects across HealthTech, InsurTech, cybersecurity, and fintech, while also mentoring aspiring designers. Beyond product design, I create impactful pitch decks and presentations that help startups and businesses tell their stories with clarity. Currently, I'm the founding designer at <a href="https://spidra.io" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', fontWeight: 600 }}>Spidra.io</a>, a web scraping tool I'm building with friends.
+                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500 }}>
+                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Educator passionate about building digital solutions that balance functionality with human-centered design. I've worked on projects across HealthTech, InsurTech, cybersecurity, and fintech, while also mentoring aspiring designers. Beyond product design, I create impactful pitch decks and presentations that help startups and businesses tell their stories with clarity. Currently, I'm the founding designer at{' '}
+                            <span style={{ position: 'relative', display: 'inline-block' }}
+                                onMouseEnter={(e) => {
+                                    const tooltip = e.currentTarget.querySelector('.spidra-preview');
+                                    if (tooltip) tooltip.style.opacity = '1';
+                                    if (tooltip) tooltip.style.pointerEvents = 'auto';
+                                    if (tooltip) tooltip.style.transform = 'translateX(-50%) translateY(0)';
+                                }}
+                                onMouseLeave={(e) => {
+                                    const tooltip = e.currentTarget.querySelector('.spidra-preview');
+                                    if (tooltip) tooltip.style.opacity = '0';
+                                    if (tooltip) tooltip.style.pointerEvents = 'none';
+                                    if (tooltip) tooltip.style.transform = 'translateX(-50%) translateY(8px)';
+                                }}
+                            >
+                                <a href="https://spidra.io" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>Spidra.io</a>
+                                <div className="spidra-preview" style={{
+                                    position: 'absolute',
+                                    bottom: 'calc(100% + 12px)',
+                                    left: '50%',
+                                    transform: 'translateX(-50%) translateY(8px)',
+                                    width: '320px',
+                                    background: '#fff',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)',
+                                    overflow: 'hidden',
+                                    opacity: 0,
+                                    pointerEvents: 'none',
+                                    transition: 'opacity 0.25s ease, transform 0.25s ease',
+                                    zIndex: 100
+                                }}>
+                                    <img src="/spidra-og.png" alt="Spidra.io Preview"
+                                        style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
+                                    />
+                                    <div style={{ padding: '12px 16px' }}>
+                                        <p style={{ margin: 0, fontSize: '0.85rem', fontWeight: 600, color: '#111' }}>Spidra.io</p>
+                                        <p style={{ margin: '4px 0 0', fontSize: '0.75rem', color: '#666', fontWeight: 400 }}>spidra.io</p>
+                                    </div>
+                                </div>
+                            </span>, a web scraping tool I'm building with friends.
                         </p>
                     </div>
                 </section>

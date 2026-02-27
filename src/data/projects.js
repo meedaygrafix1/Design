@@ -376,6 +376,12 @@ export const testimonials = [
 // Experiences data
 export const experiences = [
     {
+        company: "Spidra",
+        location: "Delaware, United States",
+        role: "Design Lead",
+        period: "January 2025 - Present",
+    },
+    {
         company: "Bay & Carter",
         location: "UK",
         role: "Brand and Web designer (Contract)",
