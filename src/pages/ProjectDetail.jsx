@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { projects, getProjectBySlug } from '../data/projects';
+import { Helmet } from 'react-helmet-async';
 
 function ProjectDetail() {
     const { slug } = useParams();
@@ -13,18 +14,32 @@ function ProjectDetail() {
 
     if (!project) {
         return (
-            <div className="detail-container" style={{ paddingTop: '5rem', textAlign: 'center' }}>
-                <h1>Project not found</h1>
-                <Link to="/" className="back-link" style={{ marginTop: '2rem', display: 'inline-block' }}>
-                    ← Back to Home
-                </Link>
-            </div>
+            <>
+                <Helmet>
+                    <title>Project Not Found | Ayanfe Olamide Balogun</title>
+                </Helmet>
+                <div className="detail-container" style={{ paddingTop: '5rem', textAlign: 'center' }}>
+                    <h1>Project not found</h1>
+                    <Link to="/" className="back-link" style={{ marginTop: '2rem', display: 'inline-block' }}>
+                        ← Back to Home
+                    </Link>
+                </div>
+            </>
         );
     }
 
     return (
-        <div className="project-detail-page">
-            <div className="detail-container">
+        <>
+            <Helmet>
+                <title>{project.title} | Ayanfe Olamide Balogun</title>
+                <meta name="description" content={project.desc || `Case study for ${project.title}`} />
+                <link rel="canonical" href={`https://www.meedaydesign.xyz/project/${project.slug}`} />
+                <meta property="og:title" content={`${project.title} | Ayanfe Olamide Balogun`} />
+                <meta property="og:description" content={project.desc || `Case study for ${project.title}`} />
+                {project.image && <meta property="og:image" content={`https://www.meedaydesign.xyz${project.image.startsWith('/') ? project.image : '/' + project.image}`} />}
+            </Helmet>
+            <div className="project-detail-page">
+                <div className="detail-container">
                 <header className="detail-hero">
                     <Link
                         to="/"
@@ -253,6 +268,7 @@ function ProjectDetail() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, User, List } from 'lucide-react';
 import parse, { domToReact } from 'html-react-parser';
 import Footer from '../components/Footer';
 import { getPostBySlug } from '../lib/hygraph';
+import { Helmet } from 'react-helmet-async';
 
 function ArticleDetail() {
     const { slug } = useParams();
@@ -115,6 +116,14 @@ function ArticleDetail() {
 
     return (
         <>
+            <Helmet>
+                <title>{post.title} | Ayanfe Olamide Balogun</title>
+                <meta name="description" content={post.excerpt || `Read ${post.title} by Ayanfe Olamide Balogun.`} />
+                <meta property="og:title" content={`${post.title} | Ayanfe Olamide Balogun`} />
+                <meta property="og:description" content={post.excerpt || `Read ${post.title} by Ayanfe Olamide Balogun.`} />
+                {post.coverImage && <meta property="og:image" content={post.coverImage.url} />}
+                <meta property="og:type" content="article" />
+            </Helmet>
             <article className="container section-padding article-content">
                 <div className="back-link-wrapper" style={{ textAlign: 'center', marginBottom: '2rem' }}>
                     <Link to="/articles" className="text-muted" style={{ display: 'inline-flex', alignItems: 'center', gap: '0.5rem', textDecoration: 'none', fontSize: '0.9rem' }}>

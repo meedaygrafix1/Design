@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
 import { illustrations } from '../data/projects';
+import { Helmet } from 'react-helmet-async';
 
 function Illustrations() {
     useEffect(() => {
@@ -10,7 +11,15 @@ function Illustrations() {
     }, []);
 
     return (
-        <div className="illustrations-page">
+        <>
+            <Helmet>
+                <title>Illustrations | Ayanfe Olamide Balogun</title>
+                <meta name="description" content="A collection of illustration work created in Figma by Ayanfe Olamide Balogun." />
+                <link rel="canonical" href="https://www.meedaydesign.xyz/illustrations" />
+                <meta property="og:title" content="Illustrations | Ayanfe Olamide Balogun" />
+                <meta property="og:description" content="A collection of illustration work created in Figma by Ayanfe Olamide Balogun." />
+            </Helmet>
+            <div className="illustrations-page">
             <div className="detail-container">
                 <header className="detail-hero" style={{ textAlign: 'center', padding: '4rem 0' }}>
                     <Link
@@ -97,6 +106,7 @@ function Illustrations() {
                 </div>
             </div>
         </div>
+        </>
     );
 }
 

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TypeAnimation } from 'react-type-animation';
+import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight, Quote } from 'lucide-react';
 import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
@@ -34,6 +35,14 @@ function Home() {
 
     return (
         <>
+            <Helmet>
+                <title>Ayanfe Olamide Balogun | Product Designer & Educator</title>
+                <meta name="description" content="I am Ayanfe Olamide Balogun, a Product Designer and Educator dedicated to crafting functional and intuitive digital solutions. Founder at Spidra.io and builder of ZOFU." />
+                <link rel="canonical" href="https://www.meedaydesign.xyz/" />
+                <meta property="og:title" content="Ayanfe Olamide Balogun | Product Designer & Educator" />
+                <meta property="og:description" content="Portfolio of Ayanfe Olamide Balogun (Meeday). Creating user-centered interfaces, efficient design systems, and high-impact digital products." />
+                <meta property="og:url" content="https://www.meedaydesign.xyz/" />
+            </Helmet>
             <main>
                 {/* Hero / Entry Point */}
                 <section className="container hero-container" style={{

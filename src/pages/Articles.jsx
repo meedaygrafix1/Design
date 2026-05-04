@@ -6,6 +6,7 @@ import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
 import BlogCardSkeleton from '../components/BlogCardSkeleton';
 import { getPosts } from '../lib/hygraph';
+import { Helmet } from 'react-helmet-async';
 
 function Articles() {
     const [posts, setPosts] = useState([]);
@@ -31,6 +32,10 @@ function Articles() {
     if (loading) {
         return (
             <>
+                <Helmet>
+                    <title>Articles & Thoughts | Ayanfe Olamide Balogun</title>
+                    <meta name="description" content="Sharing insights on design, product development, and the creative process by Ayanfe Olamide Balogun." />
+                </Helmet>
                 <main className="container section-padding">
                     <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '2rem' }}>
                         <h1 style={{ marginBottom: '1.5rem', fontSize: '3.5rem' }}>Articles & Thoughts</h1>
@@ -52,15 +57,27 @@ function Articles() {
 
     if (error) {
         return (
-            <div className="container section-padding" style={{ textAlign: 'center', minHeight: '50vh' }}>
-                <h2 style={{ marginBottom: '1rem' }}>Oops!</h2>
-                <p className="text-muted">{error}</p>
-            </div>
+            <>
+                <Helmet>
+                    <title>Error | Ayanfe Olamide Balogun</title>
+                </Helmet>
+                <div className="container section-padding" style={{ textAlign: 'center', minHeight: '50vh' }}>
+                    <h2 style={{ marginBottom: '1rem' }}>Oops!</h2>
+                    <p className="text-muted">{error}</p>
+                </div>
+            </>
         );
     }
 
     return (
         <>
+            <Helmet>
+                <title>Articles & Thoughts | Ayanfe Olamide Balogun</title>
+                <meta name="description" content="Sharing insights on design, product development, and the creative process by Ayanfe Olamide Balogun." />
+                <link rel="canonical" href="https://www.meedaydesign.xyz/articles" />
+                <meta property="og:title" content="Articles & Thoughts | Ayanfe Olamide Balogun" />
+                <meta property="og:description" content="Sharing insights on design, product development, and the creative process by Ayanfe Olamide Balogun." />
+            </Helmet>
             <main className="container section-padding">
                 <div style={{ textAlign: 'center', marginBottom: '5rem', paddingTop: '2rem' }}>
                     <h1 style={{ marginBottom: '1.5rem', fontSize: '3.5rem' }}>Articles & Thoughts</h1>
