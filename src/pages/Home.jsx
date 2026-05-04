@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
+import { TypeAnimation } from 'react-type-animation';
 import { ArrowUpRight, Quote } from 'lucide-react';
 import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
@@ -97,11 +98,23 @@ function Home() {
                         </motion.div>
 
                         <h1 style={{ marginBottom: '1rem' }}>
-                            UI/UX Designer & Product Designer
+                            <TypeAnimation
+                                sequence={[
+                                    'Product Designer',
+                                    2000,
+                                    'AI Native Designer',
+                                    2000,
+                                    'Design Engineer',
+                                    2000
+                                ]}
+                                wrapper="span"
+                                cursor={true}
+                                repeat={Infinity}
+                            />
                         </h1>
 
                         <p className="text-muted" style={{ maxWidth: '650px', margin: '0 auto 3rem', fontSize: '1.15rem', lineHeight: '1.7' }}>
-                            Creating user-centered interfaces, efficient design systems, and high-impact product experiences for startups and enterprise teams worldwide.
+                            I leverage AI-assisted design tooling (including Figma AI and other generative AI tools) to accelerate end-to-end UI/UX design workflows, from discovery and wireframes through high-fidelity mockups and interactive prototypes.
                         </p>
 
                         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
@@ -279,7 +292,7 @@ function Home() {
 
                     <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(0, 255, 65, 0.02)', padding: '3rem', border: '1px solid var(--border-color)' }}>
                         <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500 }}>
-                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Educator passionate about building digital solutions that balance functionality with human-centered design. I've worked on projects across HealthTech, InsurTech, cybersecurity, and fintech, while also mentoring aspiring designers. Beyond product design, I create impactful pitch decks and presentations that help startups and businesses tell their stories with clarity. Currently, I'm the founding designer at{' '}
+                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Educator dedicated to crafting digital solutions that are as functional as they are intuitive. With a background spanning HealthTech, InsurTech, cybersecurity, and fintech, I thrive on solving complex problems while mentoring the next generation of designers. Beyond product design, I partner with startups and businesses to design compelling pitch decks that tell clear, impactful stories. Currently, I'm shaping the design direction at{' '}
                             <span style={{ position: 'relative', display: 'inline-block' }}
                                 onMouseEnter={(e) => {
                                     const tooltip = e.currentTarget.querySelector('.spidra-preview');
@@ -318,7 +331,7 @@ function Home() {
                                         <p style={{ margin: '4px 0 0', fontSize: '0.75rem', color: '#666', fontWeight: 400 }}>spidra.io</p>
                                     </div>
                                 </div>
-                            </span>, a web scraping tool I'm building with friends.
+                            </span>—a web scraping tool built with friends—and actively building <a href="http://zofu.quest/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>ZOFU</a>.
                         </p>
                     </div>
                 </section>
