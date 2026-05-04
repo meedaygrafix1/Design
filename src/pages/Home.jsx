@@ -58,7 +58,8 @@ function Home() {
                         initial={{ opacity: 0, y: 30 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, ease: "easeOut" }}
-                        style={{ position: 'relative', zIndex: 1, maxWidth: '800px', paddingTop: '5rem' }}
+                        style={{ position: 'relative', zIndex: 1, maxWidth: '800px', }}
+                        className='home-sc'
                     >
                         <p className="text-muted" style={{ fontSize: '0.9rem', marginBottom: '2rem' }}>{currentDate}</p>
 

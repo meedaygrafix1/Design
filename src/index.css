@@ -312,7 +312,9 @@ button {
 }
 
 
-
+.home-sc {
+  padding: 4rem 0 0 0;
+}
 
 .text-muted {
   color: var(--text-secondary);
@@ -689,6 +691,10 @@ nav {
   /* Hide desktop elements */
   .desktop-only {
     display: none !important;
+  }
+
+  .home-sc {
+    padding: 0 0 0 0;
   }
 
   .nav-pill-container {
