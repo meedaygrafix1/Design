@@ -419,20 +419,20 @@ function Home() {
                         style={{
                             display: 'flex',
                             gap: '2rem',
-                            width: 'max-content'
+                            width: 'max-content',
+                            willChange: 'transform',
                         }}
-                        onMouseEnter={(e) => {
+                        onPointerEnter={(e) => {
                             e.currentTarget.style.animationPlayState = 'paused';
                         }}
-                        onMouseLeave={(e) => {
+                        onPointerLeave={(e) => {
                             e.currentTarget.style.animationPlayState = 'running';
                         }}
                     >
                         {/* Duplicate the array to create seamless loop */}
                         {[...designExplorations, ...designExplorations].map((item, index) => (
-                            <motion.div
+                            <div
                                 key={`${item.id}-${index}`}
-                                whileHover={{ y: -10 }}
                                 className="clean-card design-exp-card"
                                 style={{
                                     borderRadius: '12px',
@@ -468,35 +468,46 @@ function Home() {
                                 >
                                     <p style={{ margin: 0, fontWeight: 500 }}>{item.title}</p>
                                 </div>
-                            </motion.div>
+                            </div>
                         ))}
                     </div>
                 </div>
                 <style>{`
                     @keyframes marquee {
-                        0% { transform: translateX(0); }
-                        100% { transform: translateX(-50%); }
+                        0% { transform: translate3d(0, 0, 0); }
+                        100% { transform: translate3d(-50%, 0, 0); }
                     }
                     .clean-card:hover .hover-reveal {
                         opacity: 1 !important;
                     }
                     .marquee-track {
                         animation: marquee 40s linear infinite;
+                        will-change: transform;
+                        transform: translate3d(0, 0, 0);
+                        backface-visibility: hidden;
+                        -webkit-backface-visibility: hidden;
                     }
                     .design-exp-card {
                         min-width: 350px;
                         height: 240px;
+                        transition: transform 0.3s ease;
+                    }
+                    .design-exp-card:hover {
+                        transform: translateY(-10px);
                     }
                     @media (max-width: 768px) {
                         .marquee-track {
-                            animation-duration: 60s;
+                            animation-duration: 30s;
                         }
                         .design-exp-card {
-                            min-width: 260px;
-                            height: 320px;
+                            min-width: 220px;
+                            height: 180px;
+                        }
+                        .design-exp-card:hover {
+                            transform: none;
                         }
                         .design-exp-img {
-                            object-fit: contain !important;
+                            object-fit: cover !important;
                         }
                         .marquee-outer {
                             mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
@@ -504,7 +515,7 @@ function Home() {
                         }
                         .marquee-fade-left,
                         .marquee-fade-right {
-                            width: 40px !important;
+                            width: 30px !important;
                         }
                     }
                 `}</style>
