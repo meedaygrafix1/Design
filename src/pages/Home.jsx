@@ -374,7 +374,7 @@ function Home() {
                     <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Design Explorations</h2>
                 </div>
 
-                <div style={{
+                <div className="marquee-outer" style={{
                     position: 'relative',
                     width: '100%',
                     overflow: 'hidden',
@@ -382,7 +382,7 @@ function Home() {
                     WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
                 }}>
                     {/* Fade Gradient Left */}
-                    <div style={{
+                    <div className="marquee-fade-left" style={{
                         position: 'absolute',
                         left: 0,
                         top: 0,
@@ -398,7 +398,7 @@ function Home() {
                     }}></div>
 
                     {/* Fade Gradient Right */}
-                    <div style={{
+                    <div className="marquee-fade-right" style={{
                         position: 'absolute',
                         right: 0,
                         top: 0,
@@ -489,7 +489,7 @@ function Home() {
                     }
                     @media (max-width: 768px) {
                         .marquee-track {
-                            animation-duration: 25s;
+                            animation-duration: 60s;
                         }
                         .design-exp-card {
                             min-width: 260px;
@@ -497,6 +497,14 @@ function Home() {
                         }
                         .design-exp-img {
                             object-fit: contain !important;
+                        }
+                        .marquee-outer {
+                            mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
+                            -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
+                        }
+                        .marquee-fade-left,
+                        .marquee-fade-right {
+                            width: 40px !important;
                         }
                     }
                 `}</style>
