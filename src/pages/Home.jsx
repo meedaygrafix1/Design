@@ -433,10 +433,8 @@ function Home() {
                             <motion.div
                                 key={`${item.id}-${index}`}
                                 whileHover={{ y: -10 }}
-                                className="clean-card"
+                                className="clean-card design-exp-card"
                                 style={{
-                                    minWidth: '350px',
-                                    height: '240px',
                                     borderRadius: '12px',
                                     overflow: 'hidden',
                                     cursor: 'pointer',
@@ -447,10 +445,12 @@ function Home() {
                                 <img
                                     src={item.image}
                                     alt={item.title}
+                                    className="design-exp-img"
                                     style={{
                                         width: '100%',
                                         height: '100%',
-                                        objectFit: 'cover'
+                                        objectFit: 'cover',
+                                        display: 'block'
                                     }}
                                 />
                                 <div style={{
@@ -483,9 +483,20 @@ function Home() {
                     .marquee-track {
                         animation: marquee 40s linear infinite;
                     }
+                    .design-exp-card {
+                        min-width: 350px;
+                        height: 240px;
+                    }
                     @media (max-width: 768px) {
                         .marquee-track {
-                            animation-duration: 60s;
+                            animation-duration: 25s;
+                        }
+                        .design-exp-card {
+                            min-width: 260px;
+                            height: 320px;
+                        }
+                        .design-exp-img {
+                            object-fit: contain !important;
                         }
                     }
                 `}</style>
