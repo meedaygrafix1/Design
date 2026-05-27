@@ -497,11 +497,12 @@ function Home() {
                     }
                     @media (max-width: 768px) {
                         .marquee-track {
-                            animation-duration: 30s;
+                            animation-duration: 50s;
+                            gap: 1rem;
                         }
                         .design-exp-card {
-                            min-width: 220px;
-                            height: 180px;
+                            min-width: 200px;
+                            height: 200px;
                         }
                         .design-exp-card:hover {
                             transform: none;
