@@ -36,11 +36,11 @@ function Home() {
     return (
         <>
             <Helmet>
-                <title>Ayanfe Olamide Balogun | Product Designer & Educator</title>
-                <meta name="description" content="I am Ayanfe Olamide Balogun, a Product Designer and Educator dedicated to crafting functional and intuitive digital solutions. Founder at Spidra.io and builder of ZOFU." />
+                <title>Ayanfe Olamide Balogun | AI Native UI/UX & Product Designer</title>
+                <meta name="description" content="I am Ayanfe Olamide Balogun, an AI Native Product Designer and Educator dedicated to crafting functional and intuitive digital solutions. Founder at Spidra.io and builder of ZOFU." />
                 <link rel="canonical" href="https://www.meedaydesign.xyz/" />
-                <meta property="og:title" content="Ayanfe Olamide Balogun | Product Designer & Educator" />
-                <meta property="og:description" content="Portfolio of Ayanfe Olamide Balogun (Meeday). Creating user-centered interfaces, efficient design systems, and high-impact digital products." />
+                <meta property="og:title" content="Ayanfe Olamide Balogun | AI Native UI/UX & Product Designer" />
+                <meta property="og:description" content="Portfolio of Ayanfe Olamide Balogun (Meeday). Creating user-centered generative AI interfaces, efficient design systems, and high-impact digital products." />
                 <meta property="og:url" content="https://www.meedaydesign.xyz/" />
             </Helmet>
             <main>
@@ -112,7 +112,7 @@ function Home() {
                                 sequence={[
                                     'Product Designer',
                                     2000,
-                                    'AI Native Designer',
+                                    'AI Native UI/UX Designer',
                                     2000,
                                     'Design Engineer',
                                     2000
@@ -302,7 +302,7 @@ function Home() {
 
                     <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(0, 255, 65, 0.02)', padding: '3rem', border: '1px solid var(--border-color)' }}>
                         <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500 }}>
-                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Educator dedicated to crafting digital solutions that are as functional as they are intuitive. With a background spanning HealthTech, InsurTech, cybersecurity, and fintech, I thrive on solving complex problems while mentoring the next generation of designers. Beyond product design, I partner with startups and businesses to design compelling pitch decks that tell clear, impactful stories. Currently, I'm shaping the design direction at{' '}
+                            I'm <strong>Ayanfe Olamide Balogun</strong>, an AI Native Product Designer and Educator dedicated to crafting digital solutions that are as functional as they are intuitive. With a background spanning generative AI interfaces, HealthTech, InsurTech, cybersecurity, and fintech, I thrive on solving complex problems while mentoring the next generation of designers. Beyond product design, I partner with startups and businesses to design compelling pitch decks that tell clear, impactful stories. Currently, I'm shaping the design direction at{' '}
                             <span style={{ position: 'relative', display: 'inline-block' }}
                                 onMouseEnter={(e) => {
                                     const tooltip = e.currentTarget.querySelector('.spidra-preview');
