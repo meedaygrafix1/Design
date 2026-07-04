@@ -129,7 +129,7 @@ function Home() {
 
                         <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
                             <a href="mailto:olamidebalogun56@gmail.com" className="pill-btn black" style={{ textDecoration: 'none' }}>Get in touch</a>
-                            <a href="https://docs.google.com/document/d/1TpgW7XRnzpsyhmV208HeQzAr_bsdMeOBw04U9plIlJs/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="pill-btn gray" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>Read CV <ArrowUpRight size={18} /></a>
+                            <a href="https://docs.google.com/document/d/1Gn4Z_rYKmXA2Mfq2sbyPCn6fkT3yTnotnTN2YUDayX4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="pill-btn gray" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>Read CV <ArrowUpRight size={18} /></a>
                         </div>
                     </motion.div>
                 </section>
