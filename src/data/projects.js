@@ -1,6 +1,57 @@
 // Project data
 export const projects = [
     {
+        title: "Biki",
+        slug: "biki",
+        type: "app",
+        category: "Web App • Event Tech",
+        industry: "Event Tech / Fintech",
+        year: "2026",
+        tool: "Figma",
+        desc: "Celebrate more. Worry less. Biki lets you collect cash gifts, split-fund registry items, and gather guest memories, all from one elegant custom link.",
+        image: "/biki.png",
+        link: "https://biki.africa/",
+        theme: { bg: 'rgba(22, 101, 52, 0.1)', text: '#166534' },
+        problem: "Celebrants in Nigeria and across Africa rely on scattered bank transfers, messy WhatsApp photo albums, and informal gift lists that create confusion, trust issues, and missed contributions for events like weddings and birthdays.",
+        solution: "Biki provides a single elegant registry link where guests can contribute cash gifts, split-fund specific items, and upload memories. All payments are secured through Paystack with 24-hour settlement to verified Nigerian bank accounts.",
+        challenges: [
+            "Trust & Security: Designing an interface that clearly communicates secure, escrow-backed payments to users unfamiliar with digital gifting platforms.",
+            "Frictionless Guest Experience: Enabling guests to contribute and upload memories without needing to download an app or create an account.",
+            "Multi-Currency Support: Accommodating international guests paying in USD, GBP, and EUR while settling funds in NGN seamlessly."
+        ],
+        impact: [
+            "Simplified the gifting experience for events across Nigeria and Africa with a single shareable link.",
+            "Enabled international contributions in USD, GBP, and EUR, making diaspora giving effortless.",
+            "Achieved 24-hour bank settlement, removing weeks-long payout delays common in alternative platforms."
+        ]
+    },
+    {
+        title: "Zofu",
+        slug: "zofu",
+        type: "app",
+        category: "Web App • AI / Career Tech",
+        industry: "Artificial Intelligence",
+        year: "2026",
+        tool: "Figma",
+        desc: "Don't just apply. Stand out and get hired. Zofu's AI instantly aligns your unique experience with exactly what hiring managers are looking for, beating the ATS in seconds.",
+        image: "/zofu.png",
+        link: "https://www.zofu.quest/",
+        theme: { bg: 'rgba(99, 102, 241, 0.1)', text: '#6366f1' },
+        problem: "Highly qualified job seekers are filtered out before a human ever reads their resume. Generic resumes get rejected by Applicant Tracking Systems (ATS) instantly, and manually tailoring each application to a job description is time-consuming and inconsistent.",
+        solution: "Zofu uses AI to analyze a candidate's resume against any job description, injecting the right keywords naturally, quantifying impact statements, and generating a real-time ATS score so applicants stand out before the first human review.",
+        challenges: [
+            "ATS Complexity: Reverse-engineering how different ATS systems score and filter resumes to provide actionable, accurate optimization suggestions.",
+            "Natural Language Integration: Weaving keywords into resume copy without making it feel forced or keyword-stuffed, preserving the candidate's authentic voice.",
+            "Clarity of Results: Presenting dense AI-generated feedback (scores, missing keywords, rewrites) in a clean interface that feels empowering, not overwhelming."
+        ],
+        impact: [
+            "Enables job seekers to go from a generic resume to a precision-targeted one in seconds, not hours.",
+            "Provides real-time ATS scores with matched and missing keyword breakdowns for every application.",
+            "Generates custom behavioral and technical interview questions tailored to each specific job description."
+        ]
+    },
+    /* COMMENTED OUT - ArtistPaddy
+    {
         title: "ArtistPaddy",
         slug: "artistpaddy",
         type: "app",
@@ -25,6 +76,7 @@ export const projects = [
             "Provided clear financial visualization for long-term career planning."
         ]
     },
+    */
     {
         title: "RealVEST",
         slug: "realvest",
@@ -50,6 +102,7 @@ export const projects = [
             "Made investment approachable by transforming complex financial data into interactive visuals."
         ]
     },
+    /* COMMENTED OUT - Hospease
     {
         title: "Hospease",
         slug: "hospease",
@@ -75,6 +128,7 @@ export const projects = [
             "Improved patient experience with a streamlined booking and reminder system."
         ]
     },
+    */
     {
         title: "Fundora",
         slug: "fundora",

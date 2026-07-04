@@ -302,7 +302,13 @@ function Home() {
 
                     <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(0, 255, 65, 0.02)', padding: '3rem', border: '1px solid var(--border-color)' }}>
                         <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500 }}>
-                            I'm <strong>Ayanfe Olamide Balogun</strong>, an AI Native Product Designer and Educator dedicated to crafting digital solutions that are as functional as they are intuitive. With a background spanning generative AI interfaces, HealthTech, InsurTech, cybersecurity, and fintech, I thrive on solving complex problems while mentoring the next generation of designers. Beyond product design, I partner with startups and businesses to design compelling pitch decks that tell clear, impactful stories. Currently, I'm shaping the design direction at{' '}
+                            I'm <strong>Ayanfe Olamide Balogun</strong>, an AI Native Product Designer who turns operational chaos into systems people trust. I've cut billing errors by 60% and paper-based processes by 90% redesigning hospital workflows, and reduced content creation time by 95% designing an AI-powered productivity tool. My background spans HealthTech and fintech, with a growing focus on generative AI interfaces.
+                        </p>
+                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
+                            I also mentor emerging designers (80+ trained) and partner with startups to build pitch decks that help them raise and sell.
+                        </p>
+                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
+                            Currently I'm shaping design direction at{' '}
                             <span style={{ position: 'relative', display: 'inline-block' }}
                                 onMouseEnter={(e) => {
                                     const tooltip = e.currentTarget.querySelector('.spidra-preview');
@@ -341,7 +347,7 @@ function Home() {
                                         <p style={{ margin: '4px 0 0', fontSize: '0.75rem', color: '#666', fontWeight: 400 }}>spidra.io</p>
                                     </div>
                                 </div>
-                            </span>—a web scraping tool built with friends—and actively building <a href="http://zofu.quest/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>ZOFU</a>.
+                            </span>, a web scraping tool, and building <a href="http://zofu.quest/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>ZOFU</a>, an AI resume optimization platform.
                         </p>
                     </div>
                 </section>
