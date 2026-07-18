@@ -519,14 +519,15 @@ function Home() {
                             gap: 1rem;
                         }
                         .design-exp-card {
-                            min-width: 240px;
-                            height: 340px;
+                            min-width: 280px;
+                            height: 220px;
                         }
                         .design-exp-card:hover {
                             transform: none;
                         }
                         .design-exp-img {
-                            object-fit: cover !important;
+                            object-fit: contain !important;
+                            background: var(--card-bg);
                         }
                         .marquee-outer {
                             mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
