@@ -258,7 +258,8 @@ button {
 }
 
 @media (max-width: 768px) {
-  .articles-grid {
+  .articles-grid,
+  .projects-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
