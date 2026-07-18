@@ -260,7 +260,7 @@ button {
 @media (max-width: 768px) {
   .articles-grid,
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
   }
 }
@@ -274,6 +274,8 @@ button {
   flex-direction: column;
   position: relative;
   transition: transform 0.3s ease;
+  width: 100%;
+  min-width: 0;
 }
 
 .project-card:hover {
