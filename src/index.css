@@ -966,26 +966,25 @@ video.detail-main-img {
   }
 
   /* Footer Responsive */
-  .footer {
+  .footer-top {
     flex-direction: column !important;
     align-items: flex-start !important;
-    gap: 3rem !important;
-    /* Increased from 2rem */
+    gap: 1.5rem !important;
     text-align: left !important;
-    padding: 4rem 1rem !important;
   }
 
   .footer-links {
-    flex-wrap: wrap !important;
-    column-gap: 2rem !important;
-    row-gap: 1.5rem !important;
-    /* Increased from 1rem */
+    flex-wrap: nowrap !important;
+    gap: 1.5rem !important;
     width: 100%;
   }
 
   .footer-links a {
-    width: 45%;
-    /* 2 columns on mobile */
+    width: auto !important;
+  }
+
+  .footer-massive-text {
+    -webkit-text-stroke: 1px var(--text-secondary) !important;
   }
 
   .container {
@@ -1006,21 +1005,56 @@ video.detail-main-img {
   }
 }
 
-/* Footer Base Styles (add to main CSS) */
-.footer {
-  padding: 4rem 0;
+/* Footer Base Styles */
+.footer-wrapper {
+  background: var(--bg-color);
   border-top: 1px solid var(--border-color);
+  padding-top: 4rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-top {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
   gap: 2rem;
+  padding-bottom: 2rem;
+  z-index: 2;
 }
 
 .footer-links {
   display: flex;
   gap: 2rem;
   font-size: 0.95rem;
+}
+
+.footer-links a {
+  color: var(--text-primary);
+  transition: opacity 0.3s ease;
+}
+
+.footer-links a:hover {
+  opacity: 0.6;
+}
+
+.footer-massive-text {
+  font-family: var(--font-primary);
+  font-weight: 900;
+  font-size: 26vw;
+  line-height: 0.72;
+  text-align: center;
+  color: transparent;
+  -webkit-text-stroke: 2px var(--text-secondary);
+  opacity: 0.4;
+  text-transform: uppercase;
+  letter-spacing: -0.04em;
+  margin-bottom: -0.05em;
+  white-space: nowrap;
+  user-select: none;
+  z-index: 1;
 }
 
 /* Modern CTA Section */
