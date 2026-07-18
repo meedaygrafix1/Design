@@ -519,8 +519,8 @@ function Home() {
                             gap: 1rem;
                         }
                         .design-exp-card {
-                            min-width: 280px;
-                            height: 190px;
+                            min-width: 240px;
+                            height: 340px;
                         }
                         .design-exp-card:hover {
                             transform: none;
