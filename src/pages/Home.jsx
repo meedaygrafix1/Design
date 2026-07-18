@@ -12,6 +12,14 @@ import { projects, testimonials, experiences, illustrations, designExplorations 
 function Home() {
     const [projectFilter, setProjectFilter] = useState('app');
     const [recentPosts, setRecentPosts] = useState([]);
+    const [activeExpIndex, setActiveExpIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setActiveExpIndex((prev) => (prev + 1) % designExplorations.length);
+        }, 2000);
+        return () => clearInterval(interval);
+    }, []);
 
     useEffect(() => {
         const fetchRecentPosts = async () => {
@@ -385,166 +393,53 @@ function Home() {
                 </section>
             </main>
 
-
-            {/* Design Explorations Section */}
-            <section className="section-padding" style={{ overflow: 'hidden' }}>
+            {/* Design Explorations Section (Slideshow) */}
+            <section className="section-padding">
                 <div className="container">
                     <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Design Explorations</h2>
-                </div>
-
-                <div className="marquee-outer" style={{
-                    position: 'relative',
-                    width: '100%',
-                    overflow: 'hidden',
-                    maskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent, black 5%, black 95%, transparent)'
-                }}>
-                    {/* Fade Gradient Left */}
-                    <div className="marquee-fade-left" style={{
-                        position: 'absolute',
-                        left: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: '80px',
-                        background: 'linear-gradient(to right, #ffffff, transparent)',
-                        zIndex: 10,
-                        pointerEvents: 'none',
-                        backdropFilter: 'blur(5px)',
-                        WebkitBackdropFilter: 'blur(5px)',
-                        maskImage: 'linear-gradient(to right, black, transparent)',
-                        WebkitMaskImage: 'linear-gradient(to right, black, transparent)'
-                    }}></div>
-
-                    {/* Fade Gradient Right */}
-                    <div className="marquee-fade-right" style={{
-                        position: 'absolute',
-                        right: 0,
-                        top: 0,
-                        bottom: 0,
-                        width: '80px',
-                        background: 'linear-gradient(to left, #ffffff, transparent)',
-                        zIndex: 10,
-                        pointerEvents: 'none',
-                        backdropFilter: 'blur(5px)',
-                        WebkitBackdropFilter: 'blur(5px)',
-                        maskImage: 'linear-gradient(to left, black, transparent)',
-                        WebkitMaskImage: 'linear-gradient(to left, black, transparent)'
-                    }}></div>
-
-                    {/* Infinite Scrolling Track */}
-                    <div
-                        className="marquee-track"
-                        style={{
-                            display: 'flex',
-                            gap: '2rem',
-                            width: 'max-content',
-                            willChange: 'transform',
-                        }}
-                        onPointerEnter={(e) => {
-                            e.currentTarget.style.animationPlayState = 'paused';
-                        }}
-                        onPointerLeave={(e) => {
-                            e.currentTarget.style.animationPlayState = 'running';
-                        }}
-                    >
-                        {/* Duplicate the array to create seamless loop */}
-                        {[...designExplorations, ...designExplorations].map((item, index) => (
-                            <div
-                                key={`${item.id}-${index}`}
-                                className="clean-card design-exp-card"
-                                style={{
-                                    borderRadius: '12px',
-                                    overflow: 'hidden',
-                                    cursor: 'pointer',
-                                    position: 'relative',
-                                    flexShrink: 0
-                                }}
-                            >
-                                <img
-                                    src={item.image}
-                                    alt={item.title}
-                                    className="design-exp-img"
+                    
+                    <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', overflow: 'hidden', borderRadius: '16px' }}>
+                        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: 'var(--card-bg)' }}>
+                            <AnimatePresence mode="wait">
+                                <motion.img
+                                    key={activeExpIndex}
+                                    src={designExplorations[activeExpIndex].image}
+                                    alt={designExplorations[activeExpIndex].title}
+                                    initial={{ opacity: 0, scale: 0.98 }}
+                                    animate={{ opacity: 1, scale: 1 }}
+                                    exit={{ opacity: 0 }}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
                                     style={{
+                                        position: 'absolute',
+                                        inset: 0,
                                         width: '100%',
                                         height: '100%',
-                                        objectFit: 'cover',
-                                        display: 'block'
+                                        objectFit: 'contain',
+                                        background: '#ffffff',
+                                        padding: '1.5rem',
+                                        boxSizing: 'border-box'
                                     }}
                                 />
-                                <div style={{
-                                    position: 'absolute',
-                                    bottom: 0,
-                                    left: 0,
-                                    right: 0,
-                                    padding: '1rem',
-                                    background: 'linear-gradient(to top, rgba(0,0,0,0.7), transparent)',
-                                    color: 'white',
-                                    opacity: 0,
-                                    transition: 'opacity 0.3s ease'
-                                }}
-                                    className="hover-reveal"
-                                >
-                                    <p style={{ margin: 0, fontWeight: 500 }}>{item.title}</p>
-                                </div>
-                            </div>
-                        ))}
+                            </AnimatePresence>
+                        </div>
+                        
+                        {/* Progress Indicators */}
+                        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
+                            {designExplorations.map((_, idx) => (
+                                <div
+                                    key={idx}
+                                    style={{
+                                        width: idx === activeExpIndex ? '24px' : '8px',
+                                        height: '8px',
+                                        borderRadius: '4px',
+                                        background: idx === activeExpIndex ? 'var(--text-primary)' : 'var(--border-color)',
+                                        transition: 'all 0.3s ease'
+                                    }}
+                                />
+                            ))}
+                        </div>
                     </div>
                 </div>
-                <style>{`
-                    @keyframes marquee {
-                        0% { transform: translate3d(0, 0, 0); }
-                        100% { transform: translate3d(-50%, 0, 0); }
-                    }
-                    .clean-card:hover .hover-reveal {
-                        opacity: 1 !important;
-                    }
-                    .marquee-track {
-                        animation: marquee 40s linear infinite;
-                        will-change: transform;
-                        transform: translate3d(0, 0, 0);
-                        backface-visibility: hidden;
-                        -webkit-backface-visibility: hidden;
-                    }
-                    .design-exp-card {
-                        min-width: 350px;
-                        height: 240px;
-                        background: #ffffff;
-                        padding: 1.5rem 0;
-                        box-sizing: border-box;
-                        transition: transform 0.3s ease;
-                    }
-                    .design-exp-img {
-                        object-fit: contain !important;
-                        width: 100%;
-                        height: 100%;
-                    }
-                    .design-exp-card:hover {
-                        transform: translateY(-10px);
-                    }
-                    @media (max-width: 768px) {
-                        .marquee-track {
-                            animation-duration: 50s;
-                            gap: 1rem;
-                        }
-                        .design-exp-card {
-                            min-width: 280px;
-                            height: 220px;
-                            padding: 1rem 0;
-                        }
-                        .design-exp-card:hover {
-                            transform: none;
-                        }
-                        .marquee-outer {
-                            mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
-                            -webkit-mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
-                        }
-                        .marquee-fade-left,
-                        .marquee-fade-right {
-                            width: 30px !important;
-                        }
-                    }
-                `}</style>
-
             </section>
 
             {/* CTA Section */}
