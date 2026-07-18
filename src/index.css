@@ -495,6 +495,13 @@ nav {
   margin-bottom: 4rem;
 }
 
+/* Videos should never be cropped — show at natural size */
+video.detail-main-img {
+  aspect-ratio: unset;
+  object-fit: unset;
+  height: auto;
+}
+
 .detail-context-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -560,7 +567,142 @@ nav {
   }
 }
 
-/* Project Detail View */
+/* ─── Scroll Indicator (right-side collapsed tab) ─── */
+
+/* Outer wrapper: fixed to the right edge, vertically centred */
+.si-wrapper {
+  position: fixed;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+  z-index: 500;
+  display: flex;
+  flex-direction: row;   /* [panel] [tab] — panel left, tab right */
+  align-items: center;
+  pointer-events: auto;
+}
+
+/* ── Always-visible handle tab ── */
+.si-tab {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  width: 26px;
+  height: 48px;
+  background: var(--bg-color, #fff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-right: none;
+  border-radius: 8px 0 0 8px;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.2s ease;
+}
+
+.si-tab__line {
+  display: block;
+  width: 10px;
+  height: 2px;
+  background: var(--text-secondary, #9ca3af);
+  border-radius: 2px;
+  transition: background 0.2s ease, width 0.2s ease;
+}
+
+.si-wrapper--open .si-tab {
+  background: var(--card-bg, #f9fafb);
+}
+
+.si-wrapper--open .si-tab__line {
+  background: var(--text-primary, #111);
+}
+
+/* ── Slide-out panel (expands to the LEFT of the tab) ── */
+.si-panel {
+  overflow: hidden;
+  width: 0;
+  opacity: 0;
+  transition:
+    width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+    opacity 0.2s ease;
+  background: var(--bg-color, #fff);
+  border: 1px solid var(--border-color, #e5e7eb);
+  border-right: none;
+  border-radius: 12px 0 0 12px;
+  box-shadow: -4px 8px 24px rgba(0, 0, 0, 0.09);
+}
+
+.si-wrapper--open .si-panel {
+  width: 200px;
+  opacity: 1;
+}
+
+/* ── Section list ── */
+.si-list {
+  list-style: none;
+  margin: 0;
+  padding: 0.75rem 0;
+  width: 200px;           /* Fixed width keeps items from re-wrapping */
+  white-space: nowrap;
+}
+
+.si-item {
+  margin: 0;
+  padding: 0;
+}
+
+.si-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  width: 100%;
+  padding: 0.4rem 1rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.78rem;
+  color: var(--text-secondary, #6b7280);
+  text-align: left;
+  transition: color 0.15s ease;
+}
+
+.si-btn:hover {
+  color: var(--text-primary, #111);
+}
+
+.si-dot {
+  flex-shrink: 0;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--border-color, #d1d5db);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.si-label {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.si-item--active .si-btn {
+  color: var(--text-primary, #111);
+  font-weight: 600;
+}
+
+.si-item--active .si-dot {
+  background: var(--text-primary, #111);
+  transform: scale(1.4);
+}
+
+/* Hide on smaller screens */
+@media (max-width: 1024px) {
+  .si-wrapper {
+    display: none;
+  }
+}
+
+
 .project-detail-view {
   position: fixed;
   top: 0;
@@ -876,5 +1018,98 @@ nav {
 @keyframes spin {
   to {
     transform: rotate(360deg);
+  }
+}
+
+/* ─── Project Detail Layout (with left scroll indicator) ─── */
+.project-detail-layout {
+  position: relative;
+}
+
+/* ─── Scroll Indicator ─── */
+.scroll-indicator {
+  position: fixed;
+  top: 50%;
+  left: max(1rem, calc(50% - 680px));
+  transform: translateY(-50%);
+  z-index: 200;
+  pointer-events: auto;
+}
+
+.scroll-indicator__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.scroll-indicator__btn {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.3rem 0;
+  font-family: var(--font-primary);
+  width: 100%;
+  text-align: right;
+}
+
+.scroll-indicator__label {
+  font-size: 0.78rem;
+  font-weight: 400;
+  color: var(--text-secondary);
+  letter-spacing: -0.01em;
+  line-height: 1.4;
+  transition: color 0.3s ease, font-weight 0.3s ease;
+  white-space: nowrap;
+  opacity: 0.45;
+}
+
+.scroll-indicator__dash {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+  flex-shrink: 0;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              background 0.3s ease,
+              opacity 0.3s ease;
+  opacity: 0.35;
+}
+
+/* Active state */
+.scroll-indicator__item--active .scroll-indicator__label {
+  color: var(--text-primary);
+  font-weight: 600;
+  opacity: 1;
+}
+
+.scroll-indicator__item--active .scroll-indicator__dash {
+  width: 28px;
+  background: var(--text-primary);
+  opacity: 1;
+}
+
+/* Hover state */
+.scroll-indicator__btn:hover .scroll-indicator__label {
+  opacity: 0.75;
+  color: var(--text-primary);
+}
+
+.scroll-indicator__btn:hover .scroll-indicator__dash {
+  opacity: 0.65;
+  width: 22px;
+}
+
+/* Hide on small screens — not enough horizontal room */
+@media (max-width: 1280px) {
+  .scroll-indicator {
+    display: none;
   }
 }

@@ -192,7 +192,19 @@ function Home() {
                                     >
                                         <div className="card-visual">
                                             <div className="visual-inner">
-                                                <img src={project.image} alt={project.title} />
+                                                {project.coverVideo ? (
+                                                    <video
+                                                        src={project.coverVideo}
+                                                        autoPlay
+                                                        muted
+                                                        loop
+                                                        playsInline
+                                                        poster={project.image}
+                                                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
+                                                    />
+                                                ) : (
+                                                    <img src={project.image} alt={project.title} />
+                                                )}
                                             </div>
                                         </div>
                                         <div className="card-details" style={{

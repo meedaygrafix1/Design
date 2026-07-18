@@ -50,6 +50,48 @@ export const projects = [
             "Generates custom behavioral and technical interview questions tailored to each specific job description."
         ]
     },
+    {
+        title: "Shelfmate",
+        slug: "shelfmate",
+        type: "app",
+        category: "Mobile • Community Tech",
+        industry: "Community / BookTech",
+        year: "2026",
+        tool: "Figma",
+        desc: "Your neighborhood is a library. Shelfmate is a hyper-local, peer-to-peer book-sharing ecosystem that turns idle bookshelves into active community nodes, bridging digital discovery with real-world handoffs.",
+        image: "/shelfmate-preview.png",
+        coverVideo: "/shelfmate-cover.mp4",
+        theme: { bg: 'rgba(217, 119, 6, 0.1)', text: '#d97706' },
+        uiScreens: [
+            {
+                title: "Select Interest",
+                description: "A tailored experience starts immediately. The onboarding flow requires users to select their core reading interests to power the \"Vibe Match\" algorithm. Instead of dropping users into an overwhelming map of random books, Shelfmate curates the initial discovery feed. This ensures the neighborhood map surfaces highly relevant titles right from the first login, creating immediate value.",
+                video: "/shelfmate-demo-1.mp4"
+            },
+            {
+                title: "Hyper-Local Discovery (Neighbor Search & Chat)",
+                description: "Discovery is built around proximity. The map interface visualizes active \"Nodes\" (readers) within walking distance. Users can search for specific titles or browse what their neighbors are reading. Because peer-to-peer networks thrive on connection, the integrated chat removes the friction of coordination. Readers can safely connect, discuss conditions, and arrange meeting points before a formal request is ever sent.",
+                video: "/shelfmate-demo-2.mp4"
+            },
+            {
+                title: "Book Simulation & Shelf",
+                description: "The Shelf acts as the user's personal control center. To lower the barrier of entry for lenders, users can seamlessly add physical books to the network using the built-in ISBN scanner simulator. Every physical book is given a digital twin, complete with a \"Book Passport\" that tracks its journey. The dashboard cleanly separates borrowed books with active due dates from the user's shared inventory.",
+                video: "/shelfmate-demo-3.mp4"
+            },
+            {
+                title: "Closing the Trust Gap (Notifications & Book Requests)",
+                description: "The biggest hurdle in local sharing is the physical handoff. Shelfmate manages this through a structured notification inbox where lenders can review and approve incoming requests. To prevent disputes, the actual exchange requires a digital handshake. A secure QR code verification system ensures both parties are present, officially logging the transfer of custody and starting the reading clock.",
+                video: "/shelfmate-demo-4.mp4"
+            },
+            {
+                title: "Reputation as a Currency (Bio, Settings & Trust Score)",
+                description: "In a decentralized library, trust is the primary currency. The profile screen highlights the user's Community Trust Score alongside their active library stats. Returning books on time, sharing highly rated titles, and maintaining book conditions directly increase this score. This gamified reputation system rewards reliable actors and ensures the ecosystem remains safe and active.",
+                video: "/shelfmate-demo-5.mp4"
+            }
+        ],
+        problem: "Millions of physical books sit idle on shelves while passionate readers in the same neighborhood struggle to find affordable access to those exact titles. The barrier is not a lack of resources but a lack of visibility and trust.",
+        solution: "Shelfmate is a hyper-local, peer-to-peer book-sharing ecosystem. It decentralizes library access by transforming individual bookshelves into active community nodes. The platform bridges the gap between digital discovery and physical handoffs, using gamified trust metrics and secure QR verification."
+    },
     /* COMMENTED OUT - ArtistPaddy
     {
         title: "ArtistPaddy",

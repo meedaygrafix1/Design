@@ -1,8 +1,10 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
 import { projects, getProjectBySlug } from '../data/projects';
 import { Helmet } from 'react-helmet-async';
+import ScrollIndicator from '../components/ScrollIndicator';
+import LazyVideo from '../components/LazyVideo';
 
 function ProjectDetail() {
     const { slug } = useParams();
@@ -11,6 +13,30 @@ function ProjectDetail() {
     useEffect(() => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [slug]);
+
+    // Build sections list dynamically based on what this project has
+    const sections = useMemo(() => {
+        if (!project) return [];
+        const list = [
+            { id: 'section-overview', label: 'Project overview' },
+        ];
+        if (project.challenge)         list.push({ id: 'section-challenge',         label: 'The Challenge' });
+        if (project.goals)             list.push({ id: 'section-goals',             label: 'Goals' });
+        if (project.researchInsights)  list.push({ id: 'section-research',          label: 'Research & Insights' });
+        if (project.title === 'Fundora') list.push({ id: 'section-ui-fundora',       label: 'UI Solution' });
+        if (project.solutions)         list.push({ id: 'section-solutions',         label: 'Solutions' });
+        if (!project.challenge && project.problem) list.push({ id: 'section-problem', label: 'Problem' });
+        if (!project.solutions && project.solution) list.push({ id: 'section-solution', label: 'Solution' });
+        if (project.title === 'RealVEST') {
+            list.push({ id: 'section-design-process', label: 'Design Process' });
+            list.push({ id: 'section-ui-realvest',    label: 'UI Solution' });
+        }
+        if (project.uiScreens?.length)  list.push(...project.uiScreens.map((s, i) => ({ id: `section-ui-${i}`, label: s.title })));
+        if (project.challenges)         list.push({ id: 'section-challenges',        label: 'Challenge' });
+        if (project.impactLearnings)    list.push({ id: 'section-impact',            label: 'Impact & Learnings' });
+        if (!project.impactLearnings && project.impact) list.push({ id: 'section-impact-legacy', label: 'The Impact' });
+        return list;
+    }, [project]);
 
     if (!project) {
         return (
@@ -38,7 +64,8 @@ function ProjectDetail() {
                 <meta property="og:description" content={project.desc || `Case study for ${project.title}`} />
                 {project.image && <meta property="og:image" content={`https://www.meedaydesign.xyz${project.image.startsWith('/') ? project.image : '/' + project.image}`} />}
             </Helmet>
-            <div className="project-detail-page">
+            <div className="project-detail-page project-detail-layout">
+                <ScrollIndicator sections={sections} />
                 <div className="detail-container">
                 <header className="detail-hero">
                     <Link
@@ -49,7 +76,19 @@ function ProjectDetail() {
                         ← Back to Home
                     </Link>
                     <h1>{project.title}</h1>
-                    <img src={project.image} alt={project.title} className="detail-main-img" />
+                    {project.coverVideo ? (
+                        <video
+                            src={project.coverVideo}
+                            autoPlay
+                            muted
+                            loop
+                            playsInline
+                            className="detail-main-img"
+                            style={{ width: '100%', display: 'block' }}
+                        />
+                    ) : (
+                        <img src={project.image} alt={project.title} className="detail-main-img" />
+                    )}
 
                     <div className="detail-context-grid">
                         <div className="context-item">
@@ -68,14 +107,14 @@ function ProjectDetail() {
                 </header>
 
                 <div className="detail-content">
-                    <section className="detail-content-section">
+                    <section id="section-overview" className="detail-content-section">
                         <h3>Project overview</h3>
                         <p>{project.desc}</p>
                     </section>
 
                     {/* Fundora-specific Challenge section */}
                     {project.challenge && (
-                        <section className="detail-content-section">
+                        <section id="section-challenge" className="detail-content-section">
                             <h3>The Challenge</h3>
                             <p>{project.challenge.description}</p>
                             <ul>
@@ -93,7 +132,7 @@ function ProjectDetail() {
 
                     {/* Fundora-specific Goals section */}
                     {project.goals && (
-                        <section className="detail-content-section">
+                        <section id="section-goals" className="detail-content-section">
                             <h3>Goals</h3>
                             <ul>
                                 {project.goals.map((goal, i) => (
@@ -105,7 +144,7 @@ function ProjectDetail() {
 
                     {/* Fundora-specific Research & Insights section */}
                     {project.researchInsights && (
-                        <section className="detail-content-section">
+                        <section id="section-research" className="detail-content-section">
                             <h3>Research & Insights</h3>
                             <p>{project.researchInsights.description}</p>
                             <h4 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '1rem' }}>Findings:</h4>
@@ -125,7 +164,7 @@ function ProjectDetail() {
 
                     {/* Fundora-specific UI solution section */}
                     {project.title === "Fundora" && (
-                        <section className="detail-content-section">
+                        <section id="section-ui-fundora" className="detail-content-section">
                             <h3>UI solution</h3>
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem' }}>
                                 <img src="/fundora-ui-1.png" alt="Fundora UI - My Groups and Home" style={{ width: '100%' }} />
@@ -138,7 +177,7 @@ function ProjectDetail() {
 
                     {/* Fundora-specific Solutions section */}
                     {project.solutions && (
-                        <section className="detail-content-section">
+                        <section id="section-solutions" className="detail-content-section">
                             <h3>Solutions</h3>
                             {project.solutions.map((sol, i) => (
                                 <div key={i} style={{ marginBottom: '1.5rem' }}>
@@ -153,7 +192,7 @@ function ProjectDetail() {
 
                     {/* Legacy Problem section (for projects without challenge field) */}
                     {!project.challenge && project.problem && (
-                        <section className="detail-content-section">
+                        <section id="section-problem" className="detail-content-section">
                             <h3>Problem</h3>
                             <p>{project.problem}</p>
                         </section>
@@ -161,7 +200,7 @@ function ProjectDetail() {
 
                     {/* Legacy Solution section (for projects without solutions field) */}
                     {!project.solutions && project.solution && (
-                        <section className="detail-content-section">
+                        <section id="section-solution" className="detail-content-section">
                             <h3>Solution</h3>
                             <p>{project.solution}</p>
                         </section>
@@ -170,12 +209,12 @@ function ProjectDetail() {
                     {/* RealVEST-specific sections */}
                     {project.title === "RealVEST" && (
                         <>
-                            <section className="detail-content-section">
+                            <section id="section-design-process" className="detail-content-section">
                                 <h3>My design process</h3>
                                 <img src="/design-process.png" alt="Design Process" style={{ width: '100%', maxWidth: '800px', margin: '2rem auto', display: 'block', borderRadius: '12px' }} />
                             </section>
 
-                            <section className="detail-content-section">
+                            <section id="section-ui-realvest" className="detail-content-section">
                                 <h3>UI solution</h3>
                                 <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem' }}>
                                     <img src="/realvest-ui-1.png" alt="RealVEST UI - Home and Details" style={{ width: '100%' }} />
@@ -188,17 +227,26 @@ function ProjectDetail() {
 
                     {/* Trackly-specific UI Screens sections */}
                     {project.uiScreens && project.uiScreens.map((screen, i) => (
-                        <section key={i} className="detail-content-section">
+                        <section key={i} id={`section-ui-${i}`} className="detail-content-section">
                             <h3>{screen.title}</h3>
                             <p>{screen.description}</p>
-                            {screen.image && (
+                            {screen.video ? (
+                                <LazyVideo
+                                    src={screen.video}
+                                    autoPlay
+                                    muted
+                                    loop
+                                    playsInline
+                                    style={{ width: '100%', marginTop: '2rem', borderRadius: '12px', display: 'block' }}
+                                />
+                            ) : screen.image ? (
                                 <img src={screen.image} alt={screen.title} style={{ width: '100%', marginTop: '2rem' }} />
-                            )}
+                            ) : null}
                         </section>
                     ))}
 
                     {project.challenges && (
-                        <section className="detail-content-section">
+                        <section id="section-challenges" className="detail-content-section">
                             <h3>Challenge</h3>
                             <ul>
                                 {project.challenges.map((challenge, i) => (
@@ -210,7 +258,7 @@ function ProjectDetail() {
 
                     {/* Fundora-specific Impact & Learnings section */}
                     {project.impactLearnings && (
-                        <section className="detail-content-section">
+                        <section id="section-impact" className="detail-content-section">
                             <h3>Impact & Learnings</h3>
                             <p>{project.impactLearnings.impact}</p>
                             <h4 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '0.5rem' }}>Personal Growth:</h4>
@@ -220,7 +268,7 @@ function ProjectDetail() {
 
                     {/* Legacy Impact section (for projects without impactLearnings field) */}
                     {!project.impactLearnings && project.impact && (
-                        <section className="detail-content-section">
+                        <section id="section-impact-legacy" className="detail-content-section">
                             <h3>The Impact</h3>
                             <ul>
                                 {project.impact.map((point, i) => (
