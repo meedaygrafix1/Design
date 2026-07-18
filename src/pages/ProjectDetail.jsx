@@ -4,7 +4,6 @@ import { ArrowUpRight } from 'lucide-react';
 import { projects, getProjectBySlug } from '../data/projects';
 import { Helmet } from 'react-helmet-async';
 import ScrollIndicator from '../components/ScrollIndicator';
-import LazyVideo from '../components/LazyVideo';
 
 function ProjectDetail() {
     const { slug } = useParams();
@@ -231,7 +230,7 @@ function ProjectDetail() {
                             <h3>{screen.title}</h3>
                             <p>{screen.description}</p>
                             {screen.video ? (
-                                <LazyVideo
+                                <video
                                     src={screen.video}
                                     autoPlay
                                     muted

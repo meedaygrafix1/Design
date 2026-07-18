@@ -13,6 +13,81 @@
   --transition: all 0.3s ease;
 }
 
+/* ── Dark Mode ── */
+body.dark {
+  --bg-color: #111111;
+  --text-primary: #f0f0f0;
+  --text-secondary: #9ca3af;
+  --accent-color: #4f86f7;
+  --border-color: #2a2a2a;
+  --card-bg: #1c1c1c;
+}
+
+/* Smooth theme transitions */
+body {
+  transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+body.dark .pill-btn.gray {
+  background: #2a2a2a;
+  color: #f0f0f0;
+  border-color: #3a3a3a;
+}
+
+body.dark .pill-btn.black {
+  background: #f0f0f0;
+  color: #111111;
+}
+
+body.dark .clean-card {
+  background: var(--card-bg);
+  border-color: var(--border-color);
+}
+
+/* Experience table override */
+body.dark .experience-table {
+  background: var(--card-bg) !important;
+}
+
+/* CTA dark mode */
+body.dark .cta-modern {
+  background: #1c1c1c;
+  border-color: #2a2a2a;
+}
+
+/* Scroll indicator dark mode */
+body.dark .si-tab,
+body.dark .si-panel {
+  background: #1c1c1c;
+  border-color: #2a2a2a;
+}
+
+/* Cards dark mode overrides */
+body.dark .project-card,
+body.dark .article-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+body.dark .project-card .card-visual {
+  background: #222222;
+}
+
+/* Tab toggle dark mode */
+body.dark .tab-btn.active {
+  color: var(--bg-color) !important; /* text-primary becomes light, so text inside needs to be dark */
+}
+
+body.dark .read-more-btn {
+  background: rgba(30, 30, 30, 0.9);
+  color: #f0f0f0;
+}
+
+
+
+
+
 /* Hero Geometric Background */
 .hero-container {
   position: relative;

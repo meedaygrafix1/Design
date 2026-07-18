@@ -233,7 +233,7 @@ function Home() {
                 <section id="experience" className="section-padding" style={{ background: 'var(--card-bg)' }}>
                     <div className="container">
                         <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Professional Journey</h2>
-                        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden' }}>
+                        <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden' }} className="experience-table">
                             {experiences.map((exp, idx) => (
                                 <div key={idx} style={{
                                     padding: '2rem',

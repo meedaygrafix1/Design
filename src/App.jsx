@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, Link, useNavigate, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import './index.css';
 
 // Page imports
@@ -13,10 +13,27 @@ import ArticleDetail from './pages/ArticleDetail';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(() => {
+    const saved = localStorage.getItem('theme');
+    if (saved) return saved === 'dark';
+    return window.matchMedia('(prefers-color-scheme: dark)').matches;
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
+  // Apply / remove dark class on body
+  useEffect(() => {
+    if (isDark) {
+      document.body.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.body.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  }, [isDark]);
+
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const toggleTheme = () => setIsDark(prev => !prev);
 
   const handleNavClick = (e, target) => {
     e.preventDefault();
@@ -112,6 +129,30 @@ function App() {
                 textDecoration: 'none',
                 display: 'inline-block'
               }}>Contact</a>
+
+              {/* Dark mode toggle */}
+              <button
+                onClick={toggleTheme}
+                aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
+                style={{
+                  background: 'rgba(255,255,255,0.12)',
+                  border: '1px solid rgba(255,255,255,0.15)',
+                  borderRadius: '50px',
+                  width: '34px',
+                  height: '34px',
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  cursor: 'pointer',
+                  color: '#ffffff',
+                  transition: 'background 0.2s ease',
+                  flexShrink: 0,
+                }}
+                onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.22)'}
+                onMouseLeave={e => e.currentTarget.style.background = 'rgba(255,255,255,0.12)'}
+              >
+                {isDark ? <Sun size={15} /> : <Moon size={15} />}
+              </button>
 
               <button className="mobile-toggle" onClick={toggleMenu} style={{ background: 'transparent', border: 'none', color: '#ffffff', cursor: 'pointer' }}>
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
