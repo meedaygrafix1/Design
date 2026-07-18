@@ -508,7 +508,15 @@ function Home() {
                     .design-exp-card {
                         min-width: 350px;
                         height: 240px;
+                        background: #ffffff;
+                        padding: 1.5rem 0;
+                        box-sizing: border-box;
                         transition: transform 0.3s ease;
+                    }
+                    .design-exp-img {
+                        object-fit: contain !important;
+                        width: 100%;
+                        height: 100%;
                     }
                     .design-exp-card:hover {
                         transform: translateY(-10px);
@@ -521,13 +529,10 @@ function Home() {
                         .design-exp-card {
                             min-width: 280px;
                             height: 220px;
+                            padding: 1rem 0;
                         }
                         .design-exp-card:hover {
                             transform: none;
-                        }
-                        .design-exp-img {
-                            object-fit: contain !important;
-                            background: var(--card-bg);
                         }
                         .marquee-outer {
                             mask-image: linear-gradient(to right, transparent, black 3%, black 97%, transparent) !important;
