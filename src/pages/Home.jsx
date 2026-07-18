@@ -399,7 +399,7 @@ function Home() {
                     <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Design Explorations</h2>
                     
                     <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', overflow: 'hidden', borderRadius: '16px' }}>
-                        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: 'var(--card-bg)' }}>
+                        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#ffffff' }}>
                             <AnimatePresence mode="wait">
                                 <motion.img
                                     key={activeExpIndex}
