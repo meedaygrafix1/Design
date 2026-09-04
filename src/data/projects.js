@@ -241,6 +241,7 @@ export const projects = [
             "Reduced administrative effort for group leaders by providing automated remittance tools."
         ]
     },
+    /* COMMENTED OUT - Synapse
     {
         title: "Synapse",
         slug: "synapse",
@@ -266,6 +267,8 @@ export const projects = [
             "Created a highly performant interface with zero-latency AI interactions."
         ]
     },
+    */
+    /* COMMENTED OUT - KSP Performance
     {
         title: "KSP Performance",
         slug: "ksp-performance",
@@ -291,6 +294,8 @@ export const projects = [
             "Recognized as a leading digital strength resource for regional performance centers."
         ]
     },
+    */
+    /* COMMENTED OUT - LuminaLens
     {
         title: "LuminaLens",
         slug: "luminalens",
@@ -314,6 +319,57 @@ export const projects = [
             "Curated over 20+ global storytelling galleries.",
             "Increased user engagement through seamless, zero-distraction browsing.",
             "Established a distinct digital presence for luxury photography clients."
+        ]
+    },
+    */
+    {
+        title: "GH Digitals",
+        slug: "gh-digitals",
+        type: "website",
+        category: "Web • Digital Marketing",
+        industry: "Digital Marketing",
+        year: "2025",
+        tool: "Figma",
+        desc: "A digital marketing agency website empowering brands and people through strategic social media management, training, and measurable growth.",
+        image: "/ghdigitals-preview.png",
+        link: "https://ghdigitals.com/",
+        theme: { bg: 'rgba(30, 81, 40, 0.1)', text: '#1e5128' },
+        problem: "Many small businesses and personal brands struggle to establish a strong online presence due to a lack of strategic digital marketing knowledge and accessible professional services.",
+        solution: "A comprehensive agency platform that combines digital marketing services with an academy for training, offering consultations, brand management, and social media strategy under one roof.",
+        challenges: [
+            "Dual Audience: Designing for both potential clients seeking agency services and students enrolling in the academy.",
+            "Trust Building: Creating a professional yet approachable interface that conveys expertise and credibility.",
+            "Content Structure: Organizing diverse service offerings (agency, academy, consultation) into a clear, navigable hierarchy."
+        ],
+        impact: [
+            "Successfully launched the agency's digital presence, driving consultation bookings.",
+            "Streamlined the enrollment process for academy cohorts.",
+            "Increased brand visibility and client inquiries through a compelling, conversion-focused design."
+        ]
+    },
+    {
+        title: "Noteflow",
+        slug: "noteflow",
+        type: "website",
+        category: "Web • Productivity / Workspace",
+        industry: "Productivity / SaaS",
+        year: "2026",
+        tool: "Figma",
+        desc: "Your ideas, finally alive. A deeply interactive living workspace for notes, moodboards, and fluid creative thinking.",
+        image: "/noteflow-preview.png",
+        link: "https://showy-clock-bvd.julius.site/?utm_source=shared_artifact",
+        theme: { bg: 'rgba(255, 128, 94, 0.12)', text: '#e05638' },
+        problem: "Creative professionals and knowledge workers juggle disconnected tools for note-taking, moodboarding, and planning, resulting in fragmented ideas and lost momentum.",
+        solution: "Noteflow bridges the gap with a dynamic, living canvas that lets users capture notes, pin inspirations, connect concepts, and collaborate smoothly in real time.",
+        challenges: [
+            "Fluid Canvas UX: Designing interactive sticky notes, moodboards, and connecting paths without visual clutter.",
+            "Dynamic Animation: Building engaging micro-interactions and motion states that make ideas feel alive.",
+            "Scalable Workflow: Structuring multiple project views from quick captures to deep collaborative documents."
+        ],
+        impact: [
+            "Delivered a fluid, high-engagement landing page and interactive workspace concept.",
+            "Streamlined creative ideation and visual note-taking into one cohesive interface.",
+            "Created responsive design components tailored for desktop and mobile workflows."
         ]
     },
     {
@@ -364,31 +420,6 @@ export const projects = [
             "Trusted by over 50,000+ families for their care needs.",
             "Reduced the time to match with a caregiver by 30% through improved UX.",
             "Standardized care quality reporting for all in-home visits."
-        ]
-    },
-    {
-        title: "GH Digitals",
-        slug: "gh-digitals",
-        type: "website",
-        category: "Web • Digital Marketing",
-        industry: "Digital Marketing",
-        year: "2025",
-        tool: "Figma",
-        desc: "A digital marketing agency website empowering brands and people through strategic social media management, training, and measurable growth.",
-        image: "/ghdigitals-preview.png",
-        link: "https://ghdigitals.com/",
-        theme: { bg: 'rgba(30, 81, 40, 0.1)', text: '#1e5128' },
-        problem: "Many small businesses and personal brands struggle to establish a strong online presence due to a lack of strategic digital marketing knowledge and accessible professional services.",
-        solution: "A comprehensive agency platform that combines digital marketing services with an academy for training, offering consultations, brand management, and social media strategy under one roof.",
-        challenges: [
-            "Dual Audience: Designing for both potential clients seeking agency services and students enrolling in the academy.",
-            "Trust Building: Creating a professional yet approachable interface that conveys expertise and credibility.",
-            "Content Structure: Organizing diverse service offerings (agency, academy, consultation) into a clear, navigable hierarchy."
-        ],
-        impact: [
-            "Successfully launched the agency's digital presence, driving consultation bookings.",
-            "Streamlined the enrollment process for academy cohorts.",
-            "Increased brand visibility and client inquiries through a compelling, conversion-focused design."
         ]
     },
     {
