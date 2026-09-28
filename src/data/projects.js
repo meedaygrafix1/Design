@@ -348,6 +348,19 @@ export const projects = [
         ]
     },
     {
+        title: "Fundora Website",
+        slug: "fundora-website",
+        type: "website",
+        category: "Web • Fintech",
+        industry: "Fintech",
+        year: "2024",
+        tool: "Figma",
+        desc: "A contribution and savings app that brings transparency and trust to community savings groups.",
+        image: "/fundora-website-cover.png.png",
+        link: "https://fundora-web-five.vercel.app/",
+        theme: { bg: 'rgba(38, 80, 66, 0.1)', text: '#265042' },
+    },
+    {
         title: "Noteflow",
         slug: "noteflow",
         type: "website",
