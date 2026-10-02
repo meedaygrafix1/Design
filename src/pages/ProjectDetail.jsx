@@ -289,6 +289,15 @@ function ProjectDetail() {
                                     loading="lazy"
                                 />
                             </div>
+                            <a
+                                href={project.prototypeUrl}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="pill-btn gray"
+                                style={{ marginTop: '1rem', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
+                            >
+                                Open in Figma <ArrowUpRight size={18} />
+                            </a>
                         </section>
                     )}
 

@@ -661,8 +661,9 @@ video.detail-main-img {
   }
 
   .figma-prototype-frame {
-    height: 70vh;
-    min-height: 480px;
+    height: 100vh;
+    height: 100dvh;
+    min-height: 0;
   }
 }
 
