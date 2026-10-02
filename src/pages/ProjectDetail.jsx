@@ -33,7 +33,8 @@ function ProjectDetail() {
         if (project.uiScreens?.length)  list.push(...project.uiScreens.map((s, i) => ({ id: `section-ui-${i}`, label: s.title })));
         if (project.challenges)         list.push({ id: 'section-challenges',        label: 'Challenge' });
         if (project.impactLearnings)    list.push({ id: 'section-impact',            label: 'Impact & Learnings' });
-        if (!project.impactLearnings && project.impact) list.push({ id: 'section-impact-legacy', label: 'The Impact' });
+        if (!project.impactLearnings && project.impact) list.push({ id: 'section-impact-legacy', label: project.impactTitle || 'The Impact' });
+        if (project.prototypeUrl)       list.push({ id: 'section-prototype',         label: 'Live Prototype' });
         return list;
     }, [project]);
 
@@ -268,12 +269,26 @@ function ProjectDetail() {
                     {/* Legacy Impact section (for projects without impactLearnings field) */}
                     {!project.impactLearnings && project.impact && (
                         <section id="section-impact-legacy" className="detail-content-section">
-                            <h3>The Impact</h3>
+                            <h3>{project.impactTitle || 'The Impact'}</h3>
                             <ul>
                                 {project.impact.map((point, i) => (
                                     <li key={i}>{point}</li>
                                 ))}
                             </ul>
+                        </section>
+                    )}
+
+                    {project.prototypeUrl && (
+                        <section id="section-prototype" className="detail-content-section">
+                            <h3>Live Prototype</h3>
+                            <div className="figma-prototype-frame">
+                                <iframe
+                                    src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(project.prototypeUrl)}`}
+                                    title={`${project.title} interactive Figma prototype`}
+                                    allowFullScreen
+                                    loading="lazy"
+                                />
+                            </div>
                         </section>
                     )}
 
@@ -312,6 +327,7 @@ function ProjectDetail() {
                             </div>
                         </div>
                     </section>
+
                 </div>
             </div>
         </div>

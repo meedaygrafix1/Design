@@ -444,33 +444,34 @@ export const projects = [
         year: "2025",
         tool: "Figma",
         desc: "A mobile app that helps users track, monitor, and manage all their recurring subscriptions in one place.",
-        image: "/trackly-preview.png",
+        image: "/Cover%20(1).png",
+        prototypeUrl: "https://www.figma.com/proto/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=432-14&t=MQKKefnDexfU4ZEu-1&scaling=scale-down&content-scaling=fixed&page-id=189%3A7530&starting-point-node-id=432%3A14&show-proto-sidebar=1",
         theme: { bg: 'rgba(251, 191, 36, 0.1)', text: '#fbbf24' },
         uiScreens: [
             {
                 title: "Onboarding Screen",
                 description: "The onboarding flow introduces new users to what Trackly does and how it helps them. It's designed to educate, reassure, and motivate users to create an account or start tracking their first subscription. Since the app's core function (subscription tracking) is simple but valuable, onboarding focuses on clarity and benefit, not long explanations.",
-                image: "/trackly-onboarding.png"
+                image: "/Onboarding.png"
             },
             {
                 title: "Home and Add subscription screen",
                 description: "The dashboard was designed to give users instant clarity. By summarizing active subscriptions, total spending, and upcoming renewals at the top, users can assess their financial situation at a glance. The use of clean cards and icons creates visual familiarity, while the floating '+Add New Subscription' button encourages users to log new subscriptions effortlessly.",
-                image: "/trackly-home.png"
+                image: "/Add%20subscription%20and%20home.png"
             },
             {
                 title: "Analytics Screen",
                 description: "The Analytics screen helps users visualize and understand their subscription spending habits over time. It's not just about showing data, it's about giving clarity and control. Most users know they're spending money on subscriptions but can't see where it goes or how it adds up monthly. This screen answers that in one glance.",
-                image: "/trackly-analytics.png"
+                image: "/Analytics%20(2).png"
             },
             {
                 title: "Notification for renewal and detailed view for subscription",
                 description: "The notification screen ensures users never miss a renewal. Each alert is displayed as a card with clear hierarchy, service icon, due date, and quick actions. The visual tone was kept calm and non-intrusive, using friendly colors and soft alerts rather than alarming warnings. This helps users feel informed and in control, not pressured.",
-                image: "/trackly-notifications.png"
+                image: "/Notification%20for%20renewal%20and%20detailed%20view%20for%20subscription.png"
             },
             {
                 title: "Settings screen",
                 description: "The Settings screen was designed to give users autonomy and personalization options without complexity. Key controls like renewal reminders and theme preferences are presented with clear toggles for immediate action. The Backup & Restore feature provides reassurance about data safety, while the About section maintains transparency about the app's version and purpose.",
-                image: "/trackly-settings.png"
+                image: "/Settings%20screen.png"
             }
         ],
         problem: "Users often lose track of multiple recurring subscriptions, leading to unwanted charges and financial leaks.",
@@ -481,10 +482,11 @@ export const projects = [
             "Mobile-First UX: Designing a high-density information display that remains clear on small screens."
         ],
         impact: [
-            "Helped users save an average of $30/month by identifying unused subscriptions.",
-            "Achieved a 4.8-star rating for its intuitive reminder system.",
-            "Featured in 'Top Utility Apps' for its clean and efficient dashboard design."
-        ]
+            "Could help users spot unused subscriptions and reduce avoidable recurring expenses.",
+            "Designed to make upcoming renewals easier to anticipate with clear, timely reminders.",
+            "Aims to give users a clearer view of recurring spending so they can make informed subscription decisions."
+        ],
+        impactTitle: "Proposed Impact"
     }
 ];
 
