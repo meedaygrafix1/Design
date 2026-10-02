@@ -502,7 +502,6 @@ export const testimonials = [
         name: "Kehinde Olasupo",
         role: "Founder, KOF",
         text: "Meeday brand is a visionary designer shaping the essence of our foundation with unparalleled skill and creativity. His ability to capture the ethos of our mission and translate it into captivating visuals is truly remarkable.",
-        rating: "4.9/5",
         avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&q=80&w=100"
     },
     {
@@ -510,7 +509,6 @@ export const testimonials = [
         name: "Edgar Eriakha",
         role: "Creative Director, Ragde Space",
         text: "Meeday is a fantastic & Creative designer who pays attention to details. He is fast, reliable and serves as our right hand at Ragde Space.",
-        rating: "4.9/5",
         avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100"
     },
     {
