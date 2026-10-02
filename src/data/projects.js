@@ -512,6 +512,12 @@ export const testimonials = [
         text: "Meeday is a fantastic & Creative designer who pays attention to details. He is fast, reliable and serves as our right hand at Ragde Space.",
         rating: "4.9/5",
         avatar: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?auto=format&fit=crop&q=80&w=100"
+    },
+    {
+        id: 3,
+        name: "Ayodele Timothy",
+        role: "CEO, Fireswitch Technologies",
+        text: "Working with Meeday on Biki and several internal projects has been a great experience. He brings a thoughtful approach to product design, pays close attention to detail, and collaborates well throughout the process. I’d gladly work with him again."
     }
 ];
 

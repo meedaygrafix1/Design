@@ -385,7 +385,7 @@ function Home() {
                                         <div style={{ fontWeight: 600, fontSize: '0.95rem', color: 'var(--text-primary)' }}>{t.name}</div>
                                         <div className="text-muted" style={{ fontSize: '0.85rem', marginTop: '0.25rem' }}>{t.role}</div>
                                     </div>
-                                    <div style={{ fontSize: '0.9rem', color: 'var(--accent-color)', fontWeight: 600 }}>{t.rating}</div>
+                                    {t.rating && <div style={{ fontSize: '0.9rem', color: 'var(--accent-color)', fontWeight: 600 }}>{t.rating}</div>}
                                 </div>
                             </div>
                         ))}
