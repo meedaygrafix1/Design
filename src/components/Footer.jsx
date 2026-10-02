@@ -1,5 +1,5 @@
 import React from 'react';
-import { NewTwitterIcon, Linkedin01Icon, Mail01Icon, NewsIcon, MediumIcon } from 'hugeicons-react';
+import { NewTwitterIcon, Linkedin01Icon, Mail01Icon, NewsIcon, MediumIcon, InstagramIcon, TiktokIcon } from 'hugeicons-react';
 
 function Footer() {
     return (
@@ -14,6 +14,12 @@ function Footer() {
                     </a>
                     <a href="https://www.linkedin.com/in/meeday/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
                         <Linkedin01Icon size={20} />
+                    </a>
+                    <a href="https://www.instagram.com/designwithmeeday/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <InstagramIcon size={20} />
+                    </a>
+                    <a href="https://www.tiktok.com/@meedaydesign" target="_blank" rel="noopener noreferrer" aria-label="TikTok">
+                        <TiktokIcon size={20} />
                     </a>
                     <a href="mailto:olamidebalogun56@gmail.com" aria-label="Email">
                         <Mail01Icon size={20} />
