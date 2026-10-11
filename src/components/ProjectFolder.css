@@ -1,0 +1,199 @@
+.project-folder {
+  --folder-surface: #f5f4f2;
+  --folder-back: #e9e7e4;
+  --folder-edge: #e2e0dc;
+  --folder-paper: #fff;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--text-primary);
+  border-radius: 20px;
+  isolation: isolate;
+}
+
+body.dark .project-folder {
+  --folder-surface: #242423;
+  --folder-back: #30302e;
+  --folder-edge: #3b3b38;
+  --folder-paper: #353533;
+}
+
+.project-folder:hover {
+  color: var(--text-primary);
+}
+
+.project-folder:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 8px;
+}
+
+.folder-stage {
+  position: relative;
+  aspect-ratio: 1.65;
+  flex-shrink: 0;
+}
+
+.folder-back {
+  position: absolute;
+  inset: 36px 0 0;
+  background: var(--folder-back);
+  border: 1px solid var(--folder-edge);
+  border-radius: 18px 18px 0 0;
+}
+
+.folder-paper,
+.folder-preview {
+  position: absolute;
+  inset: 15px 6% 0;
+  padding: 7px;
+  border: 1px solid var(--folder-edge);
+  border-radius: 13px;
+  background: var(--folder-paper);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 6%);
+  transition: transform 420ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.folder-paper {
+  transform: translateY(-5px) rotate(3deg);
+}
+
+.folder-preview {
+  transform: rotate(-2deg);
+  overflow: hidden;
+}
+
+.folder-preview img,
+.folder-preview video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 7px;
+  object-fit: cover;
+  object-position: top;
+}
+
+.folder-cover {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  margin-top: -42px;
+  padding: 26px 28px 20px;
+  border: 1px solid var(--folder-edge);
+  border-radius: 0 18px 20px 20px;
+  background: var(--folder-surface);
+  box-shadow: 0 8px 16px -12px rgb(0 0 0 / 22%), inset 0 1px 0 rgb(255 255 255 / 12%);
+}
+
+.folder-cover::before {
+  content: '';
+  position: absolute;
+  top: -29px;
+  left: -1px;
+  width: 156px;
+  height: 29px;
+  border: 1px solid var(--folder-edge);
+  border-bottom: 0;
+  border-radius: 14px 22px 0 0;
+  background: var(--folder-surface);
+}
+
+.folder-tab {
+  position: absolute;
+  top: -20px;
+  left: 24px;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  color: var(--text-secondary);
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+}
+
+.folder-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  margin-bottom: 8px;
+  color: var(--text-secondary);
+  font-size: 0.72rem;
+  line-height: 1.5;
+}
+
+.folder-cover h3 {
+  margin-bottom: 10px;
+  font-family: var(--font-primary);
+  font-size: 1.5rem;
+  font-weight: 550;
+  letter-spacing: -0.04em;
+}
+
+.folder-description {
+  margin-bottom: 24px;
+  color: var(--text-secondary);
+  font-size: 0.875rem;
+  line-height: 1.65;
+}
+
+.folder-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: auto;
+  padding-top: 16px;
+  border-top: 1px solid var(--folder-edge);
+  font-size: 0.78rem;
+  font-weight: 500;
+}
+
+.folder-arrow {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--folder-edge);
+  border-radius: 50%;
+  background: var(--folder-paper);
+  transition: color 200ms ease, background-color 200ms ease, transform 250ms ease;
+}
+
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .project-folder:hover .folder-preview,
+  .project-folder:focus-visible .folder-preview {
+    transform: translateY(-12px) rotate(0deg);
+  }
+
+  .project-folder:hover .folder-paper,
+  .project-folder:focus-visible .folder-paper {
+    transform: translateY(-8px) rotate(4deg);
+  }
+
+  .project-folder:hover .folder-arrow,
+  .project-folder:focus-visible .folder-arrow {
+    color: var(--bg-color);
+    background: var(--text-primary);
+    transform: translate(2px, -2px);
+  }
+}
+
+@media (max-width: 640px) {
+  .folder-cover {
+    padding: 22px 20px 18px;
+    margin-top: -26px;
+  }
+
+  .folder-tab {
+    left: 20px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-folder,
+  .project-folder * {
+    transition: none;
+  }
+}

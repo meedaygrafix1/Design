@@ -123,26 +123,25 @@ export const projects = [
         title: "RealVEST",
         slug: "realvest",
         type: "app",
+        category: "Mobile • Real Estate",
+        industry: "Real Estate",
+        year: "2026",
+        tool: "Figma",
+        desc: "A mobile app that helps people invest in a share of a property, understand the costs, and keep track of their money.",
+        image: "/realvest/cover.png",
+        theme: { bg: 'rgba(104, 64, 216, 0.1)', text: '#6840d8' }
+    },
+    {
+        title: "RealVEST Admin",
+        slug: "realvest-admin",
+        type: "app",
         category: "Web • Real Estate",
         industry: "Real Estate",
-        year: "2023",
+        year: "2026",
         tool: "Figma",
-        desc: "A real estate investment app that simplifies property discovery, evaluation, and portfolio management for investors of all levels.",
-        image: "/realvest-preview.png",
-        theme: { bg: 'rgba(55, 48, 163, 0.1)', text: '#3730a3' },
-        problem: "Individual real estate investors, professionals, and property managers face challenges such as the complexity and inaccessibility of searching for properties, evaluating investment potential, and managing investments without specialized knowledge.",
-        solution: "I designed a real estate investment app that addresses these issues by offering an intuitive interface, comprehensive property data, and advanced analysis and management tools, making real estate investment more accessible, efficient, and profitable for all users.",
-        challenges: [
-            "Complex User Needs: Balancing requirements from beginners to professionals without overwhelming the UI.",
-            "Data Accessibility: Structuring fragmented property and market data into a cohesive, digestible dashboard.",
-            "Simplifying Jargon: Translating confusing investment terms into intuitive visuals.",
-            "Balancing Depth and Simplicity: Maintaining professional analytical power in a friendly interface."
-        ],
-        impact: [
-            "Bridged the knowledge gap with a guided, insight-driven interface helping users make confident decisions.",
-            "Streamlined discovery and evaluation by integrating comprehensive data into a single dashboard.",
-            "Made investment approachable by transforming complex financial data into interactive visuals."
-        ]
+        desc: "Designing the RealVEST operations workspace: investor verification, property publishing, payment reconciliation, withdrawal recovery and team permissions.",
+        image: "/realvest/admin-cover.png",
+        theme: { bg: 'rgba(40, 29, 57, 0.1)', text: '#281d39' }
     },
     /* COMMENTED OUT - Hospease
     {

@@ -1,25 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { TypeAnimation } from 'react-type-animation';
+import { motion as Motion, AnimatePresence } from 'framer-motion';
+import useReducedMotionPreference from '../hooks/useReducedMotionPreference';
+import Hero from '../components/Hero';
+import ProjectFolder from '../components/ProjectFolder';
+import DesignCarousel from '../components/DesignCarousel';
 import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight, Quote } from 'lucide-react';
 import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
 import { getPosts } from '../lib/hygraph';
-import { projects, testimonials, experiences, illustrations, designExplorations } from '../data/projects';
+import { projects, testimonials, experiences, illustrations } from '../data/projects';
 
 function Home() {
+    const reduceMotion = useReducedMotionPreference();
     const [projectFilter, setProjectFilter] = useState('app');
     const [recentPosts, setRecentPosts] = useState([]);
-    const [activeExpIndex, setActiveExpIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setActiveExpIndex((prev) => (prev + 1) % designExplorations.length);
-        }, 2000);
-        return () => clearInterval(interval);
-    }, []);
 
     useEffect(() => {
         const fetchRecentPosts = async () => {
@@ -33,14 +29,6 @@ function Home() {
         fetchRecentPosts();
     }, []);
 
-    // Get current date formatted
-    const currentDate = new Date().toLocaleDateString('en-US', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric'
-    });
-
     return (
         <>
             <Helmet>
@@ -52,98 +40,10 @@ function Home() {
                 <meta property="og:url" content="https://www.meedaydesign.xyz/" />
             </Helmet>
             <main>
-                {/* Hero / Entry Point */}
-                <section className="container hero-container" style={{
-                    minHeight: 'auto', display: 'flex', flexDirection: 'column',
-                    alignItems: 'center', justifyContent: 'center', textAlign: 'center', paddingBottom: '6rem'
-                }}>
-                    <div className="hero-bg">
-                        <div className="hero-lines"></div>
-                        <div className="hero-abstract-lines"></div>
-                    </div>
-
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
-                        style={{ position: 'relative', zIndex: 1, maxWidth: '800px', }}
-                        className='home-sc'
-                    >
-                        <p className="text-muted" style={{ fontSize: '0.9rem', marginBottom: '2rem' }}>{currentDate}</p>
-
-                        <motion.div
-                            className="profile-stack"
-                            whileHover="hover"
-                            initial="initial"
-                        >
-                            {/* Card 1 (Left) */}
-                            <motion.div
-                                className="profile-img-card"
-                                variants={{
-                                    initial: { rotate: 0, x: 0 },
-                                    hover: { rotate: -15, x: -60, y: 10 }
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                            >
-                                <img src="/profile-0.png" alt="Meeday" />
-                            </motion.div>
-
-                            {/* Card 2 (Center) */}
-                            <motion.div
-                                className="profile-img-card"
-                                variants={{
-                                    initial: { rotate: 0, y: 0, scale: 1 },
-                                    hover: { rotate: 0, y: -20, scale: 1.05 }
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                style={{ zIndex: 2 }}
-                            >
-                                <img src="/profile-1.jpg" alt="Meeday" />
-                            </motion.div>
-
-                            {/* Card 3 (Right) */}
-                            <motion.div
-                                className="profile-img-card"
-                                variants={{
-                                    initial: { rotate: 0, x: 0 },
-                                    hover: { rotate: 15, x: 60, y: 10 }
-                                }}
-                                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                                style={{ zIndex: 1 }}
-                            >
-                                <img src="/profile-2.jpg" alt="Meeday" />
-                            </motion.div>
-                        </motion.div>
-
-                        <h1 style={{ marginBottom: '1rem' }}>
-                            <TypeAnimation
-                                sequence={[
-                                    'Product Designer',
-                                    2000,
-                                    'AI Native UI/UX Designer',
-                                    2000,
-                                    'Design Engineer',
-                                    2000
-                                ]}
-                                wrapper="span"
-                                cursor={true}
-                                repeat={Infinity}
-                            />
-                        </h1>
-
-                        <p className="text-muted" style={{ maxWidth: '650px', margin: '0 auto 3rem', fontSize: '1.15rem', lineHeight: '1.7' }}>
-                            I leverage AI-assisted design tooling (including Figma AI and other generative AI tools) to accelerate end-to-end UI/UX design workflows, from discovery and wireframes through high-fidelity mockups and interactive prototypes.
-                        </p>
-
-                        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-                            <a href="mailto:olamidebalogun56@gmail.com" className="pill-btn black" style={{ textDecoration: 'none' }}>Get in touch</a>
-                            <a href="https://docs.google.com/document/d/1Gn4Z_rYKmXA2Mfq2sbyPCn6fkT3yTnotnTN2YUDayX4/edit?usp=sharing" target="_blank" rel="noopener noreferrer" className="pill-btn gray" style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}>Read CV <ArrowUpRight size={18} /></a>
-                        </div>
-                    </motion.div>
-                </section>
+                <Hero />
 
                 {/* Operational Logs (Projects) */}
-                <section id="work" className="container section-padding">
+                <section id="work" className="container section-padding" tabIndex={-1} aria-label="Selected projects">
                     <div style={{ marginBottom: '2rem', textAlign: 'center' }}>
                         <p className="text-muted" style={{ marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem' }}>Case Studies</p>
                         <h2 style={{ marginBottom: '1.5rem' }}>Selected Projects</h2>
@@ -176,62 +76,18 @@ function Home() {
                     <div className="projects-grid" style={{ position: 'relative' }}>
                         <AnimatePresence mode="popLayout">
                             {projects.filter(p => p.type === projectFilter).map((project, idx) => (
-                                <motion.div
+                                <Motion.div
                                     key={project.title}
-                                    layout
-                                    className="project-card"
-                                    initial={{ opacity: 0, y: 20 }}
+                                    layout={!reduceMotion}
+                                    className="project-folder-shell"
+                                    initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, scale: 0.9 }}
-                                    transition={{ duration: 0.4 }}
+                                    exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.9 }}
+                                    transition={{ duration: reduceMotion ? 0 : 0.4 }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <Link
-                                        to={project.link ? project.link : `/project/${project.slug}`}
-                                        target={project.link ? '_blank' : undefined}
-                                        rel={project.link ? 'noopener noreferrer' : undefined}
-                                        style={{ textDecoration: 'none', color: 'inherit', display: 'block' }}
-                                        onClick={(e) => {
-                                            if (project.link) {
-                                                e.preventDefault();
-                                                window.open(project.link, '_blank', 'noopener,noreferrer');
-                                            }
-                                        }}
-                                    >
-                                        <div className="card-visual">
-                                            <div className="visual-inner">
-                                                {project.coverVideo ? (
-                                                    <video
-                                                        src={project.coverVideo}
-                                                        autoPlay
-                                                        muted
-                                                        loop
-                                                        playsInline
-                                                        poster={project.image}
-                                                        style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }}
-                                                    />
-                                                ) : (
-                                                    <img src={project.image} alt={project.title} />
-                                                )}
-                                            </div>
-                                        </div>
-                                        <div className="card-details" style={{
-                                            '--card-accent-bg': project.theme.bg,
-                                            '--card-accent-text': project.theme.text
-                                        }}>
-                                            <div className="details-bg"></div>
-                                            <div className="details-content">
-                                                <h3>{project.title}</h3>
-                                                <p>{project.desc}</p>
-                                                <div style={{ marginTop: 'auto', paddingTop: '1rem', display: 'flex', justifyContent: 'flex-end' }}>
-                                                    <span style={{ fontSize: '0.9rem', fontWeight: 600, display: 'flex', alignItems: 'center', gap: '0.25rem', color: project.theme.text }}>
-                                                        {project.link ? 'View Live Site' : 'Explore Project'} <ArrowUpRight size={16} />
-                                                    </span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </Link>
-                                </motion.div>
+                                    <ProjectFolder project={project} index={idx} />
+                                </Motion.div>
                             ))}
                         </AnimatePresence>
                     </div>
@@ -288,7 +144,7 @@ function Home() {
                         marginBottom: '3rem'
                     }}>
                         {illustrations.slice(0, 4).map((item) => (
-                            <motion.div
+                            <Motion.div
                                 key={item.id}
                                 initial={{ opacity: 0, y: 20 }}
                                 whileInView={{ opacity: 1, y: 0 }}
@@ -307,7 +163,7 @@ function Home() {
                                     alt="Illustration"
                                     style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
                                 />
-                            </motion.div>
+                            </Motion.div>
                         ))}
                     </div>
 
@@ -322,13 +178,13 @@ function Home() {
 
                     <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(0, 255, 65, 0.02)', padding: '3rem', border: '1px solid var(--border-color)' }}>
                         <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500 }}>
-                            I'm <strong>Ayanfe Olamide Balogun</strong>, an AI Native Product Designer who turns operational chaos into systems people trust. I've cut billing errors by 60% and paper-based processes by 90% redesigning hospital workflows, and reduced content creation time by 95% designing an AI-powered productivity tool. My background spans HealthTech and fintech, with a growing focus on generative AI interfaces.
+                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Design Engineer. I help teams turn complex workflows into products people can use with confidence. Across healthcare, fintech, and AI, I connect product thinking, interface design, and implementation to make everyday tasks simpler.
                         </p>
                         <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
-                            I also mentor emerging designers (80+ trained) and partner with startups to build pitch decks that help them raise and sell.
+                            My work has helped <strong>cut hospital billing errors by 60%</strong>, <strong>reduce paper-based processes by 90%</strong>, and <strong>shorten content creation time by 95%</strong>. I design for outcomes that matter to both users and the business: fewer mistakes, faster workflows, and less time spent figuring out what to do next.
                         </p>
                         <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
-                            Currently I'm shaping design direction at{' '}
+                            I currently lead design at{' '}
                             <span style={{ position: 'relative', display: 'inline-block' }}
                                 onMouseEnter={(e) => {
                                     const tooltip = e.currentTarget.querySelector('.spidra-preview');
@@ -367,7 +223,11 @@ function Home() {
                                         <p style={{ margin: '4px 0 0', fontSize: '0.75rem', color: '#666', fontWeight: 400 }}>spidra.io</p>
                                     </div>
                                 </div>
-                            </span>, a web scraping tool, and building <a href="http://zofu.quest/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>ZOFU</a>, an AI resume optimization platform.
+                            </span>, a web scraping tool, and I'm building <a href="http://zofu.quest/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>ZOFU</a>, an AI platform that helps job seekers tailor their resumes. I've also trained 80+ emerging designers and helped startups tell a clearer story through pitch decks.
+                        </p>
+                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
+                            If you're building a new product or improving one that people already rely on, I can help you find the right problems to solve and turn them into thoughtful, usable experiences.{' '}
+                            <a href="mailto:olamidebalogun56@gmail.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>Let's talk.</a>
                         </p>
                     </div>
                 </section>
@@ -392,54 +252,7 @@ function Home() {
                 </section>
             </main>
 
-            {/* Design Explorations Section (Slideshow) */}
-            <section className="section-padding">
-                <div className="container">
-                    <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Design Explorations</h2>
-                    
-                    <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', overflow: 'hidden', borderRadius: '16px' }}>
-                        <div style={{ position: 'relative', width: '100%', aspectRatio: '16/10', background: '#ffffff' }}>
-                            <AnimatePresence mode="wait">
-                                <motion.img
-                                    key={activeExpIndex}
-                                    src={designExplorations[activeExpIndex].image}
-                                    alt={designExplorations[activeExpIndex].title}
-                                    initial={{ opacity: 0, scale: 0.98 }}
-                                    animate={{ opacity: 1, scale: 1 }}
-                                    exit={{ opacity: 0 }}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                    style={{
-                                        position: 'absolute',
-                                        inset: 0,
-                                        width: '100%',
-                                        height: '100%',
-                                        objectFit: 'contain',
-                                        background: '#ffffff',
-                                        padding: '1.5rem',
-                                        boxSizing: 'border-box'
-                                    }}
-                                />
-                            </AnimatePresence>
-                        </div>
-                        
-                        {/* Progress Indicators */}
-                        <div style={{ display: 'flex', justifyContent: 'center', gap: '0.5rem', marginTop: '1.5rem' }}>
-                            {designExplorations.map((_, idx) => (
-                                <div
-                                    key={idx}
-                                    style={{
-                                        width: idx === activeExpIndex ? '24px' : '8px',
-                                        height: '8px',
-                                        borderRadius: '4px',
-                                        background: idx === activeExpIndex ? 'var(--text-primary)' : 'var(--border-color)',
-                                        transition: 'all 0.3s ease'
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    </div>
-                </div>
-            </section>
+            <DesignCarousel />
 
             {/* CTA Section */}
             <section className="container section-padding" style={{ marginBottom: '4rem' }}>

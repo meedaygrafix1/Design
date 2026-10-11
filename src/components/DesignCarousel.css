@@ -1,0 +1,126 @@
+.explorations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 24px;
+  margin-bottom: 32px;
+}
+
+.explorations-header p {
+  margin-top: 10px;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+.explorations-controls {
+  display: flex;
+  flex-shrink: 0;
+  gap: 8px;
+}
+
+.explorations-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--border-color);
+  border-radius: 50%;
+  color: var(--text-primary);
+  background: var(--bg-color);
+}
+
+.explorations-controls button:hover {
+  color: var(--bg-color);
+  background: var(--text-primary);
+}
+
+.explorations-controls button:focus-visible,
+.explorations-viewport:focus-visible {
+  outline: 2px solid var(--text-primary);
+  outline-offset: 4px;
+}
+
+.explorations-viewport {
+  overflow-x: auto;
+  overscroll-behavior-x: contain;
+  scrollbar-width: none;
+  padding-block: 8px;
+}
+
+.explorations-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.explorations-track {
+  display: flex;
+  width: max-content;
+}
+
+.explorations-group {
+  display: flex;
+  flex: none;
+  gap: 24px;
+  padding-right: 24px;
+  list-style: none;
+}
+
+.exploration-card {
+  width: clamp(280px, 36vw, 480px);
+  flex: none;
+  min-width: 0;
+}
+
+.exploration-image {
+  aspect-ratio: 4 / 3;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.exploration-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: contain;
+}
+
+.exploration-card figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 4px 0;
+  font-size: 0.85rem;
+  font-weight: 500;
+}
+
+.exploration-number {
+  color: var(--text-secondary);
+  font-size: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 640px) {
+  .explorations-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .explorations-group {
+    gap: 16px;
+    padding-right: 16px;
+  }
+
+  .exploration-card {
+    width: 80vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .explorations-controls button {
+    transition: none;
+  }
+}

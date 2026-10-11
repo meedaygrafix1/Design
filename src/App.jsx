@@ -10,6 +10,7 @@ import ProjectDetail from './pages/ProjectDetail';
 import Illustrations from './pages/Illustrations';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
+import InteractiveCursor from './components/InteractiveCursor';
 
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -66,6 +67,7 @@ function App() {
 
   return (
     <div className="app-wrapper">
+      <InteractiveCursor />
       <nav className="container" style={{
         display: 'flex',
         alignItems: 'flex-start',

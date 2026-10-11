@@ -1,9 +1,11 @@
 import React, { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { ArrowUpRight } from 'lucide-react';
-import { projects, getProjectBySlug } from '../data/projects';
+import { getProjectBySlug } from '../data/projects';
 import { Helmet } from 'react-helmet-async';
 import ScrollIndicator from '../components/ScrollIndicator';
+import RealvestCaseStudy from './RealvestCaseStudy';
+import ProjectClosing from '../components/ProjectClosing';
 
 function ProjectDetail() {
     const { slug } = useParams();
@@ -26,10 +28,6 @@ function ProjectDetail() {
         if (project.solutions)         list.push({ id: 'section-solutions',         label: 'Solutions' });
         if (!project.challenge && project.problem) list.push({ id: 'section-problem', label: 'Problem' });
         if (!project.solutions && project.solution) list.push({ id: 'section-solution', label: 'Solution' });
-        if (project.title === 'RealVEST') {
-            list.push({ id: 'section-design-process', label: 'Design Process' });
-            list.push({ id: 'section-ui-realvest',    label: 'UI Solution' });
-        }
         if (project.uiScreens?.length)  list.push(...project.uiScreens.map((s, i) => ({ id: `section-ui-${i}`, label: s.title })));
         if (project.challenges)         list.push({ id: 'section-challenges',        label: 'Challenge' });
         if (project.impactLearnings)    list.push({ id: 'section-impact',            label: 'Impact & Learnings' });
@@ -37,6 +35,8 @@ function ProjectDetail() {
         if (project.prototypeUrl)       list.push({ id: 'section-prototype',         label: 'Live Prototype' });
         return list;
     }, [project]);
+
+    if (project?.slug === 'realvest' || project?.slug === 'realvest-admin') return <RealvestCaseStudy key={project.slug} project={project} />;
 
     if (!project) {
         return (
@@ -206,25 +206,6 @@ function ProjectDetail() {
                         </section>
                     )}
 
-                    {/* RealVEST-specific sections */}
-                    {project.title === "RealVEST" && (
-                        <>
-                            <section id="section-design-process" className="detail-content-section">
-                                <h3>My design process</h3>
-                                <img src="/design-process.png" alt="Design Process" style={{ width: '100%', maxWidth: '800px', margin: '2rem auto', display: 'block', borderRadius: '12px' }} />
-                            </section>
-
-                            <section id="section-ui-realvest" className="detail-content-section">
-                                <h3>UI solution</h3>
-                                <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem' }}>
-                                    <img src="/realvest-ui-1.png" alt="RealVEST UI - Home and Details" style={{ width: '100%' }} />
-                                    <img src="/realvest-ui-2.png" alt="RealVEST UI - Portfolio and Profile" style={{ width: '100%' }} />
-                                    <img src="/realvest-ui-3.png" alt="RealVEST UI - Transactions" style={{ width: '100%' }} />
-                                </div>
-                            </section>
-                        </>
-                    )}
-
                     {/* Trackly-specific UI Screens sections */}
                     {project.uiScreens && project.uiScreens.map((screen, i) => (
                         <section key={i} id={`section-ui-${i}`} className="detail-content-section">
@@ -301,44 +282,10 @@ function ProjectDetail() {
                         </section>
                     )}
 
-                    <section className="detail-content-section" style={{ borderTop: '1px solid var(--border-color)', paddingTop: '4rem' }}>
-                        <div className="cta-modern">
-                            <div className="cta-ring-left"></div>
-                            <div className="cta-ring-right"></div>
-
-                            <div className="cta-content">
-                                <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
-                                    Let's Build Something Meaningful
-                                </h2>
-                                <p className="text-muted" style={{
-                                    fontSize: '1.1rem',
-                                    marginBottom: '3rem',
-                                    maxWidth: '600px',
-                                    margin: '0 auto 3rem',
-                                    lineHeight: '1.6'
-                                }}>
-                                    I'm open to freelance design work, product collaborations, and long-term partnerships.
-                                </p>
-                                <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                                    <a href="mailto:olamidebalogun56@gmail.com" className="pill-btn black" style={{ textDecoration: 'none' }}>
-                                        Work With Me
-                                    </a>
-                                    <a
-                                        href="https://docs.google.com/document/d/1TpgW7XRnzpsyhmV208HeQzAr_bsdMeOBw04U9plIlJs/edit?usp=sharing"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="pill-btn gray"
-                                        style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-                                    >
-                                        Read CV <ArrowUpRight size={18} />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
 
                 </div>
             </div>
+            <ProjectClosing />
         </div>
         </>
     );
