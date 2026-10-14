@@ -1,11 +1,12 @@
 import React, { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowUpRight } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Helmet } from 'react-helmet-async';
 import ScrollIndicator from '../components/ScrollIndicator';
 import RealvestCaseStudy from './RealvestCaseStudy';
 import ProjectClosing from '../components/ProjectClosing';
+import './CaseStudy.css';
 
 function ProjectDetail() {
     const { slug } = useParams();
@@ -54,6 +55,13 @@ function ProjectDetail() {
         );
     }
 
+    const sectionHeading = (id, title) => (
+        <div className="case-study-section-heading">
+            <p className="case-study-eyebrow" aria-hidden="true">{String(sections.findIndex(section => section.id === id) + 1).padStart(2, '0')}</p>
+            <h2>{title}</h2>
+        </div>
+    );
+
     return (
         <>
             <Helmet>
@@ -64,18 +72,17 @@ function ProjectDetail() {
                 <meta property="og:description" content={project.desc || `Case study for ${project.title}`} />
                 {project.image && <meta property="og:image" content={`https://www.meedaydesign.xyz${project.image.startsWith('/') ? project.image : '/' + project.image}`} />}
             </Helmet>
-            <div className="project-detail-page project-detail-layout">
+            <div className="case-study-page project-detail-layout">
                 <ScrollIndicator sections={sections} />
-                <div className="detail-container">
-                <header className="detail-hero">
-                    <Link
-                        to="/"
-                        className="back-link"
-                        style={{ background: 'none', border: 'none', cursor: 'pointer', fontFamily: 'inherit', marginBottom: '2rem', display: 'inline-flex', textDecoration: 'none' }}
-                    >
-                        ← Back to Home
-                    </Link>
-                    <h1>{project.title}</h1>
+                <main className="container">
+                <header className="case-study-header">
+                    <Link to="/" className="case-study-back"><ArrowLeft size={16} aria-hidden="true" /> All projects</Link>
+                    <div className="case-study-title-row">
+                        <p className="case-study-eyebrow">{project.title} / Product design case study</p>
+                        <span className="case-study-tag">{project.category} · {project.year}</span>
+                    </div>
+                    <h1><em>{project.title}</em></h1>
+                    <p className="case-study-description">{project.desc}</p>
                     {project.coverVideo ? (
                         <video
                             src={project.coverVideo}
@@ -90,32 +97,32 @@ function ProjectDetail() {
                         <img src={project.image} alt={project.title} className="detail-main-img" />
                     )}
 
-                    <div className="detail-context-grid">
-                        <div className="context-item">
-                            <label>Industry</label>
-                            <span>{project.industry}</span>
+                    <dl className="case-study-metadata">
+                        <div>
+                            <dt>Industry</dt>
+                            <dd>{project.industry}</dd>
                         </div>
-                        <div className="context-item">
-                            <label>Year</label>
-                            <span>{project.year}</span>
+                        <div>
+                            <dt>Year</dt>
+                            <dd>{project.year}</dd>
                         </div>
-                        <div className="context-item">
-                            <label>Tool</label>
-                            <span>{project.tool}</span>
+                        <div>
+                            <dt>Tool</dt>
+                            <dd>{project.tool}</dd>
                         </div>
-                    </div>
+                    </dl>
                 </header>
 
                 <div className="detail-content">
                     <section id="section-overview" className="detail-content-section">
-                        <h3>Project overview</h3>
+                        {sectionHeading('section-overview', 'Project overview')}
                         <p>{project.desc}</p>
                     </section>
 
                     {/* Fundora-specific Challenge section */}
                     {project.challenge && (
                         <section id="section-challenge" className="detail-content-section">
-                            <h3>The Challenge</h3>
+                            {sectionHeading('section-challenge', 'The challenge')}
                             <p>{project.challenge.description}</p>
                             <ul>
                                 {project.challenge.points.map((point, i) => (
@@ -123,9 +130,10 @@ function ProjectDetail() {
                                 ))}
                             </ul>
                             {project.challenge.designQuestion && (
-                                <p style={{ marginTop: '1.5rem', fontStyle: 'italic', color: 'var(--text-primary)', fontWeight: 600 }}>
-                                    Design Question: {project.challenge.designQuestion}
-                                </p>
+                                <div className="case-study-question">
+                                    <span className="case-study-eyebrow">The design question</span>
+                                    <p>{project.challenge.designQuestion}</p>
+                                </div>
                             )}
                         </section>
                     )}
@@ -133,7 +141,7 @@ function ProjectDetail() {
                     {/* Fundora-specific Goals section */}
                     {project.goals && (
                         <section id="section-goals" className="detail-content-section">
-                            <h3>Goals</h3>
+                            {sectionHeading('section-goals', 'Goals')}
                             <ul>
                                 {project.goals.map((goal, i) => (
                                     <li key={i}>{goal}</li>
@@ -145,15 +153,15 @@ function ProjectDetail() {
                     {/* Fundora-specific Research & Insights section */}
                     {project.researchInsights && (
                         <section id="section-research" className="detail-content-section">
-                            <h3>Research & Insights</h3>
+                            {sectionHeading('section-research', 'Research & insights')}
                             <p>{project.researchInsights.description}</p>
-                            <h4 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '1rem' }}>Findings:</h4>
+                            <h3>Findings</h3>
                             <ul>
                                 {project.researchInsights.findings.map((finding, i) => (
                                     <li key={i}>{finding}</li>
                                 ))}
                             </ul>
-                            <h4 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '1rem' }}>Key Insights:</h4>
+                            <h3>Key insights</h3>
                             <ul>
                                 {project.researchInsights.keyInsights.map((insight, i) => (
                                     <li key={i}>{insight}</li>
@@ -165,7 +173,7 @@ function ProjectDetail() {
                     {/* Fundora-specific UI solution section */}
                     {project.title === "Fundora" && (
                         <section id="section-ui-fundora" className="detail-content-section">
-                            <h3>UI solution</h3>
+                            {sectionHeading('section-ui-fundora', 'UI solution')}
                             <div style={{ display: 'flex', flexDirection: 'column', gap: '2rem', marginTop: '2rem' }}>
                                 <img src="/fundora-ui-1.png" alt="Fundora UI - My Groups and Home" style={{ width: '100%' }} />
                                 <img src="/fundora-ui-2.png" alt="Fundora UI - Group Creation Flow" style={{ width: '100%' }} />
@@ -178,12 +186,12 @@ function ProjectDetail() {
                     {/* Fundora-specific Solutions section */}
                     {project.solutions && (
                         <section id="section-solutions" className="detail-content-section">
-                            <h3>Solutions</h3>
+                            {sectionHeading('section-solutions', 'Solutions')}
                             {project.solutions.map((sol, i) => (
-                                <div key={i} style={{ marginBottom: '1.5rem' }}>
-                                    <h4 style={{ fontSize: '1.1rem', marginBottom: '0.5rem', color: 'var(--text-primary)' }}>
+                                <div key={i} className="case-study-solution">
+                                    <h3>
                                         {i + 1}. {sol.title}
-                                    </h4>
+                                    </h3>
                                     <p>{sol.description}</p>
                                 </div>
                             ))}
@@ -193,7 +201,7 @@ function ProjectDetail() {
                     {/* Legacy Problem section (for projects without challenge field) */}
                     {!project.challenge && project.problem && (
                         <section id="section-problem" className="detail-content-section">
-                            <h3>Problem</h3>
+                            {sectionHeading('section-problem', 'Problem')}
                             <p>{project.problem}</p>
                         </section>
                     )}
@@ -201,7 +209,7 @@ function ProjectDetail() {
                     {/* Legacy Solution section (for projects without solutions field) */}
                     {!project.solutions && project.solution && (
                         <section id="section-solution" className="detail-content-section">
-                            <h3>Solution</h3>
+                            {sectionHeading('section-solution', 'Solution')}
                             <p>{project.solution}</p>
                         </section>
                     )}
@@ -209,7 +217,7 @@ function ProjectDetail() {
                     {/* Trackly-specific UI Screens sections */}
                     {project.uiScreens && project.uiScreens.map((screen, i) => (
                         <section key={i} id={`section-ui-${i}`} className="detail-content-section">
-                            <h3>{screen.title}</h3>
+                            {sectionHeading(`section-ui-${i}`, screen.title)}
                             <p>{screen.description}</p>
                             {screen.video ? (
                                 <video
@@ -228,7 +236,7 @@ function ProjectDetail() {
 
                     {project.challenges && (
                         <section id="section-challenges" className="detail-content-section">
-                            <h3>Challenge</h3>
+                            {sectionHeading('section-challenges', 'Challenge')}
                             <ul>
                                 {project.challenges.map((challenge, i) => (
                                     <li key={i}>{challenge}</li>
@@ -240,9 +248,9 @@ function ProjectDetail() {
                     {/* Fundora-specific Impact & Learnings section */}
                     {project.impactLearnings && (
                         <section id="section-impact" className="detail-content-section">
-                            <h3>Impact & Learnings</h3>
+                            {sectionHeading('section-impact', 'Impact & learnings')}
                             <p>{project.impactLearnings.impact}</p>
-                            <h4 style={{ fontSize: '1.1rem', marginTop: '2rem', marginBottom: '0.5rem' }}>Personal Growth:</h4>
+                            <h3>Personal growth</h3>
                             <p>{project.impactLearnings.personalGrowth}</p>
                         </section>
                     )}
@@ -250,7 +258,7 @@ function ProjectDetail() {
                     {/* Legacy Impact section (for projects without impactLearnings field) */}
                     {!project.impactLearnings && project.impact && (
                         <section id="section-impact-legacy" className="detail-content-section">
-                            <h3>{project.impactTitle || 'The Impact'}</h3>
+                            {sectionHeading('section-impact-legacy', project.impactTitle || 'The impact')}
                             <ul>
                                 {project.impact.map((point, i) => (
                                     <li key={i}>{point}</li>
@@ -261,7 +269,7 @@ function ProjectDetail() {
 
                     {project.prototypeUrl && (
                         <section id="section-prototype" className="detail-content-section">
-                            <h3>Live Prototype</h3>
+                            {sectionHeading('section-prototype', 'Live prototype')}
                             <div className="figma-prototype-frame">
                                 <iframe
                                     src={`https://www.figma.com/embed?embed_host=share&url=${encodeURIComponent(project.prototypeUrl)}`}
@@ -284,7 +292,7 @@ function ProjectDetail() {
 
 
                 </div>
-            </div>
+            </main>
             <ProjectClosing />
         </div>
         </>

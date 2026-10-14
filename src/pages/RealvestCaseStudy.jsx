@@ -7,6 +7,7 @@ import Footer from '../components/Footer';
 import ProjectClosing from '../components/ProjectClosing';
 import { realvestScreens, realvestSections, realvestAdminSections, realvestAdminScreenKeys } from '../data/realvest';
 import RealvestAdminStory from './RealvestAdminStory';
+import './CaseStudy.css';
 import './RealvestCaseStudy.css';
 
 function ScreenImage({ name, eager = false }) {
