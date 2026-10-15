@@ -144,7 +144,7 @@ export default function NutriSnapCaseStudy({ project }) {
             </section>
 
             <section id="ns-next" className="ns-section ns-next">
-                <div className="ns-section-heading"><p className="case-study-eyebrow">06 / What comes next</p><h2>The idea is simple.<br />The next step is to try it with people.</h2><p>Nutri-Snap is a Figma prototype. Photo analysis, calculations, and saving are simulated. The file includes a usability review, but that doesn’t tell me how people will actually use the app.</p></div>
+                <div className="ns-section-heading"><p className="case-study-eyebrow">06 / What comes next</p><h2>The idea is simple.<br />The next step is to try it with people.</h2></div>
                 <div className="ns-notes"><div><h3>What I’d check</h3><ul><li>Can someone add their first meal without help?</li><li>Do they understand that the nutrition is an estimate?</li><li>Can they correct it and find the saved meal again?</li><li>Do they know what to do when a scan or save fails?</li></ul></div></div>
                 <div className="ns-actions"><a className="ns-primary-link" href={prototypeUrl} target="_blank" rel="noopener noreferrer">Try the prototype <ArrowUpRight size={18} aria-hidden="true" /></a><a className="ns-text-link" href={figmaUrl} target="_blank" rel="noopener noreferrer">View the Figma file <ArrowUpRight size={17} aria-hidden="true" /></a></div>
             </section>
