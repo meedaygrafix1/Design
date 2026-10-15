@@ -1,6 +1,18 @@
 // Project data
 export const projects = [
     {
+        title: "Nutri-Snap",
+        slug: "nutri-snap",
+        type: "app",
+        category: "Mobile · Nutrition",
+        industry: "Health & Nutrition",
+        year: "Personal project",
+        tool: "Figma",
+        desc: "I wanted a simple app to track my calories. Nutri-Snap explores a way to do that with a photo, an estimate, and a chance to check it before saving.",
+        image: "/nutri-snap/cover.png",
+        theme: { bg: 'rgba(232, 81, 0, 0.1)', text: '#b83c00' }
+    },
+    {
         title: "Biki",
         slug: "biki",
         type: "app",
@@ -36,7 +48,7 @@ export const projects = [
         desc: "Don't just apply. Stand out and get hired. Zofu's AI instantly aligns your unique experience with exactly what hiring managers are looking for, beating the ATS in seconds.",
         image: "/zofu.png",
         link: "https://www.zofu.quest/",
-        theme: { bg: 'rgba(99, 102, 241, 0.1)', text: '#6366f1' },
+        theme: { bg: 'rgba(99, 102, 241, 0.1)', text: '#6366f1', headingText: '#5558dc' },
         problem: "Highly qualified job seekers are filtered out before a human ever reads their resume. Generic resumes get rejected by Applicant Tracking Systems (ATS) instantly, and manually tailoring each application to a job description is time-consuming and inconsistent.",
         solution: "Zofu uses AI to analyze a candidate's resume against any job description, injecting the right keywords naturally, quantifying impact statements, and generating a real-time ATS score so applicants stand out before the first human review.",
         challenges: [
@@ -61,7 +73,7 @@ export const projects = [
         desc: "Your neighborhood is a library. Shelfmate is a hyper-local, peer-to-peer book-sharing ecosystem that turns idle bookshelves into active community nodes, bridging digital discovery with real-world handoffs.",
         image: "/shelfmate-preview.png",
         coverVideo: "/shelfmate-cover.mp4",
-        theme: { bg: 'rgba(217, 119, 6, 0.1)', text: '#d97706' },
+        theme: { bg: 'rgba(217, 119, 6, 0.1)', text: '#d97706', headingText: '#b45309' },
         uiScreens: [
             {
                 title: "Select Interest",
@@ -370,7 +382,7 @@ export const projects = [
         desc: "Your ideas, finally alive. A deeply interactive living workspace for notes, moodboards, and fluid creative thinking.",
         image: "/noteflow-preview.png",
         link: "https://showy-clock-bvd.julius.site/?utm_source=shared_artifact",
-        theme: { bg: 'rgba(255, 128, 94, 0.12)', text: '#e05638' },
+        theme: { bg: 'rgba(255, 128, 94, 0.12)', text: '#e05638', headingText: '#c24125' },
         problem: "Creative professionals and knowledge workers juggle disconnected tools for note-taking, moodboarding, and planning, resulting in fragmented ideas and lost momentum.",
         solution: "Noteflow bridges the gap with a dynamic, living canvas that lets users capture notes, pin inspirations, connect concepts, and collaborate smoothly in real time.",
         challenges: [
@@ -395,7 +407,7 @@ export const projects = [
         desc: "The banking app built for campus life. Save smarter, spend better, and manage your finances automatically while focusing on your studies.",
         image: "/studentsave-preview.png",
         link: "https://student-save-eight.vercel.app/",
-        theme: { bg: 'rgba(249, 115, 22, 0.1)', text: '#f97316' },
+        theme: { bg: 'rgba(249, 115, 22, 0.1)', text: '#f97316', headingText: '#c2410c' },
         problem: "University students often struggle with financial management, leading to stress and debt due to a lack of tools tailored to their unique spending habits.",
         solution: "A specialized fintech app that automates savings for textbooks, rent, and leisure, while providing clear insights into student-specific spending.",
         challenges: [
@@ -420,7 +432,7 @@ export const projects = [
         desc: "Expert in-home care for your loved ones. We provide compassionate, professional, and nursing services designed to help maintain independence and dignity in the comfort of their own home.",
         image: "/homecare-preview.png",
         link: "https://health-website-one.vercel.app/",
-        theme: { bg: 'rgba(34, 197, 94, 0.1)', text: '#22c55e' },
+        theme: { bg: 'rgba(34, 197, 94, 0.1)', text: '#22c55e', headingText: '#15803d' },
         problem: "Families often struggle to find reliable, professional in-home care for elderly loved ones that balances medical expertise with genuine compassion.",
         solution: "A digital platform that connects families with vetted care professionals, streamlining the scheduling and management of in-home healthcare services.",
         challenges: [
@@ -445,7 +457,7 @@ export const projects = [
         desc: "A mobile app that helps users track, monitor, and manage all their recurring subscriptions in one place.",
         image: "/Cover%20(1).png",
         prototypeUrl: "https://www.figma.com/proto/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=432-14&t=MQKKefnDexfU4ZEu-1&scaling=scale-down&content-scaling=fixed&page-id=189%3A7530&starting-point-node-id=432%3A14&show-proto-sidebar=1",
-        theme: { bg: 'rgba(251, 191, 36, 0.1)', text: '#fbbf24' },
+        theme: { bg: 'rgba(251, 191, 36, 0.1)', text: '#fbbf24', headingText: '#a16207' },
         uiScreens: [
             {
                 title: "Onboarding Screen",

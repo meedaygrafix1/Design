@@ -15,14 +15,14 @@
 }
 
 .case-study-page {
-  --case-accent: #6840d8;
-  --case-panel: #f5f3f8;
+  --case-accent: var(--project-heading, #6840d8);
+  --case-panel: color-mix(in srgb, var(--project-color, #6840d8) 6%, var(--bg-color));
   padding-top: 2.5rem;
 }
 
 body.dark .case-study-page {
-  --case-accent: #bdabff;
-  --case-panel: #211c2a;
+  --case-accent: color-mix(in srgb, var(--project-color, #6840d8) 45%, white);
+  --case-panel: color-mix(in srgb, var(--project-color, #6840d8) 18%, var(--bg-color));
 }
 
 .case-study-page section { scroll-margin-top: 130px; }

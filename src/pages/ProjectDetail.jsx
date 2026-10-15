@@ -5,6 +5,7 @@ import { getProjectBySlug } from '../data/projects';
 import { Helmet } from 'react-helmet-async';
 import ScrollIndicator from '../components/ScrollIndicator';
 import RealvestCaseStudy from './RealvestCaseStudy';
+import NutriSnapCaseStudy from './NutriSnapCaseStudy';
 import ProjectClosing from '../components/ProjectClosing';
 import './CaseStudy.css';
 
@@ -37,6 +38,7 @@ function ProjectDetail() {
         return list;
     }, [project]);
 
+    if (project?.slug === 'nutri-snap') return <NutriSnapCaseStudy project={project} />;
     if (project?.slug === 'realvest' || project?.slug === 'realvest-admin') return <RealvestCaseStudy key={project.slug} project={project} />;
 
     if (!project) {
@@ -72,7 +74,10 @@ function ProjectDetail() {
                 <meta property="og:description" content={project.desc || `Case study for ${project.title}`} />
                 {project.image && <meta property="og:image" content={`https://www.meedaydesign.xyz${project.image.startsWith('/') ? project.image : '/' + project.image}`} />}
             </Helmet>
-            <div className="case-study-page project-detail-layout">
+            <div className="case-study-page project-detail-layout" style={{
+                '--project-color': project.theme?.text,
+                '--project-heading': project.theme?.headingText || project.theme?.text,
+            }}>
                 <ScrollIndicator sections={sections} />
                 <main className="container">
                 <header className="case-study-header">
