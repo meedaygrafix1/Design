@@ -49,6 +49,7 @@ body.dark .ns-page { --case-accent: #ffac79; --case-panel: #2c201a; }
 .ns-primary-link { padding: .85rem 1.35rem; border-radius: 50px; color: #fff; background: #7c2117; }
 .ns-primary-link:hover { color: #fff; background: #9a2c20; }
 .ns-next { border-bottom: 0; }
+.ns-next .ns-notes { grid-template-columns: 1fr; max-width: 740px; }
 .ns-page button:focus-visible, .ns-page a:focus-visible, .ns-dialog button:focus-visible { outline: 2px solid var(--case-accent, #c24a18); outline-offset: 5px; }
 .ns-dialog { margin: auto; padding: 0; width: min(620px, calc(100vw - 24px)); max-height: 92vh; max-height: 92dvh; color: var(--text-primary); background: var(--bg-color); border: 1px solid var(--border-color); border-radius: 18px; overflow: hidden; }
 .ns-dialog::backdrop { background: #1e100ddd; backdrop-filter: blur(6px); }

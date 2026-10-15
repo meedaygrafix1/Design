@@ -397,56 +397,6 @@ export const projects = [
         ]
     },
     {
-        title: "StudentSave",
-        slug: "studentsave",
-        type: "website",
-        category: "Web • Fintech",
-        industry: "Fintech/Education",
-        year: "2025",
-        tool: "Figma",
-        desc: "The banking app built for campus life. Save smarter, spend better, and manage your finances automatically while focusing on your studies.",
-        image: "/studentsave-preview.png",
-        link: "https://student-save-eight.vercel.app/",
-        theme: { bg: 'rgba(249, 115, 22, 0.1)', text: '#f97316', headingText: '#c2410c' },
-        problem: "University students often struggle with financial management, leading to stress and debt due to a lack of tools tailored to their unique spending habits.",
-        solution: "A specialized fintech app that automates savings for textbooks, rent, and leisure, while providing clear insights into student-specific spending.",
-        challenges: [
-            "Engagement: Creating a banking experience that students actually want to use.",
-            "Automation: Implementing smart-saving rules that adapt to fluctuating student incomes.",
-            "Clarity: Delivering complex financial data in a simple, non-intimidating way."
-        ],
-        impact: [
-            "Trusted by over 50,000+ students for campus banking.",
-            "Increased average monthly savings for users by 25%.",
-            "Streamlined textbook and rent payments for thousands of campus residents."
-        ]
-    },
-    {
-        title: "Homecare",
-        slug: "homecare",
-        type: "website",
-        category: "Web • Healthcare",
-        industry: "Healthcare",
-        year: "2025",
-        tool: "Figma",
-        desc: "Expert in-home care for your loved ones. We provide compassionate, professional, and nursing services designed to help maintain independence and dignity in the comfort of their own home.",
-        image: "/homecare-preview.png",
-        link: "https://health-website-one.vercel.app/",
-        theme: { bg: 'rgba(34, 197, 94, 0.1)', text: '#22c55e', headingText: '#15803d' },
-        problem: "Families often struggle to find reliable, professional in-home care for elderly loved ones that balances medical expertise with genuine compassion.",
-        solution: "A digital platform that connects families with vetted care professionals, streamlining the scheduling and management of in-home healthcare services.",
-        challenges: [
-            "Trust & Reliability: Designing an interface that conveys professionalism and warmth.",
-            "Service Variety: Accommodating everything from companion care to specialized nursing.",
-            "Simplified Booking: Making it easy for families under stress to quickly find and book care."
-        ],
-        impact: [
-            "Trusted by over 50,000+ families for their care needs.",
-            "Reduced the time to match with a caregiver by 30% through improved UX.",
-            "Standardized care quality reporting for all in-home visits."
-        ]
-    },
-    {
         title: "Trackly",
         slug: "trackly",
         type: "app",
