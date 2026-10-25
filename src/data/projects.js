@@ -334,6 +334,19 @@ export const projects = [
     },
     */
     {
+        title: "Invoicify",
+        slug: "invoicify",
+        type: "website",
+        category: "Web • Invoicing / SaaS",
+        industry: "Fintech / SaaS",
+        year: "2026",
+        tool: "Figma",
+        desc: "An invoicing website showcasing simpler client billing, automated payment reminders, and clear financial reports to help businesses stay on top of their money.",
+        image: "/invoicify.png",
+        link: "https://invoicify-3flfmwkkj-meedays-projects.vercel.app/",
+        theme: { bg: 'rgba(16, 185, 129, 0.1)', text: '#047857' },
+    },
+    {
         title: "GH Digitals",
         slug: "gh-digitals",
         type: "website",
