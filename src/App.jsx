@@ -18,8 +18,32 @@ function App() {
     if (saved) return saved === 'dark';
     return window.matchMedia('(prefers-color-scheme: dark)').matches;
   });
+  const [navHidden, setNavHidden] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Hide the nav while scrolling down; bring it back as soon as the visitor scrolls up
+  useEffect(() => {
+    let lastY = window.scrollY;
+    let ticking = false;
+    const update = () => {
+      const y = window.scrollY;
+      const delta = y - lastY;
+      if (y < 80) setNavHidden(false);          // always shown near the top
+      else if (delta > 6) setNavHidden(true);    // scrolling down
+      else if (delta < -6) setNavHidden(false);  // scrolling up
+      if (Math.abs(delta) > 6 || y < 80) lastY = y;
+      ticking = false;
+    };
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    return () => window.removeEventListener('scroll', onScroll);
+  }, []);
 
   // Apply / remove dark class on body
   useEffect(() => {
@@ -67,7 +91,7 @@ function App() {
   return (
     <div className="app-wrapper">
       <InteractiveCursor />
-      <nav className="container" style={{
+      <nav className={`container site-nav${navHidden && !isMenuOpen ? ' is-hidden' : ''}`} style={{
         display: 'flex',
         alignItems: 'flex-start',
         justifyContent: 'center',
