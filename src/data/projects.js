@@ -10,6 +10,20 @@ export const projects = [
         tool: "Figma",
         desc: "I wanted a simple app to track my calories. Nutri-Snap explores a way to do that with a photo, an estimate, and a chance to check it before saving.",
         image: "/nutri-snap/cover.png",
+        showcase: {
+            backdrop: "/backdrops/hills.webp",
+            // taps are [x%, y%] on the screen; `then` is the transition to the next step
+            flow: [
+                { screen: "/nutri-snap/welcome.webp", taps: [[50, 90]], then: "push" },
+                { screen: "/nutri-snap/intro.webp", taps: [[50, 44], [50, 90]], then: "push" },
+                { screen: "/nutri-snap/first-meal.webp", taps: [[50, 90]], then: "modal" },
+                { screen: "/nutri-snap/camera.webp", taps: [[50, 89]], then: "shutter" },
+                { screen: "/nutri-snap/review.webp", taps: [[70, 93]], then: "pop" },
+                { screen: "/nutri-snap/weekly.webp", taps: [[50, 54]], then: "push" },
+                { screen: "/nutri-snap/history.webp", taps: [[10, 9]], then: "pop" },
+                { screen: "/nutri-snap/weekly.webp", then: "fade" },
+            ],
+        },
         theme: { bg: 'rgba(232, 81, 0, 0.1)', text: '#b83c00' }
     },
     {
@@ -22,6 +36,7 @@ export const projects = [
         tool: "Figma",
         desc: "Celebrate more. Worry less. Biki lets you collect cash gifts, split-fund registry items, and gather guest memories, all from one elegant custom link.",
         image: "/biki.png",
+        showcase: { backdrop: "/backdrops/prairie.webp", device: "browser", aspect: "1585 / 952", screens: ["/biki.webp"] },
         link: "https://biki.africa/",
         theme: { bg: 'rgba(22, 101, 52, 0.1)', text: '#166534' },
         problem: "Celebrants in Nigeria and across Africa rely on scattered bank transfers, messy WhatsApp photo albums, and informal gift lists that create confusion, trust issues, and missed contributions for events like weddings and birthdays.",
@@ -47,6 +62,7 @@ export const projects = [
         tool: "Figma",
         desc: "Don't just apply. Stand out and get hired. Zofu's AI instantly aligns your unique experience with exactly what hiring managers are looking for, beating the ATS in seconds.",
         image: "/zofu.png",
+        showcase: { backdrop: "/backdrops/lilies.webp", device: "browser", aspect: "1586 / 906", screens: ["/zofu.webp"] },
         link: "https://www.zofu.quest/",
         theme: { bg: 'rgba(99, 102, 241, 0.1)', text: '#6366f1', headingText: '#5558dc' },
         problem: "Highly qualified job seekers are filtered out before a human ever reads their resume. Generic resumes get rejected by Applicant Tracking Systems (ATS) instantly, and manually tailoring each application to a job description is time-consuming and inconsistent.",
@@ -141,6 +157,24 @@ export const projects = [
         tool: "Figma",
         desc: "A mobile app that helps people invest in a share of a property, understand the costs, and keep track of their money.",
         image: "/realvest/cover.png",
+        showcase: {
+            backdrop: "/backdrops/prairie.webp",
+            flow: [
+                { screen: "/realvest/intro.webp", taps: [[50, 91]], then: "push" },
+                { screen: "/realvest/risk.webp", taps: [[50, 92]], then: "push" },
+                { screen: "/realvest/discover.webp", taps: [[75, 67]], then: "push" },
+                { screen: "/realvest/property.webp", taps: [[50, 92]], then: "push" },
+                { screen: "/realvest/review.webp", taps: [[8, 61], [50, 92]], then: "fade" },
+                {
+                    screen: "/realvest/confirmation.webp",
+                    taps: [[13, 74], "type", [50, 85]],
+                    type: { keys: [[10.9, 73.4, 4.2, 1.9], [28.5, 73.4, 4.2, 1.9], [46.1, 73.4, 4.2, 1.9], [63.7, 73.4, 4.2, 1.9]], bg: "#ffffff" },
+                    then: "push",
+                },
+                { screen: "/realvest/portfolio.webp", taps: [[50, 97.5]], then: "tab" },
+                { screen: "/realvest/wallet.webp", then: "fade" },
+            ],
+        },
         theme: { bg: 'rgba(104, 64, 216, 0.1)', text: '#6840d8' }
     },
     {
@@ -153,6 +187,17 @@ export const projects = [
         tool: "Figma",
         desc: "Designing the RealVEST operations workspace: investor verification, property publishing, payment reconciliation, withdrawal recovery and team permissions.",
         image: "/realvest/admin-cover.png",
+        showcase: {
+            backdrop: "/backdrops/lilies.webp",
+            device: "browser",
+            flow: [
+                { screen: "/realvest/admin.webp", taps: [[83.5, 52.4]], then: "tab" },
+                { screen: "/realvest/admin-reconciliation.webp", taps: [[6.7, 32.7]], then: "tab" },
+                { screen: "/realvest/admin-ledger.webp", taps: [[6.4, 25.3]], then: "tab" },
+                { screen: "/realvest/admin-publishing.webp", taps: [[78.1, 55.5]], then: "tab" },
+                { screen: "/realvest/admin-audit.webp", taps: [[6.5, 13.9]], then: "tab" },
+            ],
+        },
         theme: { bg: 'rgba(40, 29, 57, 0.1)', text: '#281d39' }
     },
     /* COMMENTED OUT - Hospease
@@ -192,6 +237,22 @@ export const projects = [
         tool: "Figma",
         desc: "A contribution and savings app that brings transparency and trust to community savings groups.",
         image: "/fundora-preview.png",
+        showcase: {
+            backdrop: "/backdrops/lilies.webp",
+            flow: [
+                { screen: "/fundora/welcome.webp", taps: [[50, 92]], then: "push" },
+                { screen: "/fundora/home.webp", taps: [[38.8, 93.8]], then: "tab" },
+                { screen: "/fundora/groups.webp", taps: [[77.5, 45.4]], then: "push" },
+                {
+                    screen: "/fundora/contribution.webp",
+                    taps: [[50, 43], "type", [50, 85.6]],
+                    type: { at: [10.9, 42.3, 18.4, 1.8], chars: 8, bg: "#f5f5fa", caret: true },
+                    then: "push",
+                },
+                { screen: "/fundora/contribution-review.webp", taps: [[50, 85.6]], then: "push" },
+                { screen: "/fundora/contribution-success.webp", then: "fade" },
+            ],
+        },
         theme: { bg: 'rgba(38, 80, 66, 0.1)', text: '#265042' },
         challenge: {
             description: "Managing contributions is often messy. Members face:",
@@ -343,6 +404,7 @@ export const projects = [
         tool: "Figma",
         desc: "An invoicing website showcasing simpler client billing, automated payment reminders, and clear financial reports to help businesses stay on top of their money.",
         image: "/invoicify.png",
+        showcase: { backdrop: "/backdrops/lilies.webp", device: "browser", aspect: "1920 / 1147", screens: ["/invoicify-site.webp"] },
         link: "https://invoicify-drab.vercel.app/",
         theme: { bg: 'rgba(16, 185, 129, 0.1)', text: '#047857' },
     },
@@ -356,8 +418,23 @@ export const projects = [
         tool: "Web Design",
         desc: "NutriScan makes nutrition information easier to understand, helping people make more informed choices about the food they eat.",
         image: "/nutriscan-cover.png",
+        showcase: { backdrop: "/backdrops/hills.webp", device: "browser", aspect: "1859 / 943", screens: ["/nutriscan-cover.webp"] },
         link: "https://nutriscan-snowy-two.vercel.app/",
         theme: { bg: 'rgba(34, 197, 94, 0.1)', text: '#15803d' },
+    },
+    {
+        title: "Auralink",
+        slug: "auralink",
+        type: "website",
+        category: "Web · Health Tech",
+        industry: "Health Tech",
+        year: "2026",
+        tool: "Web Design",
+        desc: "A landing page for Auralink, an intelligent hearing aid that adapts to your surroundings so you can be part of every moment.",
+        image: "/auralink-cover.png",
+        showcase: { backdrop: "/backdrops/prairie.webp", device: "browser", aspect: "1903 / 928", screens: ["/auralink-cover.webp"] },
+        link: "https://auralink-vert.vercel.app/",
+        theme: { bg: 'rgba(6, 182, 212, 0.1)', text: '#0e7490' },
     },
     {
         title: "GH Digitals",
@@ -369,6 +446,7 @@ export const projects = [
         tool: "Figma",
         desc: "A digital marketing agency website empowering brands and people through strategic social media management, training, and measurable growth.",
         image: "/ghdigitals-preview.png",
+        showcase: { backdrop: "/backdrops/lilies.webp", device: "browser", aspect: "1024 / 707", screens: ["/ghdigitals-preview.webp"] },
         link: "https://ghdigitals.com/",
         theme: { bg: 'rgba(30, 81, 40, 0.1)', text: '#1e5128' },
         problem: "Many small businesses and personal brands struggle to establish a strong online presence due to a lack of strategic digital marketing knowledge and accessible professional services.",
@@ -394,6 +472,7 @@ export const projects = [
         tool: "Figma",
         desc: "A contribution and savings app that brings transparency and trust to community savings groups.",
         image: "/fundora-website-cover.png.png",
+        showcase: { backdrop: "/backdrops/prairie.webp", device: "browser", aspect: "1920 / 1147", screens: ["/fundora-web-site.webp"] },
         link: "https://fundora-web-five.vercel.app/",
         theme: { bg: 'rgba(38, 80, 66, 0.1)', text: '#265042' },
     },
@@ -407,6 +486,7 @@ export const projects = [
         tool: "Figma",
         desc: "Your ideas, finally alive. A deeply interactive living workspace for notes, moodboards, and fluid creative thinking.",
         image: "/noteflow-preview.png",
+        showcase: { backdrop: "/backdrops/hills.webp", device: "browser", aspect: "1024 / 625", screens: ["/noteflow-preview.webp"] },
         link: "https://showy-clock-bvd.julius.site/?utm_source=shared_artifact",
         theme: { bg: 'rgba(255, 128, 94, 0.12)', text: '#e05638', headingText: '#c24125' },
         problem: "Creative professionals and knowledge workers juggle disconnected tools for note-taking, moodboarding, and planning, resulting in fragmented ideas and lost momentum.",
@@ -432,6 +512,19 @@ export const projects = [
         tool: "Figma",
         desc: "A mobile app that helps users track, monitor, and manage all their recurring subscriptions in one place.",
         image: "/Cover%20(1).png",
+        showcase: {
+            backdrop: "/backdrops/hills.webp",
+            island: false,
+            flow: [
+                { screen: "/trackly/all-subs.webp", taps: [[50, 93]], then: "push" },
+                { screen: "/trackly/renewals.webp", taps: [[50, 93]], then: "push" },
+                { screen: "/trackly/small-insights.webp", taps: [[50, 93]], then: "fade" },
+                { screen: "/trackly/add-sub.webp", taps: [[50, 31], [50, 88]], then: "push" },
+                { screen: "/trackly/netflix.webp", taps: [[38.5, 94]], then: "tab" },
+                { screen: "/trackly/analytics.webp", taps: [[84.5, 94]], then: "tab" },
+                { screen: "/trackly/export.webp", taps: [[58.7, 62]], then: "fade" },
+            ],
+        },
         prototypeUrl: "https://www.figma.com/proto/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=432-14&t=MQKKefnDexfU4ZEu-1&scaling=scale-down&content-scaling=fixed&page-id=189%3A7530&starting-point-node-id=432%3A14&show-proto-sidebar=1",
         theme: { bg: 'rgba(251, 191, 36, 0.1)', text: '#fbbf24', headingText: '#a16207' },
         uiScreens: [

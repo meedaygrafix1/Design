@@ -1,0 +1,181 @@
+.site-footer {
+  --mx: 0;
+  --my: 0;
+  position: relative;
+  isolation: isolate;
+  display: flex;
+  min-height: clamp(380px, 46vw, 620px);
+  overflow: hidden;
+  background: #4f6b37;
+  color: #fff;
+}
+
+/* ---------- The meadow ---------- */
+
+.site-footer-scene {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+}
+
+.site-footer-scene video {
+  position: absolute;
+  inset: -4%;
+  width: 108%;
+  height: 108%;
+  object-fit: cover;
+  object-position: 50% 60%;
+  transform: translate(calc(var(--mx) * -1%), calc(var(--my) * -1.2%)) scale(1.08);
+  transition: transform 1.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Scrolled into view: the field settles into place */
+.site-footer.is-in .site-footer-scene video {
+  transform: translate(calc(var(--mx) * -1%), calc(var(--my) * -1.2%)) scale(1);
+}
+
+/* The page dissolves into the sky at the top; the grass deepens for legible text below */
+.site-footer-scene::before,
+.site-footer-scene::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.site-footer-scene::before {
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    var(--bg-color) 0%,
+    color-mix(in srgb, var(--bg-color) 70%, transparent) 14%,
+    color-mix(in srgb, var(--bg-color) 0%, transparent) 42%
+  );
+}
+
+.site-footer-scene::after {
+  z-index: 1;
+  background: linear-gradient(180deg, rgb(10 18 8 / 0%) 45%, rgb(10 18 8 / 55%) 100%);
+}
+
+/* ---------- Content resting on the field ---------- */
+
+.site-footer-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 1.5rem;
+  width: 100%;
+  padding-bottom: 1.6rem;
+}
+
+.site-footer-row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem 2rem;
+}
+
+.site-footer-brand {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  text-shadow: 0 2px 16px rgb(0 0 0 / 35%);
+}
+
+.site-footer-logo {
+  font-family: var(--font-script);
+  font-size: clamp(2.6rem, 5vw, 3.6rem);
+  line-height: 1;
+}
+
+.site-footer-brand p {
+  color: rgb(255 255 255 / 88%);
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+.site-footer-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.site-footer-links a {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgb(255 255 255 / 22%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 10%);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  transition: background-color 200ms ease, transform 200ms ease;
+}
+
+.site-footer-links a:hover {
+  color: #fff;
+  background: rgb(255 255 255 / 24%);
+  transform: translateY(-2px);
+}
+
+.site-footer-links a:focus-visible,
+.site-footer-top-btn:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+.site-footer-bottom {
+  padding-top: 1.1rem;
+  border-top: 1px solid rgb(255 255 255 / 20%);
+  color: rgb(255 255 255 / 78%);
+  font-size: 0.85rem;
+}
+
+.site-footer-top-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0;
+  border: 0;
+  background: none;
+  color: rgb(255 255 255 / 85%);
+  font: inherit;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.site-footer-top-btn:hover {
+  color: #fff;
+}
+
+.site-footer-top-btn svg {
+  transition: transform 200ms ease;
+}
+
+.site-footer-top-btn:hover svg {
+  transform: translateY(-2px);
+}
+
+@media (max-width: 640px) {
+  .site-footer {
+    min-height: 460px;
+  }
+
+  .site-footer-brand {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-footer-scene video,
+  .site-footer.is-in .site-footer-scene video {
+    transform: none;
+    transition: none;
+  }
+}

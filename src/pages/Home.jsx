@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import ContactCTA from '../components/ContactCTA';
 import { Link } from 'react-router-dom';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
 import useReducedMotionPreference from '../hooks/useReducedMotionPreference';
 import Hero from '../components/Hero';
-import ProjectFolder from '../components/ProjectFolder';
+import ProjectCard from '../components/ProjectCard';
 import DesignCarousel from '../components/DesignCarousel';
 import { Helmet } from 'react-helmet-async';
 import { ArrowUpRight, Quote } from 'lucide-react';
@@ -75,18 +76,18 @@ function Home() {
 
                     <div className="projects-grid" style={{ position: 'relative' }}>
                         <AnimatePresence mode="popLayout">
-                            {projects.filter(p => p.type === projectFilter).map((project, idx) => (
+                            {projects.filter(p => p.type === projectFilter).map((project) => (
                                 <Motion.div
                                     key={project.title}
                                     layout={!reduceMotion}
-                                    className="project-folder-shell"
+                                    className="project-card-shell"
                                     initial={reduceMotion ? false : { opacity: 0, y: 20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={reduceMotion ? { opacity: 0 } : { opacity: 0, scale: 0.9 }}
                                     transition={{ duration: reduceMotion ? 0 : 0.4 }}
                                     style={{ cursor: 'pointer' }}
                                 >
-                                    <ProjectFolder project={project} index={idx} />
+                                    <ProjectCard project={project} />
                                 </Motion.div>
                             ))}
                         </AnimatePresence>
@@ -172,65 +173,6 @@ function Home() {
                     </Link>
                 </section>
 
-                {/* About Me Section */}
-                <section id="about" className="container section-padding" style={{ textAlign: 'center' }}>
-                    <h2 style={{ marginBottom: '2.5rem' }}>About Me</h2>
-
-                    <div style={{ maxWidth: '900px', margin: '0 auto', background: 'rgba(0, 255, 65, 0.02)', padding: '3rem', border: '1px solid var(--border-color)' }}>
-                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500 }}>
-                            I'm <strong>Ayanfe Olamide Balogun</strong>, a Product Designer and Design Engineer. I help teams turn complex workflows into products people can use with confidence. Across healthcare, fintech, and AI, I connect product thinking, interface design, and implementation to make everyday tasks simpler.
-                        </p>
-                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
-                            My work has helped <strong>cut hospital billing errors by 60%</strong>, <strong>reduce paper-based processes by 90%</strong>, and <strong>shorten content creation time by 95%</strong>. I design for outcomes that matter to both users and the business: fewer mistakes, faster workflows, and less time spent figuring out what to do next.
-                        </p>
-                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
-                            I currently lead design at{' '}
-                            <span style={{ position: 'relative', display: 'inline-block' }}
-                                onMouseEnter={(e) => {
-                                    const tooltip = e.currentTarget.querySelector('.spidra-preview');
-                                    if (tooltip) tooltip.style.opacity = '1';
-                                    if (tooltip) tooltip.style.pointerEvents = 'auto';
-                                    if (tooltip) tooltip.style.transform = 'translateX(-50%) translateY(0)';
-                                }}
-                                onMouseLeave={(e) => {
-                                    const tooltip = e.currentTarget.querySelector('.spidra-preview');
-                                    if (tooltip) tooltip.style.opacity = '0';
-                                    if (tooltip) tooltip.style.pointerEvents = 'none';
-                                    if (tooltip) tooltip.style.transform = 'translateX(-50%) translateY(8px)';
-                                }}
-                            >
-                                <a href="https://spidra.io" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>Spidra.io</a>
-                                <div className="spidra-preview" style={{
-                                    position: 'absolute',
-                                    bottom: 'calc(100% + 12px)',
-                                    left: '50%',
-                                    transform: 'translateX(-50%) translateY(8px)',
-                                    width: '320px',
-                                    background: '#fff',
-                                    borderRadius: '12px',
-                                    boxShadow: '0 12px 40px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05)',
-                                    overflow: 'hidden',
-                                    opacity: 0,
-                                    pointerEvents: 'none',
-                                    transition: 'opacity 0.25s ease, transform 0.25s ease',
-                                    zIndex: 100
-                                }}>
-                                    <img src="/spidra-og.png" alt="Spidra.io Preview"
-                                        style={{ width: '100%', height: '180px', objectFit: 'cover', display: 'block' }}
-                                    />
-                                    <div style={{ padding: '12px 16px' }}>
-                                        <p style={{ margin: 0, fontSize: '0.85rem', fontWeight: 600, color: '#111' }}>Spidra.io</p>
-                                        <p style={{ margin: '4px 0 0', fontSize: '0.75rem', color: '#666', fontWeight: 400 }}>spidra.io</p>
-                                    </div>
-                                </div>
-                            </span>, a web scraping tool, and I'm building <a href="http://zofu.quest/" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>ZOFU</a>, an AI platform that helps job seekers tailor their resumes. I've also trained 80+ emerging designers and helped startups tell a clearer story through pitch decks.
-                        </p>
-                        <p style={{ fontSize: '1.1rem', lineHeight: '1.8', color: 'var(--text-primary)', fontWeight: 500, marginTop: '1.25rem' }}>
-                            If you're building a new product or improving one that people already rely on, I can help you find the right problems to solve and turn them into thoughtful, usable experiences.{' '}
-                            <a href="mailto:olamidebalogun56@gmail.com" style={{ color: 'var(--text-primary)', textDecoration: 'underline', textUnderlineOffset: '3px', fontWeight: 700 }}>Let's talk.</a>
-                        </p>
-                    </div>
-                </section>
 
                 {/* Testimonials Section */}
                 <section className="container section-padding">
@@ -255,40 +197,8 @@ function Home() {
             <DesignCarousel />
 
             {/* CTA Section */}
-            <section className="container section-padding" style={{ marginBottom: '4rem' }}>
-                <div className="cta-modern">
-                    <div className="cta-ring-left"></div>
-                    <div className="cta-ring-right"></div>
-
-                    <div className="cta-content">
-                        <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
-                            Let's Build Something Meaningful
-                        </h2>
-                        <p className="text-muted" style={{
-                            fontSize: '1.1rem',
-                            marginBottom: '3rem',
-                            maxWidth: '600px',
-                            margin: '0 auto 3rem',
-                            lineHeight: '1.6'
-                        }}>
-                            I'm open to freelance design work, product collaborations, and long-term partnerships.
-                        </p>
-                        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                            <a href="mailto:olamidebalogun56@gmail.com" className="pill-btn black" style={{ textDecoration: 'none' }}>
-                                Work With Me
-                            </a>
-                            <a
-                                href="https://docs.google.com/document/d/1TpgW7XRnzpsyhmV208HeQzAr_bsdMeOBw04U9plIlJs/edit?usp=sharing"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="pill-btn gray"
-                                style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-                            >
-                                Read CV <ArrowUpRight size={18} />
-                            </a>
-                        </div>
-                    </div>
-                </div>
+            <section className="container" style={{ paddingTop: '3rem', paddingBottom: '4rem' }}>
+                <ContactCTA />
             </section>
 
             <Footer />

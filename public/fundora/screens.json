@@ -1,0 +1,78 @@
+{
+  "source": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora",
+  "purpose": "Source screen exports for Claude to build the Fundora animated portfolio cover.",
+  "screens": [
+    {
+      "name": "welcome",
+      "id": "25:878",
+      "width": 430,
+      "height": 932,
+      "description": "Branded onboarding screen with Together, we grow headline.",
+      "path": "/fundora/welcome.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=25-878"
+    },
+    {
+      "name": "home",
+      "id": "76:1559",
+      "width": 430,
+      "height": 932,
+      "description": "Wallet dashboard with balance, upcoming dues and bottom navigation.",
+      "path": "/fundora/home.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=76-1559"
+    },
+    {
+      "name": "groups",
+      "id": "175:1974",
+      "width": 430,
+      "height": 956,
+      "description": "Savings group list with Wagmi, Japan Trip and contribution buttons.",
+      "path": "/fundora/groups.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=175-1974"
+    },
+    {
+      "name": "group-details",
+      "id": "177:5841",
+      "width": 430,
+      "height": 956,
+      "description": "Meeday group overview with member contribution status.",
+      "path": "/fundora/group-details.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=177-5841"
+    },
+    {
+      "name": "group-activity",
+      "id": "177:6364",
+      "width": 430,
+      "height": 956,
+      "description": "Meeday group activity tab.",
+      "path": "/fundora/group-activity.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=177-6364"
+    },
+    {
+      "name": "contribution",
+      "id": "560:225",
+      "width": 430,
+      "height": 932,
+      "description": "Wagmi contribution amount form.",
+      "path": "/fundora/contribution.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=560-225"
+    },
+    {
+      "name": "contribution-review",
+      "id": "560:252",
+      "width": 430,
+      "height": 932,
+      "description": "Review a 2000 naira Wagmi contribution.",
+      "path": "/fundora/contribution-review.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=560-252"
+    },
+    {
+      "name": "contribution-success",
+      "id": "560:280",
+      "width": 430,
+      "height": 932,
+      "description": "Wagmi contribution confirmation and receipt.",
+      "path": "/fundora/contribution-success.png",
+      "figmaUrl": "https://www.figma.com/design/kp5K1NhUCRFixa4lgUtpd2/Fundora?node-id=560-280"
+    }
+  ]
+}

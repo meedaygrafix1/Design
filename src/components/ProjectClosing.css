@@ -24,11 +24,11 @@ body.dark .project-closing { --project-closing-link: #bdabff; }
 
 .project-closing .project-closing-title {
     margin: .7rem 0 1.5rem;
-    font-family: var(--font-serif);
+    font-family: var(--font-primary);
     font-size: clamp(2rem, 3.6vw, 3.1rem);
-    font-weight: 400;
+    font-weight: 600;
     line-height: 1.15;
-    letter-spacing: -.025em;
+    letter-spacing: -.04em;
     color: var(--text-primary);
 }
 

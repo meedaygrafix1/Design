@@ -1,0 +1,476 @@
+.app-showcase {
+  --px: 0;
+  --py: 0;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  container-type: size;
+}
+
+/* ---------- Scene: graded backdrop, grain, dark-mode shade ---------- */
+
+.app-showcase-scene {
+  position: absolute;
+  inset: -3%;
+  translate: calc(var(--px) * -10px) calc(var(--py) * -7px);
+  transition: translate 600ms cubic-bezier(0.2, 0.7, 0.3, 1);
+}
+
+.app-showcase-backdrop {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.06);
+}
+
+/* Fine film grain keeps flat UI and soft photos feeling like one image */
+.app-showcase-grain {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  opacity: 0.09;
+  mix-blend-mode: soft-light;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+.app-showcase-shade {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  background: transparent;
+  transition: background-color 300ms ease;
+}
+
+body.dark .app-showcase-shade {
+  background: rgb(8 10 14 / 28%);
+}
+
+/* ---------- Rig: parallax + lift-in wrapper around the device ---------- */
+
+.app-showcase-rig {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  translate: calc(var(--px) * 7px) calc(var(--py) * 5px);
+  transition:
+    translate 600ms cubic-bezier(0.2, 0.7, 0.3, 1),
+    transform 1100ms cubic-bezier(0.2, 0.8, 0.2, 1),
+    opacity 900ms ease;
+}
+
+.app-showcase:not(.is-in) .app-showcase-rig {
+  opacity: 0;
+  transform: translateY(7cqh) scale(0.985);
+}
+
+/* ---------- Devices ---------- */
+
+.app-showcase-device {
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  position: absolute;
+  transition: transform 750ms cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.app-showcase-screen {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: #fff;
+}
+
+/* Phone: titanium rim, black bezel, side buttons, Dynamic Island */
+.app-showcase-device.is-phone {
+  --phone-h: 125cqh;
+  --rim: calc(var(--phone-h) * 0.0045);
+  --bezel: calc(var(--phone-h) * 0.0085);
+  --tap-size: calc(var(--phone-h) * 0.062);
+  top: 11cqh;
+  left: calc(50% - var(--phone-h) * 9 / 19.5 / 2);
+  height: var(--phone-h);
+  aspect-ratio: 9 / 19.5;
+  padding: calc(var(--rim) + var(--bezel));
+  border-radius: calc(var(--phone-h) * 0.05 + var(--rim) + var(--bezel));
+  background: linear-gradient(135deg, #b9b9be 0%, #5d5d63 18%, #2a2a2e 45%, #46464c 70%, #a7a7ad 100%);
+  box-shadow:
+    inset 0 0 0 0.5px rgb(255 255 255 / 45%),
+    0 2px 3px rgb(0 0 0 / 22%),
+    0 22px 40px -14px rgb(0 0 0 / 45%),
+    0 50px 90px -30px rgb(0 0 0 / 40%);
+}
+
+.is-phone .app-showcase-screen {
+  border-radius: calc(var(--phone-h) * 0.05);
+  box-shadow: 0 0 0 var(--bezel) #050505;
+}
+
+/* Action + volume buttons on the left, side button on the right */
+.app-showcase-device.is-phone::before,
+.app-showcase-device.is-phone::after {
+  content: '';
+  position: absolute;
+  width: calc(var(--phone-h) * 0.006);
+  border-radius: 2px;
+  background: linear-gradient(90deg, #8d8d93, #3b3b40);
+}
+
+.app-showcase-device.is-phone::before {
+  left: calc(var(--phone-h) * -0.0045);
+  top: calc(var(--phone-h) * 0.17);
+  height: calc(var(--phone-h) * 0.035);
+  box-shadow:
+    0 calc(var(--phone-h) * 0.055) 0 #5a5a60,
+    0 calc(var(--phone-h) * 0.11) 0 #5a5a60;
+}
+
+.app-showcase-device.is-phone::after {
+  right: calc(var(--phone-h) * -0.0045);
+  top: calc(var(--phone-h) * 0.24);
+  height: calc(var(--phone-h) * 0.085);
+  background: linear-gradient(270deg, #8d8d93, #3b3b40);
+}
+
+.app-showcase-island {
+  position: absolute;
+  top: calc(var(--phone-h) * 0.012);
+  left: 50%;
+  z-index: 6;
+  width: 30%;
+  height: calc(var(--phone-h) * 0.03);
+  border-radius: 999px;
+  background: #000;
+  translate: -50% 0;
+  pointer-events: none;
+}
+
+/* Browser: Safari-style window, cropped by the right and bottom edges */
+.app-showcase-device.is-browser {
+  --w: 98cqw;
+  --bar: calc(var(--w) * 0.034);
+  --tap-size: calc(var(--w) * 0.02);
+  top: 14cqh;
+  left: 11cqw;
+  width: var(--w);
+  border-radius: calc(var(--w) * 0.011);
+  overflow: hidden;
+  background: #f4f4f6;
+  box-shadow:
+    0 0 0 0.5px rgb(0 0 0 / 18%),
+    0 2px 4px rgb(0 0 0 / 12%),
+    0 26px 50px -16px rgb(0 0 0 / 42%),
+    0 60px 100px -36px rgb(0 0 0 / 36%);
+}
+
+.is-browser .app-showcase-screen {
+  aspect-ratio: var(--screen-aspect, 1536 / 1160);
+}
+
+/* A single still screen: centred window with nature on both sides */
+.app-showcase-device.is-browser.is-static {
+  --w: 82cqw;
+  top: 12cqh;
+  left: 9cqw;
+}
+
+.app-showcase-bar {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  height: var(--bar);
+  padding: 0 calc(var(--bar) * 0.42);
+  border-bottom: 0.5px solid rgb(0 0 0 / 10%);
+  background: linear-gradient(#fafafb, #ededf0);
+  color: #6e6e73;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Segoe UI', sans-serif;
+  font-size: calc(var(--bar) * 0.36);
+}
+
+.app-showcase-bar-left {
+  display: flex;
+  align-items: center;
+  gap: calc(var(--bar) * 0.2);
+}
+
+.app-showcase-lights {
+  display: flex;
+  gap: calc(var(--bar) * 0.2);
+  margin-right: calc(var(--bar) * 0.45);
+}
+
+.app-showcase-lights span {
+  width: calc(var(--bar) * 0.3);
+  height: calc(var(--bar) * 0.3);
+  border-radius: 50%;
+  background: #ff5f57;
+  box-shadow: inset 0 0 0 0.5px rgb(0 0 0 / 12%);
+}
+
+.app-showcase-lights span:nth-child(2) { background: #febc2e; }
+.app-showcase-lights span:nth-child(3) { background: #28c840; }
+
+.app-showcase-bar svg {
+  width: calc(var(--bar) * 0.42);
+  height: calc(var(--bar) * 0.42);
+  flex-shrink: 0;
+}
+
+.app-showcase-url {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: calc(var(--bar) * 0.16);
+  min-width: calc(var(--w) * 0.3);
+  height: calc(var(--bar) * 0.66);
+  padding: 0 calc(var(--bar) * 0.5);
+  border-radius: calc(var(--bar) * 0.2);
+  background: rgb(0 0 0 / 5.5%);
+  color: #3a3a3c;
+  white-space: nowrap;
+}
+
+.app-showcase-url svg {
+  width: calc(var(--bar) * 0.3);
+  height: calc(var(--bar) * 0.3);
+  color: #8e8e93;
+}
+
+/* ---------- Screens and transitions ---------- */
+
+.app-showcase-screen .layer {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: #fff;
+  animation-duration: 700ms;
+  animation-timing-function: var(--ease-ios);
+  animation-fill-mode: both;
+}
+
+.app-showcase-screen .layer > img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Push: new screen slides in from the right, old one eases left and dims */
+.enter-push, .enter-shutter { z-index: 2; animation-name: slide-in-right; box-shadow: -12px 0 24px rgb(0 0 0 / 14%); }
+.exit-push, .exit-shutter { z-index: 1; animation-name: slide-out-left; }
+
+/* Pop (back): old screen slides away to the right, revealing the previous one */
+.enter-pop { z-index: 1; animation-name: slide-in-left; }
+.exit-pop { z-index: 2; animation-name: slide-out-right; box-shadow: -12px 0 24px rgb(0 0 0 / 14%); }
+
+/* Modal: sheet rises from the bottom, screen behind recedes */
+.enter-modal { z-index: 2; animation-name: sheet-up; }
+.exit-modal { z-index: 1; animation-name: recede; }
+
+/* Fade: used when the flow loops back to the start */
+.enter-fade { z-index: 2; animation-name: fade-in; animation-timing-function: ease; }
+.exit-fade { z-index: 1; }
+
+/* Tab: quick cross-fade, like switching tabs in a bottom nav or a web sidebar */
+.enter-tab { z-index: 2; animation-name: fade-in; animation-duration: 220ms; animation-timing-function: ease-out; }
+.exit-tab { z-index: 1; }
+
+@keyframes slide-in-right { from { transform: translateX(100%); } to { transform: none; } }
+@keyframes slide-out-left { from { transform: none; } to { transform: translateX(-28%); filter: brightness(0.82); } }
+@keyframes slide-in-left { from { transform: translateX(-28%); filter: brightness(0.82); } to { transform: none; } }
+@keyframes slide-out-right { from { transform: none; } to { transform: translateX(100%); } }
+@keyframes sheet-up { from { transform: translateY(100%); } to { transform: none; } }
+@keyframes recede { from { transform: none; } to { transform: scale(0.94); filter: brightness(0.7); } }
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* Camera shutter flash */
+.app-showcase-flash {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  background: #fff;
+  pointer-events: none;
+  animation: shutter-flash 450ms ease-out both;
+}
+
+@keyframes shutter-flash {
+  0% { opacity: 0; }
+  15% { opacity: 0.95; }
+  100% { opacity: 0; }
+}
+
+/* ---------- Typing: a mask in the field colour, revealed key by key ---------- */
+
+.app-showcase-type {
+  position: absolute;
+  z-index: 3;
+  pointer-events: none;
+}
+
+.app-showcase-type-mask {
+  position: absolute;
+  inset: -15% -2%;
+  background: var(--type-bg, #fff);
+  transform-origin: right center;
+}
+
+.app-showcase-type.is-typing .app-showcase-type-mask {
+  animation: type-reveal var(--type-ms) steps(var(--type-chars), end) forwards;
+}
+
+.app-showcase-type.is-typed .app-showcase-type-mask {
+  transform: scaleX(0);
+}
+
+.app-showcase-caret {
+  position: absolute;
+  top: -35%;
+  bottom: -35%;
+  left: 0;
+  width: 1.5px;
+  background: currentColor;
+  color: #1f6feb;
+  animation: caret-blink 1s steps(1) infinite;
+}
+
+.app-showcase-type.is-typing .app-showcase-caret {
+  animation:
+    caret-move var(--type-ms) steps(var(--type-chars), end) forwards,
+    caret-blink 1s steps(1) infinite;
+}
+
+.app-showcase-type.is-typed .app-showcase-caret {
+  left: 100%;
+}
+
+@keyframes type-reveal { from { transform: scaleX(1); } to { transform: scaleX(0); } }
+@keyframes caret-move { from { left: 0; } to { left: 100%; } }
+@keyframes caret-blink { 50% { opacity: 0; } }
+
+/* ---------- Touch: finger point, ripple and pressed-state darkening ---------- */
+
+.app-showcase-press {
+  position: absolute;
+  z-index: 3;
+  width: 34%;
+  aspect-ratio: 3 / 1;
+  border-radius: 50%;
+  background: radial-gradient(closest-side, rgb(0 0 0 / 22%), rgb(0 0 0 / 0%));
+  mix-blend-mode: multiply;
+  translate: -50% -50%;
+  pointer-events: none;
+  animation: press-shade 600ms ease-out both;
+}
+
+.is-browser .app-showcase-press {
+  width: 12%;
+}
+
+@keyframes press-shade {
+  0% { opacity: 0; }
+  35% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+.app-showcase-tap {
+  --size: var(--tap-size);
+  position: absolute;
+  z-index: 4;
+  width: var(--size);
+  height: var(--size);
+  margin: calc(var(--size) / -2) 0 0 calc(var(--size) / -2);
+  border: 1.5px solid rgb(255 255 255 / 90%);
+  border-radius: 50%;
+  background: rgb(255 255 255 / 45%);
+  box-shadow: 0 2px 10px rgb(0 0 0 / 25%);
+  backdrop-filter: blur(2px);
+  pointer-events: none;
+  animation: tap-press 650ms ease-out both;
+}
+
+.app-showcase-tap::after {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border: 1.5px solid rgb(255 255 255 / 80%);
+  border-radius: 50%;
+  animation: tap-ripple 650ms ease-out 180ms both;
+}
+
+/* On desktop the click is a small ring under the cursor, not a finger */
+.is-browser .app-showcase-tap {
+  border-color: rgb(40 40 40 / 35%);
+  background: rgb(0 0 0 / 6%);
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+.is-browser .app-showcase-tap::after {
+  border-color: rgb(40 40 40 / 30%);
+}
+
+@keyframes tap-press {
+  0% { opacity: 0; transform: scale(1.5); }
+  30% { opacity: 1; transform: scale(1); }
+  50% { transform: scale(0.8); }
+  75% { opacity: 1; transform: scale(1); }
+  100% { opacity: 0; transform: scale(1); }
+}
+
+@keyframes tap-ripple {
+  from { opacity: 0.9; transform: scale(1); }
+  to { opacity: 0; transform: scale(2.4); }
+}
+
+/* Mac pointer that glides between targets */
+.app-showcase-cursor {
+  position: absolute;
+  z-index: 5;
+  width: calc(var(--w) * 0.017);
+  pointer-events: none;
+  filter: drop-shadow(0 1px 1.5px rgb(0 0 0 / 35%));
+  transition:
+    left 700ms cubic-bezier(0.45, 0, 0.2, 1),
+    top 700ms cubic-bezier(0.45, 0, 0.2, 1),
+    scale 120ms ease;
+}
+
+.app-showcase-cursor.is-clicking {
+  scale: 0.86;
+}
+
+.app-showcase-cursor svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* ---------- Motion ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .app-showcase.is-live .app-showcase-backdrop {
+    animation: showcase-drift var(--drift-duration, 28s) ease-in-out var(--drift-delay, 0s) infinite alternate;
+  }
+}
+
+@keyframes showcase-drift {
+  from { transform: scale(1.06) translate(0, 0); }
+  to { transform: scale(var(--drift-scale, 1.12)) translate(var(--drift-x, -1.5%), var(--drift-y, -1%)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-showcase-scene,
+  .app-showcase-rig {
+    translate: none;
+    transition: none;
+  }
+
+  .app-showcase:not(.is-in) .app-showcase-rig {
+    opacity: 1;
+    transform: none;
+  }
+}

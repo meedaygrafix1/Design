@@ -105,9 +105,10 @@ function App() {
               to="/"
               className="logo"
               onClick={(e) => handleNavClick(e, 'top')}
-              style={{ fontSize: '1rem', fontWeight: 600, letterSpacing: '-0.02em', color: '#ffffff', cursor: 'pointer', textDecoration: 'none' }}
+              style={{ fontFamily: 'var(--font-script)', fontSize: '2.3rem', fontWeight: 400, letterSpacing: 0, lineHeight: 1, padding: '0.15em 0.2em 0', color: '#ffffff', cursor: 'pointer', textDecoration: 'none' }}
+              aria-label="Meeday, home"
             >
-              MEEDAY
+              M
             </Link>
 
             <div className="nav-links desktop-only" style={{ display: 'flex', gap: '1.5rem', fontSize: '0.9rem', fontWeight: 500 }}>

@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import ContactCTA from '../components/ContactCTA';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
@@ -69,39 +70,7 @@ function Illustrations() {
                     </div>
 
                     <section className="detail-content-section" style={{ borderTop: '1px solid var(--border-color)', paddingTop: '4rem' }}>
-                        <div className="cta-modern">
-                            <div className="cta-ring-left"></div>
-                            <div className="cta-ring-right"></div>
-
-                            <div className="cta-content">
-                                <h2 style={{ fontSize: '2.5rem', marginBottom: '1.5rem', lineHeight: '1.2' }}>
-                                    Let's Build Something Meaningful
-                                </h2>
-                                <p className="text-muted" style={{
-                                    fontSize: '1.1rem',
-                                    marginBottom: '3rem',
-                                    maxWidth: '600px',
-                                    margin: '0 auto 3rem',
-                                    lineHeight: '1.6'
-                                }}>
-                                    I'm open to freelance design work, product collaborations, and long-term partnerships.
-                                </p>
-                                <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-                                    <a href="mailto:olamidebalogun56@gmail.com" className="pill-btn black" style={{ textDecoration: 'none' }}>
-                                        Work With Me
-                                    </a>
-                                    <a
-                                        href="https://docs.google.com/document/d/1TpgW7XRnzpsyhmV208HeQzAr_bsdMeOBw04U9plIlJs/edit?usp=sharing"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="pill-btn gray"
-                                        style={{ textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.5rem' }}
-                                    >
-                                        Read CV <ArrowUpRight size={18} />
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+                        <ContactCTA />
                     </section>
                 </div>
             </div>

@@ -105,8 +105,8 @@ const BlogCard = ({ post }) => {
                     backdrop-filter: blur(4px);
                     color: #1a1a1a;
                     padding: 0.75rem 1.25rem;
-                    border-radius: 50px;
-                    font-weight: 500;
+                    border-radius: 999px;
+                    font-weight: 600;
                     font-size: 0.9rem;
                     display: flex;
                     align-items: center;
