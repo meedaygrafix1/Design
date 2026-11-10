@@ -7,7 +7,6 @@ import './index.css';
 // Page imports
 import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
-import Illustrations from './pages/Illustrations';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
 import InteractiveCursor from './components/InteractiveCursor';
@@ -247,7 +246,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/project/:slug" element={<ProjectDetail />} />
-        <Route path="/illustrations" element={<Illustrations />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:slug" element={<ArticleDetail />} />
       </Routes>

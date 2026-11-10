@@ -345,8 +345,7 @@ nav {
 }
 
 /* Project Detail Page (new routing-based) */
-.project-detail-page,
-.illustrations-page {
+.project-detail-page {
   padding-top: 2rem;
   padding-bottom: 5rem;
 }
@@ -771,9 +770,6 @@ video.detail-main-img {
     font-size: 1.7rem !important;
   }
 
-  .illustrations-grid {
-    grid-template-columns: 1fr !important;
-  }
 
   /* Project grid responsive */
   .projects-grid {
@@ -814,9 +810,6 @@ video.detail-main-img {
 }
 
 @media (min-width: 769px) and (max-width: 1024px) {
-  .illustrations-grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
 
   .projects-grid {
     grid-template-columns: repeat(2, 1fr) !important;

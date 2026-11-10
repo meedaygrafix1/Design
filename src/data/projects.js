@@ -639,26 +639,6 @@ export const experiences = [
     }
 ];
 
-// Illustrations data
-export const illustrations = [
-    { id: 1, bgColor: "#f5f3ff", image: "/illustration-0.png" },
-    { id: 2, bgColor: "#f0fdf4", image: "/illustration-1.png" },
-    { id: 3, bgColor: "#f0fdf4", image: "/illustration-2.png" },
-    { id: 4, bgColor: "#fffbeb", image: "/illustration-3.png" },
-    { id: 5, bgColor: "#f0fdf4", image: "/illustration-4.png" },
-    { id: 6, bgColor: "#f5f3ff", image: "/illustration-5.png" },
-    { id: 7, bgColor: "#fce7f3", image: "/illustration-6.png" },
-    { id: 8, bgColor: "#fffbeb", image: "/illustration-7.png" },
-    { id: 9, bgColor: "#fce7f3", image: "/illustration-8.png" },
-    { id: 10, bgColor: "#fffbeb", image: "/illustration-9.png" },
-    { id: 11, bgColor: "#f0fdf4", image: "/illustration-10.png" },
-    { id: 12, bgColor: "#f0fdf4", image: "/illustration-11.png" },
-    { id: 13, bgColor: "#fffbeb", image: "/illustration-12.png" },
-    { id: 14, bgColor: "#ecfeff", image: "/illustration-13.png" },
-    { id: 15, bgColor: "#fff7ed", image: "/illustration-14.png" },
-    { id: 16, bgColor: "#fffbeb", image: "/illustration-15.png" },
-    { id: 17, bgColor: "#fffbeb", image: "/illustration-16.png" }
-];
 
 // Design Explorations data (Carousel)
 export const designExplorations = [
@@ -673,4 +653,3 @@ export const designExplorations = [
     { id: 9, image: "/design-exp-09.png", title: "Music Platform" },
     { id: 10, image: "/design-exp-10.jpg", title: "SaaS Landing Page" }
 ];
-

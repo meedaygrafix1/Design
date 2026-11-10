@@ -11,7 +11,7 @@ import { ArrowUpRight, Quote } from 'lucide-react';
 import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
 import { getPosts } from '../lib/hygraph';
-import { projects, testimonials, experiences, illustrations } from '../data/projects';
+import { projects, testimonials, experiences } from '../data/projects';
 
 const PROJECT_TABS = [
     { id: 'app', label: 'Web/Mobile App' },
@@ -148,45 +148,6 @@ function Home() {
                         </Link>
                     </section>
                 )}
-
-                {/* Illustrations Section */}
-                <section className="container section-padding" style={{ textAlign: 'center' }}>
-                    <h2 style={{ marginBottom: '3rem' }}>Some of my illustrations</h2>
-
-                    <div className="illustrations-grid" style={{
-                        display: 'grid',
-                        gridTemplateColumns: 'repeat(4, 1fr)',
-                        gap: '1.5rem',
-                        marginBottom: '3rem'
-                    }}>
-                        {illustrations.slice(0, 4).map((item) => (
-                            <Motion.div
-                                key={item.id}
-                                initial={{ opacity: 0, y: 20 }}
-                                whileInView={{ opacity: 1, y: 0 }}
-                                viewport={{ once: true }}
-                                className="clean-card"
-                                style={{
-                                    aspectRatio: '1/1',
-                                    display: 'flex',
-                                    alignItems: 'center',
-                                    justifyContent: 'center',
-                                    padding: '1rem'
-                                }}
-                            >
-                                <img
-                                    src={item.image}
-                                    alt="Illustration"
-                                    style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '8px' }}
-                                />
-                            </Motion.div>
-                        ))}
-                    </div>
-
-                    <Link to="/illustrations" className="pill-btn gray" style={{ textDecoration: 'none' }}>
-                        View all <ArrowUpRight size={18} />
-                    </Link>
-                </section>
 
 
                 {/* Testimonials Section */}
