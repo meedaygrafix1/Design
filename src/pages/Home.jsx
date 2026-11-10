@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useLayoutEffect, useRef } from 'react';
 import ContactCTA from '../components/ContactCTA';
 import { Link } from 'react-router-dom';
 import { motion as Motion, AnimatePresence } from 'framer-motion';
@@ -13,9 +13,28 @@ import BlogCard from '../components/BlogCard';
 import { getPosts } from '../lib/hygraph';
 import { projects, testimonials, experiences, illustrations } from '../data/projects';
 
+const PROJECT_TABS = [
+    { id: 'app', label: 'Web/Mobile App' },
+    { id: 'website', label: 'Websites' },
+];
+
 function Home() {
     const reduceMotion = useReducedMotionPreference();
     const [projectFilter, setProjectFilter] = useState('app');
+    const tabRefs = useRef({});
+    const [slider, setSlider] = useState({ left: 0, width: 0 });
+
+    // The pill measures the active tab, so its padding is always even
+    useLayoutEffect(() => {
+        const measure = () => {
+            const el = tabRefs.current[projectFilter];
+            if (el) setSlider({ left: el.offsetLeft - 6, width: el.offsetWidth });
+        };
+        measure();
+        document.fonts?.ready.then(measure);
+        window.addEventListener('resize', measure);
+        return () => window.removeEventListener('resize', measure);
+    }, [projectFilter]);
     const [recentPosts, setRecentPosts] = useState([]);
 
     useEffect(() => {
@@ -49,28 +68,24 @@ function Home() {
                         <p className="text-muted" style={{ marginBottom: '1rem', textTransform: 'uppercase', letterSpacing: '0.1em', fontSize: '0.8rem' }}>Case Studies</p>
                         <h2 style={{ marginBottom: '1.5rem' }}>Selected Projects</h2>
 
-                        <div className="tab-switcher">
+                        <div className="tab-switcher" role="tablist" aria-label="Project type">
                             <div
                                 className="tab-slider"
-                                style={{
-                                    width: projectFilter === 'app' ? '165px' : '120px',
-                                    transform: projectFilter === 'app' ? 'translateX(0)' : 'translateX(165px)'
-                                }}
+                                aria-hidden="true"
+                                style={{ width: slider.width, transform: `translateX(${slider.left}px)` }}
                             />
-                            <button
-                                className={`tab-btn ${projectFilter === 'app' ? 'active' : ''}`}
-                                onClick={() => setProjectFilter('app')}
-                                style={{ width: '165px' }}
-                            >
-                                Web/Mobile App
-                            </button>
-                            <button
-                                className={`tab-btn ${projectFilter === 'website' ? 'active' : ''}`}
-                                onClick={() => setProjectFilter('website')}
-                                style={{ width: '120px' }}
-                            >
-                                Websites
-                            </button>
+                            {PROJECT_TABS.map((tab) => (
+                                <button
+                                    key={tab.id}
+                                    ref={(el) => { tabRefs.current[tab.id] = el; }}
+                                    role="tab"
+                                    aria-selected={projectFilter === tab.id}
+                                    className={`tab-btn ${projectFilter === tab.id ? 'active' : ''}`}
+                                    onClick={() => setProjectFilter(tab.id)}
+                                >
+                                    {tab.label}
+                                </button>
+                            ))}
                         </div>
                     </div>
 
@@ -100,7 +115,7 @@ function Home() {
                         <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Professional Journey</h2>
                         <div style={{ maxWidth: '900px', margin: '0 auto', background: 'white', border: '1px solid var(--border-color)', borderRadius: '12px', overflow: 'hidden' }} className="experience-table">
                             {experiences.map((exp, idx) => (
-                                <div key={idx} style={{
+                                <div key={idx} className="experience-row" style={{
                                     padding: '2rem',
                                     borderBottom: idx !== experiences.length - 1 ? '1px solid var(--border-color)' : 'none',
                                     display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start',
@@ -110,7 +125,7 @@ function Home() {
                                         <h4 style={{ fontSize: '1.1rem', fontWeight: 600, marginBottom: '0.5rem' }}>{exp.company}</h4>
                                         <div className="text-muted" style={{ fontSize: '0.95rem' }}>{exp.role} {exp.location && `• ${exp.location}`}</div>
                                     </div>
-                                    <div className="text-muted" style={{ fontSize: '0.9rem', whiteSpace: 'nowrap' }}>{exp.period}</div>
+                                    <div className="text-muted experience-period" style={{ fontSize: '0.9rem', whiteSpace: 'nowrap' }}>{exp.period}</div>
                                 </div>
                             ))}
                         </div>
@@ -177,7 +192,7 @@ function Home() {
                 {/* Testimonials Section */}
                 <section className="container section-padding">
                     <h2 style={{ marginBottom: '3rem', textAlign: 'center' }}>Kind Words from Collaborators</h2>
-                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))', gap: '2rem' }}>
+                    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(350px, 100%), 1fr))', gap: '2rem' }}>
                         {testimonials.map((t) => (
                             <div key={t.id} className="clean-card" style={{ padding: '2.5rem' }}>
                                 <Quote size={28} style={{ opacity: 0.2, marginBottom: '1.5rem', color: 'var(--accent-color)' }} />

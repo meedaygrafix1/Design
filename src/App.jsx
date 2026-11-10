@@ -191,8 +191,8 @@ function App() {
                       style={{
                         color: '#ffffff',
                         textDecoration: 'none',
-                        padding: '0.75rem 0.5rem',
-                        borderRadius: '8px',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '999px',
                         fontSize: '1rem',
                         fontWeight: 500,
                         transition: 'background 0.2s'
@@ -208,8 +208,8 @@ function App() {
                       style={{
                         color: '#ffffff',
                         textDecoration: 'none',
-                        padding: '0.75rem 0.5rem',
-                        borderRadius: '8px',
+                        padding: '0.75rem 1rem',
+                        borderRadius: '999px',
                         fontSize: '1rem',
                         fontWeight: 500,
                         transition: 'background 0.2s'
@@ -228,9 +228,9 @@ function App() {
                     background: '#ffffff',
                     color: '#1a1a1a',
                     textDecoration: 'none',
-                    padding: '0.75rem 0.5rem',
-                    borderRadius: '8px',
-                    fontSize: '1rem',
+                    padding: '0.85rem 1.5rem',
+                    borderRadius: '999px',
+                    fontSize: '0.95rem',
                     fontWeight: 600,
                     textAlign: 'center',
                     marginTop: '0.5rem'

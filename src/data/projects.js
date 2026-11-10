@@ -605,37 +605,37 @@ export const experiences = [
         company: "Spidra",
         location: "Delaware, United States",
         role: "Design Lead",
-        period: "January 2025 - Present",
+        period: "Jan. 2025 – Present",
     },
     {
         company: "Bay & Carter",
         location: "UK",
         role: "Brand and Web designer (Contract)",
-        period: "June 2024 - June 2025",
+        period: "Jun. 2024 – Jun. 2025",
     },
     {
         company: "HOSPEASE",
         location: "",
         role: "Product designer (Contract)",
-        period: "January 2025 - June 2025",
+        period: "Jan. 2025 – Jun. 2025",
     },
     {
         company: "PRIMECHALE",
         location: "Ibadan",
         role: "Product designer (Contract)",
-        period: "December 2023 - June 2024",
+        period: "Dec. 2023 – Jun. 2024",
     },
     {
         company: "Gotocourse",
         location: "Houston Texas",
         role: "Product designer & Visual designer",
-        period: "August 2022 - March 2024",
+        period: "Aug. 2022 – Mar. 2024",
     },
     {
         company: "Fireswitch Technologies",
         location: "",
         role: "Visual & Product design Intern",
-        period: "January 2022 - June 2023",
+        period: "Jan. 2022 – Jun. 2023",
     }
 ];
 

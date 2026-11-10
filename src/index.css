@@ -72,6 +72,11 @@ body.dark .read-more-btn {
   box-sizing: border-box;
 }
 
+/* Never allow sideways scrolling; clip (unlike hidden) keeps position: sticky working */
+html {
+  overflow-x: clip;
+}
+
 body {
   background-color: var(--bg-color);
   color: var(--text-primary);
@@ -146,8 +151,9 @@ button {
 /* Tab Switcher */
 .tab-switcher {
   display: inline-flex;
+  gap: 0;
   background: var(--card-bg);
-  padding: 0.4rem;
+  padding: 6px;
   border-radius: 100px;
   margin-bottom: 2rem;
   position: relative;
@@ -155,7 +161,9 @@ button {
 }
 
 .tab-btn {
-  padding: 0.8rem 1.75rem;
+  position: relative;
+  padding: 0.7rem 1.4rem;
+  line-height: 1.2;
   border-radius: 100px;
   border: none;
   background: none;
@@ -175,9 +183,9 @@ button {
 
 .tab-slider {
   position: absolute;
-  top: 0.4rem;
-  left: 0.4rem;
-  height: calc(100% - 0.8rem);
+  top: 6px;
+  left: 6px;
+  height: calc(100% - 12px);
   background: var(--text-primary);
   border-radius: 100px;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -193,7 +201,7 @@ button {
 
 .articles-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(min(360px, 100%), 1fr));
   gap: 2.5rem;
 }
 
@@ -922,5 +930,18 @@ video.detail-main-img {
 @media (max-width: 1280px) {
   .scroll-indicator {
     display: none;
+  }
+}
+
+/* Experience rows: on phones the date sits under the company instead of squeezing beside it */
+@media (max-width: 600px) {
+  .experience-table .experience-row {
+    flex-direction: column;
+    gap: 0.6rem !important;
+    padding: 1.5rem !important;
+  }
+
+  .experience-table .experience-period {
+    white-space: normal !important;
   }
 }
