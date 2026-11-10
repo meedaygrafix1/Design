@@ -1,5 +1,6 @@
 import React, { useEffect, useMemo } from 'react';
 import { useParams, Link } from 'react-router-dom';
+import CaseStudyCover from '../components/CaseStudyCover';
 import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import { getProjectBySlug } from '../data/projects';
 import { Helmet } from 'react-helmet-async';
@@ -88,7 +89,9 @@ function ProjectDetail() {
                     </div>
                     <h1><em>{project.title}</em></h1>
                     <p className="case-study-description">{project.desc}</p>
-                    {project.coverVideo ? (
+                    {project.showcase ? (
+                        <CaseStudyCover project={project} />
+                    ) : project.coverVideo ? (
                         <video
                             src={project.coverVideo}
                             autoPlay

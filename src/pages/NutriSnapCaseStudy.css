@@ -2,15 +2,6 @@
 body.dark .ns-page { --case-accent: #ffac79; --case-panel: #2c201a; }
 .ns-text-link, .ns-primary-link { display: inline-flex; align-items: center; gap: .6rem; font-size: .9rem; font-weight: 500; }
 .ns-text-link { color: var(--case-accent); text-decoration: underline; text-underline-offset: 5px; }
-.ns-hero { display: grid; grid-template-columns: .8fr 1.65fr; align-items: center; gap: 2rem; margin-top: 3rem; padding: clamp(24px, 4vw, 52px); border-radius: 24px; background: #faeedf; color: #63211a; overflow: hidden; }
-.ns-wordmark { font-size: clamp(22px, 3vw, 34px); font-weight: 650; letter-spacing: -.055em; }
-.ns-hero-copy p { font-family: var(--font-primary); font-weight: 500; font-size: clamp(40px, 5.3vw, 72px); line-height: 1.02; letter-spacing: -.04em; margin: 2.2rem 0; }
-.ns-hero-copy > span:last-child { display: block; max-width: 190px; font-size: .6rem; letter-spacing: .12em; }
-.ns-hero-screens { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; padding: 18px 0; }
-.ns-hero-screens button { min-width: 0; border-radius: 17px; box-shadow: 0 12px 26px #63211a22; }
-.ns-hero-screens button:first-child { transform: translateY(15px) rotate(-4deg); }
-.ns-hero-screens button:last-child { transform: translateY(15px) rotate(4deg); }
-.ns-hero-screens img { display: block; width: 100%; height: auto; border-radius: inherit; }
 .ns-metadata { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1.5rem; padding: 2.3rem 0; border-bottom: 1px solid var(--border-color); }
 .ns-metadata dt { color: var(--text-secondary); text-transform: uppercase; letter-spacing: .09em; font-size: .7rem; margin-bottom: .4rem; }
 .ns-metadata dd { font-size: .87rem; font-weight: 500; }
@@ -63,20 +54,11 @@ body.dark .ns-page { --case-accent: #ffac79; --case-panel: #2c201a; }
 .ns-dialog-image p { margin: 1rem auto 0; max-width: 402px; font-size: .85rem; color: var(--text-secondary); }
 @media (hover: none) { .ns-expand { opacity: 1; } }
 @media (max-width: 900px) {
-    .ns-hero { grid-template-columns: 1fr; }
-    .ns-hero-copy { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-    .ns-hero-copy p { margin: 0; font-size: 40px; }
-    .ns-hero-copy > span:last-child { display: none; }
-    .ns-hero-screens { max-width: 600px; width: 100%; margin: auto; }
     .ns-intro { grid-template-columns: 1fr; gap: 1.5rem; }
     .ns-visual { gap: 2rem; }
 }
 @media (max-width: 640px) {
     .ns-page.container { padding: 2.5rem 1.25rem 0 !important; }
-    .ns-hero { border-radius: 16px; margin-top: 2rem; padding: 24px 18px; }
-    .ns-hero-copy p { font-size: 32px; }
-    .ns-hero-screens { gap: 9px; }
-    .ns-hero-screens button { border-radius: 8px; }
     .ns-metadata { grid-template-columns: 1fr 1fr; gap: 1.5rem 1rem; }
     .ns-section { padding: 3.5rem 0; }
     .ns-flow { grid-template-columns: 1fr 1fr; row-gap: 1.5rem; }

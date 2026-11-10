@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CaseStudyCover from '../components/CaseStudyCover';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Expand, X } from 'lucide-react';
 import ScrollIndicator from '../components/ScrollIndicator';
@@ -95,10 +96,7 @@ export default function NutriSnapCaseStudy({ project }) {
                 <h1>A simple way to<br /><em>track my calories.</em></h1>
                 <p className="case-study-description">Take a photo. Check the estimate. Save the meal.<br />That’s the idea behind Nutri-Snap.</p>
                 <a className="ns-text-link" href={prototypeUrl} target="_blank" rel="noopener noreferrer">Explore the Figma prototype <ArrowUpRight size={17} aria-hidden="true" /></a>
-                <div className="ns-hero">
-                    <div className="ns-hero-copy"><span className="ns-wordmark">Nutri-Snap</span><p>One meal<br />at a time.</p><span>A PERSONAL CALORIE-TRACKING CONCEPT</span></div>
-                    <div className="ns-hero-screens">{['welcome', 'review', 'history'].map(name => <button key={name} onClick={event => openScreen(name, event)} aria-label={`Enlarge ${screens[name].title}`}><ScreenImage name={name} eager /></button>)}</div>
-                </div>
+                <CaseStudyCover project={project} />
                 <dl className="ns-metadata">
                     <div><dt>Project</dt><dd>Personal concept</dd></div>
                     <div><dt>Focus</dt><dd>Product & UI design</dd></div>

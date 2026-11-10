@@ -1,5 +1,6 @@
 import { useEffect, useId, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+import CaseStudyCover from '../components/CaseStudyCover';
 import { Helmet } from 'react-helmet-async';
 import { ArrowLeft, ArrowRight, Expand, X, ZoomIn, ZoomOut } from 'lucide-react';
 import ScrollIndicator from '../components/ScrollIndicator';
@@ -114,12 +115,7 @@ export default function RealvestCaseStudy({ project }) {
                     <p className="rv-header-description">{isAdmin ? 'Designing the workspace behind RealVEST: from verifying investors and publishing properties to reconciling payments, resolving withdrawals and managing team access.' : 'A mobile app that helps people invest in a share of a property, understand the costs, and keep track of their money.'}</p>
                     {isAdmin && <nav className="rva-story-links" aria-label="Explore the admin case study"><a href="#rva-onboarding">Staff onboarding <ArrowRight size={14} aria-hidden="true" /></a><a href="#rva-payments">Money operations <ArrowRight size={14} aria-hidden="true" /></a><a href="#rva-permissions">Team & permissions <ArrowRight size={14} aria-hidden="true" /></a></nav>}
 
-                    <div className={`rv-cover${isAdmin ? ' rv-cover--admin' : ''}`}>
-                        <div className="rv-cover-copy"><span className="rv-wordmark">{isAdmin ? 'RealVest Admin' : 'RealVest'}</span><p>{isAdmin ? <>A clearer view.<br />A connected team.</> : <>A little ownership.<br />A lot more clarity.</>}</p><span className="rv-cover-label">{isAdmin ? 'THE TEAM WORKSPACE' : 'THE INVESTOR MOBILE APP'}</span></div>
-                        <div className={isAdmin ? 'rv-cover-desktop' : 'rv-cover-screens'}>
-                            {(isAdmin ? ['admin'] : ['intro', 'discover', 'portfolio']).map(name => <button key={name} onClick={event => openScreen(name, event)} aria-label={`Enlarge ${realvestScreens[name].title}`}><ScreenImage name={name} eager /></button>)}
-                        </div>
-                    </div>
+                    <CaseStudyCover project={project} />
                     <dl className="rv-metadata">
                         <div><dt>Project</dt><dd>Personal project</dd></div>
                         <div><dt>Focus</dt><dd>Product & UI design</dd></div>

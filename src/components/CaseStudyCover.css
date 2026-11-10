@@ -1,0 +1,17 @@
+/* Same framing as the project card media, so the hero matches the card it came from */
+.case-study-cover {
+  position: relative;
+  aspect-ratio: 16 / 11;
+  margin-top: 3rem;
+  overflow: hidden;
+  border-radius: 24px;
+  background: var(--card-bg);
+  isolation: isolate;
+}
+
+@media (max-width: 768px) {
+  .case-study-cover {
+    margin-top: 2rem;
+    border-radius: 16px;
+  }
+}
