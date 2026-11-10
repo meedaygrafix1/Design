@@ -55,7 +55,7 @@ const BlogCard = ({ post }) => {
             <style>{`
                 .article-card {
                     background: #ffffff;
-                    border-radius: 24px;
+                    border-radius: 0;
                     overflow: hidden;
                     box-shadow: 0 10px 30px rgba(0,0,0,0.04);
                     transition: box-shadow 0.3s ease;

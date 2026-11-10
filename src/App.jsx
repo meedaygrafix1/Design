@@ -114,7 +114,6 @@ function App() {
               <a href="#" onClick={(e) => handleNavClick(e, 'top')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>Home</a>
               <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>Experience</a>
               <Link to="/articles" style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer', textDecoration: 'none' }}>Articles</Link>
-              <a href="#about" onClick={(e) => handleNavClick(e, 'about')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>About Me</a>
             </div>
 
             <div className="nav-actions" style={{ display: 'flex', gap: '1rem', alignItems: 'center', marginLeft: 'auto' }}>
@@ -181,7 +180,7 @@ function App() {
                   paddingTop: '1rem'
                 }}
               >
-                {['Home', 'Experience', 'Articles', 'About Me'].map((item, idx) => (
+                {['Home', 'Experience', 'Articles'].map((item, idx) => (
                   item === 'Articles' ? (
                     <Link
                       key={idx}
@@ -202,8 +201,8 @@ function App() {
                   ) : (
                     <a
                       key={idx}
-                      href={item === 'Experience' ? '#experience' : item === 'About Me' ? '#about' : '#'}
-                      onClick={(e) => handleNavClick(e, item === 'Home' ? 'top' : item === 'Experience' ? 'experience' : 'about')}
+                      href={item === 'Experience' ? '#experience' : '#'}
+                      onClick={(e) => handleNavClick(e, item === 'Home' ? 'top' : 'experience')}
                       style={{
                         color: '#ffffff',
                         textDecoration: 'none',
