@@ -24,7 +24,7 @@ function Footer() {
     const [inView, setInView] = useState(noObserver);
     const [loaded, setLoaded] = useState(noObserver);
 
-    // Load the meadow only when the footer is near, and pause it when off-screen
+    // Load the meadow only when the footer is near
     useEffect(() => {
         const node = footerRef.current;
         if (!node || noObserver) return undefined;
@@ -36,12 +36,14 @@ function Footer() {
         return () => observer.disconnect();
     }, [noObserver]);
 
+    // Once loaded, the meadow plays on a continuous loop
     useEffect(() => {
         const video = videoRef.current;
         if (!video || !loaded) return;
-        if (inView && !reduceMotion) video.play().catch(() => {});
-        else video.pause();
-    }, [inView, loaded, reduceMotion]);
+        // Sources are added after mount, so the element must be told to pick them up
+        video.load();
+        video.play().catch(() => {});
+    }, [loaded]);
 
     // The field drifts gently with the pointer
     useEffect(() => {
@@ -72,6 +74,7 @@ function Footer() {
                 <video
                     ref={videoRef}
                     muted
+                    autoPlay
                     loop
                     playsInline
                     preload="none"
