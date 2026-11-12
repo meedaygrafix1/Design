@@ -313,6 +313,20 @@ export const projects = [
             "Reduced administrative effort for group leaders by providing automated remittance tools."
         ]
     },
+    {
+        title: "Renewly",
+        slug: "renewly",
+        type: "website",
+        category: "Web · Personal Finance",
+        industry: "Fintech / Subscriptions",
+        year: "2026",
+        tool: "Web Design",
+        desc: "A landing page for Renewly, an app that keeps track of every subscription you pay for, reminds you before anything renews, and shows where your money actually goes.",
+        image: "/renewly-cover.png",
+        showcase: { backdrop: "/backdrops/lilies.webp", device: "browser", aspect: "1476 / 936", screens: ["/renewly-cover.webp"] },
+        link: "https://renewly-weld.vercel.app/",
+        theme: { bg: 'rgba(109, 74, 255, 0.1)', text: '#6d4aff', headingText: '#5b3ae0' },
+    },
     /* COMMENTED OUT - Synapse
     {
         title: "Synapse",
@@ -435,32 +449,6 @@ export const projects = [
         showcase: { backdrop: "/backdrops/prairie.webp", device: "browser", aspect: "1903 / 928", screens: ["/auralink-cover.webp"] },
         link: "https://auralink-vert.vercel.app/",
         theme: { bg: 'rgba(6, 182, 212, 0.1)', text: '#0e7490' },
-    },
-    {
-        title: "GH Digitals",
-        slug: "gh-digitals",
-        type: "website",
-        category: "Web • Digital Marketing",
-        industry: "Digital Marketing",
-        year: "2025",
-        tool: "Figma",
-        desc: "A digital marketing agency website empowering brands and people through strategic social media management, training, and measurable growth.",
-        image: "/ghdigitals-preview.png",
-        showcase: { backdrop: "/backdrops/lilies.webp", device: "browser", aspect: "1024 / 707", screens: ["/ghdigitals-preview.webp"] },
-        link: "https://ghdigitals.com/",
-        theme: { bg: 'rgba(30, 81, 40, 0.1)', text: '#1e5128' },
-        problem: "Many small businesses and personal brands struggle to establish a strong online presence due to a lack of strategic digital marketing knowledge and accessible professional services.",
-        solution: "A comprehensive agency platform that combines digital marketing services with an academy for training, offering consultations, brand management, and social media strategy under one roof.",
-        challenges: [
-            "Dual Audience: Designing for both potential clients seeking agency services and students enrolling in the academy.",
-            "Trust Building: Creating a professional yet approachable interface that conveys expertise and credibility.",
-            "Content Structure: Organizing diverse service offerings (agency, academy, consultation) into a clear, navigable hierarchy."
-        ],
-        impact: [
-            "Successfully launched the agency's digital presence, driving consultation bookings.",
-            "Streamlined the enrollment process for academy cohorts.",
-            "Increased brand visibility and client inquiries through a compelling, conversion-focused design."
-        ]
     },
     {
         title: "Fundora Website",
