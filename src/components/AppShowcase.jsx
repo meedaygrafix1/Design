@@ -68,11 +68,14 @@ const sleep = (ms, signal) => new Promise((resolve, reject) => {
  * }
  * `then` is how this step moves on to the next one (the last step loops to the first).
  * A plain `screens` array also works and becomes a simple push sequence.
+ * `video` plays a looping clip on the screen instead (screens[0] is its poster and
+ * what reduced-motion visitors see). It only plays while the card is on screen.
  */
-export default function AppShowcase({ backdrop, device = 'phone', aspect, url, island = true, flow, screens = [] }) {
+export default function AppShowcase({ backdrop, device = 'phone', aspect, url, island = true, flow, screens = [], video }) {
     const reduceMotion = useReducedMotionPreference();
     const rootRef = useRef(null);
     const deviceRef = useRef(null);
+    const videoRef = useRef(null);
     const pausedRef = useRef(false);
     const stepRef = useRef(0);
     const [visible, setVisible] = useState(false);
@@ -104,6 +107,14 @@ export default function AppShowcase({ backdrop, device = 'phone', aspect, url, i
         observer.observe(node);
         return () => observer.disconnect();
     }, []);
+
+    // A screen video only runs while the card is in view
+    useEffect(() => {
+        const el = videoRef.current;
+        if (!el) return;
+        if (visible) el.play().catch(() => {});
+        else el.pause();
+    }, [visible]);
 
     // Preload every screen so transitions never show a blank frame
     useEffect(() => {
@@ -259,7 +270,11 @@ export default function AppShowcase({ backdrop, device = 'phone', aspect, url, i
                         )}
                         {/* Typing masks live inside the entering layer so they slide with the screen */}
                         <div key={`in-${key}`} className={`layer${transition ? ` enter-${transition}` : ''}`}>
-                            <img src={steps[current].screen} alt="" loading="lazy" />
+                            {video && !reduceMotion ? (
+                                <video ref={videoRef} src={video} poster={steps[current].screen} muted loop playsInline preload="metadata" />
+                            ) : (
+                                <img src={steps[current].screen} alt="" loading="lazy" />
+                            )}
                             {typeSpec?.at && (
                                 <TypeMask
                                     rect={typeSpec.at}

@@ -25,8 +25,13 @@ export const tools = [
         url: 'https://scanlight-six.vercel.app/',
         // Homepage card
         industry: 'Web App · Creative Tool',
-        cover: '/scanlight/demo-poster.webp',
-        coverVideo: '/scanlight/demo.mp4',
+        showcase: {
+            backdrop: '/backdrops/prairie.webp',
+            device: 'browser',
+            aspect: '1280 / 720',
+            screens: ['/scanlight/demo-poster.webp'],
+            video: '/scanlight/demo.mp4',
+        },
         page: lazy(() => import('../pages/tools/ScanlightCaseStudy')),
     },
 ];
@@ -39,9 +44,9 @@ export const toolCards = tools
     .map((t) => ({
         title: t.name,
         path: `/tools/${t.slug}`,
+        link: t.url, // only used for the browser frame's address bar
         industry: t.industry || t.tags.join(' · '),
         year: t.date.slice(0, 4),
         desc: t.tagline,
-        image: t.cover,
-        coverVideo: t.coverVideo,
+        showcase: t.showcase,
     }));
