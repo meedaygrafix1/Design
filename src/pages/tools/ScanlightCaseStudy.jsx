@@ -8,53 +8,53 @@ import '../CaseStudy.css';
 import './ScanlightCaseStudy.css';
 
 const sections = [
-    { id: 'sl-start', label: 'Where it started' },
-    { id: 'sl-idea', label: 'The core idea' },
-    { id: 'sl-how', label: 'How it works' },
-    { id: 'sl-editor', label: 'Designing the editor' },
+    { id: 'sl-start', label: 'Why I built it' },
+    { id: 'sl-idea', label: 'The idea that clicked' },
+    { id: 'sl-how', label: 'Under the hood' },
+    { id: 'sl-editor', label: 'The editor' },
     { id: 'sl-landing', label: 'The landing page' },
     { id: 'sl-export', label: 'Getting work out' },
-    { id: 'sl-details', label: 'Small details' },
-    { id: 'sl-learned', label: 'What I took from it' },
+    { id: 'sl-details', label: 'Small stuff' },
+    { id: 'sl-learned', label: 'What I learned' },
     { id: 'sl-next', label: "What's next" },
 ];
 
 const brief = [
-    ['Instant', 'Every control updates the image in the same frame you move it.'],
-    ['Private', 'Images never leave the device. No backend at all.'],
-    ['Production-ready output', "Large stills, real vectors, and loops that don't jump when they restart."],
-    ['A tool, not a toy', 'The interface of a design app, not of a filter website.'],
+    ['Instant', 'If I move a slider, the image changes in that same frame. No waiting.'],
+    ['Private', "Images stay on the device. I didn't want a server at all."],
+    ['Good enough to ship', "Big stills, real vectors, and video loops that don't jump when they restart."],
+    ['A tool, not a toy', 'It should feel like a design app, not one of those filter websites.'],
 ];
 
 const effects = [
     ['LED', 'a glowing dot.'],
-    ['Halftone', 'an ink dot whose size follows brightness, on a rotated grid like print.'],
-    ['Ordered dither', 'a pixel switched on or off against a Bayer threshold pattern.'],
-    ['Diffusion', 'a pixel decided by Floyd–Steinberg error diffusion, where each cell passes its rounding error to its neighbours.'],
-    ['ASCII', <>a character picked by how much ink it carries (<code>.</code> for dark, <code>@</code> for bright).</>],
-    ['CRT', 'a horizontal beam of phosphor that gets thicker where the image is brighter.'],
+    ['Halftone', 'an ink dot that grows with brightness, on a tilted grid like real print.'],
+    ['Ordered dither', "a pixel that's either on or off, checked against a Bayer pattern."],
+    ['Diffusion', 'a pixel decided by Floyd–Steinberg, where each cell hands its rounding error to its neighbours.'],
+    ['ASCII', <>a character, picked by how much ink it has. <code>.</code> for dark, <code>@</code> for bright.</>],
+    ['CRT', 'a line of phosphor that gets thicker where the image is brighter.'],
 ];
 
 const vocabulary = [
     ['Density', 'how many cells across'],
-    ['Mark', 'size, shape, angle'],
+    ['Mark', 'size, shape and angle'],
     ['Tone', 'brightness, contrast, gamma, black point'],
-    ['Colour', "a three-stop palette or the source's own colours"],
+    ['Colour', "a three-colour palette, or the photo's own colours"],
 ];
 
 const editorDecisions = [
-    ['Presets are starting points, not filters.', 'Each one (Red Signal, Newsprint, 1-Bit Mac, Pocket, Binary Rain…) just writes values into the same inspector. Click one, then keep adjusting. You can see how every look is made, so presets also teach the tool.'],
-    ['Density is resolution-independent.', 'It’s set as “columns across the image”, not pixels. A 90-column LED grid looks the same in the preview, at 4× export, and in the Figma plugin. What you approved is what you get.'],
-    ['Before / after is a split handle on the canvas,', 'not a toggle. You drag the line across the image and compare the same detail in both versions.'],
-    ['Palettes are three colours: background, mid, highlight.', 'That’s enough to get phosphor green, amber terminal, newsprint or vapour pink, and few enough that anyone can make their own. A “source colour” mode keeps the photo’s own colours and still applies the effect.'],
-    ['Phones are first-class.', 'The live preview drops to a lighter resolution on touch devices while exports stay full size. Saving goes through the native share sheet, so a render lands in Photos instead of a downloads folder.'],
+    ['Presets are just a starting point.', "Red Signal, Newsprint, 1-Bit Mac, Pocket, Binary Rain and the rest only fill in the inspector. Click one and keep tweaking. Since you can see exactly how each look is built, the presets end up teaching you the tool as well."],
+    ['Density is counted in columns, not pixels.', 'A 90-column LED grid looks the same in the preview, in a 4× export and in the Figma plugin. What you approve is what you get.'],
+    ['Before and after is a handle you drag.', "It's a split line on the canvas, not a toggle. You slide it across the image and compare the same detail in both versions."],
+    ['Palettes have three colours.', "Background, mid and highlight. That's enough for phosphor green, amber terminal, newsprint or vapour pink, and simple enough that anyone can make their own. If you'd rather keep the photo's colours, there's a source colour mode that still applies the effect."],
+    ['Phones count too.', 'On touch devices the live preview drops to a lighter resolution, but exports stay full size. Saving goes through the share sheet, so your render lands in Photos instead of getting lost in a downloads folder.'],
 ];
 
 const details = [
-    'If the GPU context is lost (laptop sleeps, too many tabs), the renderer rebuilds itself and re-uploads everything without a reload.',
-    'Glyph atlases for ASCII are built once per character set and cached, so switching between Classic, Binary, Blocks and Hex is instant after the first time.',
-    'Keyboard shortcuts appear in your platform’s own convention: ⌘ on Mac, Ctrl elsewhere.',
-    'Touch detection asks the device what its pointer is. It never guesses from the browser name.',
+    "If the GPU context gets lost (your laptop sleeps, or you've got too many tabs open), the renderer rebuilds itself and reloads everything. No page refresh.",
+    'The ASCII glyph atlases get built once per character set and cached. After the first time, switching between Classic, Binary, Blocks and Hex is instant.',
+    'Shortcuts show up the way your platform writes them. ⌘ on Mac, Ctrl everywhere else.',
+    "To tell if you're on a touch device, it asks the device what kind of pointer it has. It never guesses from the browser name.",
 ];
 
 function Pipeline() {
@@ -85,11 +85,11 @@ function Pipeline() {
                 <span className="sl-pipe-arrow" aria-hidden="true" />
                 <div className="sl-pipe-node sl-pipe-node--branch">
                     <strong>Blur × 2</strong>
-                    <span>two radii, only the lit parts bleed</span>
+                    <span>two sizes, only the lit parts bleed</span>
                 </div>
-                <span className="sl-pipe-branch-note">feeds the composite</span>
+                <span className="sl-pipe-branch-note">joins the composite</span>
             </div>
-            <figcaption id="sl-pipeline-caption">Each frame runs through three GPU stages. The glow branches off the effect pass and rejoins at the composite.</figcaption>
+            <figcaption id="sl-pipeline-caption">Every frame goes through three passes on the GPU. The glow splits off after the effect pass and joins back in at the end.</figcaption>
         </figure>
     );
 }
@@ -116,8 +116,8 @@ export default function ScanlightCaseStudy({ tool }) {
                 </div>
                 <h1>Turning any image<br /><em>into light.</em></h1>
                 <p className="case-study-description">
-                    A browser tool that turns a photo into a dithered, LED-matrix, halftone, ASCII or CRT image, still or looping.
-                    It runs entirely on your device. No account, no upload, no server.
+                    I built a browser tool that turns photos into LED walls, halftone print, dither, ASCII and old CRT screens,
+                    still or looping. It all runs on your own device, so nothing gets uploaded anywhere.
                 </p>
                 {tool.url && (
                     <a className="sl-text-link" href={tool.url} target="_blank" rel="noopener noreferrer">Open Scanlight <ArrowUpRight size={17} aria-hidden="true" /></a>
@@ -144,12 +144,12 @@ export default function ScanlightCaseStudy({ tool }) {
             </header>
 
             <section id="sl-start" className="sl-section sl-split">
-                <p className="case-study-eyebrow">01 / Where it started</p>
+                <p className="case-study-eyebrow">01 / Why I built it</p>
                 <div>
-                    <h2>I wanted texture.<br />Getting it was annoying.</h2>
-                    <p>I kept wanting backgrounds with texture: a portrait as a wall of glowing LEDs, a product shot as newsprint halftone, a logo as falling binary. The look is everywhere right now, on posters, album covers, launch pages.</p>
-                    <p>The options were a Photoshop action chain, a half-finished web demo that exported a 600px JPEG, or writing a shader from scratch every time. None of them let me <em>play</em>: move a slider and watch the image change at full speed, try six looks in a minute, then take the result straight into a design file.</p>
-                    <p>So the brief I gave myself was short:</p>
+                    <h2>I just wanted a<br />textured background.</h2>
+                    <p>That's honestly how this started. I kept wanting images with texture on them. A portrait as a wall of glowing LEDs. A product shot that looked like it came out of a newspaper. A logo made of falling binary. You see this look everywhere now, on posters, album covers and launch pages.</p>
+                    <p>Getting it was the annoying part. I could chain a bunch of Photoshop actions together, use some half-finished web demo that handed me a 600px JPEG, or write a shader from scratch every single time. None of those let me actually play. I wanted to drag a slider and see the image change right away, try six looks in a minute, then drop the one I liked straight into Figma.</p>
+                    <p>So before I wrote any code, I gave myself a short brief.</p>
                     <ol className="sl-brief">
                         {brief.map(([title, text], i) => (
                             <li key={title}>
@@ -164,9 +164,9 @@ export default function ScanlightCaseStudy({ tool }) {
 
             <section id="sl-idea" className="sl-section">
                 <div className="sl-heading">
-                    <p className="case-study-eyebrow">02 / The core idea</p>
-                    <h2>Cut the image into a grid, measure each cell, redraw it as a mark.</h2>
-                    <p>Every effect in Scanlight is that same move. Only the mark changes.</p>
+                    <p className="case-study-eyebrow">02 / The idea that clicked</p>
+                    <h2>Every effect turned out to be the same thing.</h2>
+                    <p>For a while I thought I was building six separate effects. Then I noticed they all do one thing. You cut the image into a grid, check how bright each cell is, and redraw that cell as some kind of mark. The only part that changes is the mark.</p>
                 </div>
                 <ul className="sl-effects">
                     {effects.map(([name, mark]) => (
@@ -174,8 +174,8 @@ export default function ScanlightCaseStudy({ tool }) {
                     ))}
                 </ul>
                 <div className="sl-callout">
-                    <p className="case-study-eyebrow">One pipeline, one vocabulary</p>
-                    <p className="sl-callout-text">Once I saw it this way, the design got much simpler. There aren’t six tools glued together. A setting you learn in one effect means the same thing in the next.</p>
+                    <p className="case-study-eyebrow">Why that mattered</p>
+                    <p className="sl-callout-text">Once I saw it, the design got a lot simpler. I wasn't gluing six tools together anymore. I had one pipeline and one set of controls, and they mean the same thing in every effect.</p>
                     <dl className="sl-vocab">
                         {vocabulary.map(([term, def]) => <div key={term}><dt>{term}</dt><dd>{def}</dd></div>)}
                     </dl>
@@ -184,49 +184,49 @@ export default function ScanlightCaseStudy({ tool }) {
 
             <section id="sl-how" className="sl-section">
                 <div className="sl-heading">
-                    <p className="case-study-eyebrow">03 / How it works</p>
-                    <h2>Three passes on the GPU,<br />one on the CPU.</h2>
+                    <p className="case-study-eyebrow">03 / Under the hood</p>
+                    <h2>Most of it runs on the GPU.<br />One part refused to.</h2>
                 </div>
 
                 <div className="sl-steps">
                     <div className="sl-step">
-                        <h3><span>3.1</span> Loading</h3>
-                        <p>The image is decoded in the browser, rotated according to its EXIF orientation, capped at 2048px on the long side, and flattened onto black so transparent PNGs behave. That’s the only preparation. Nothing is sent anywhere.</p>
+                        <h3><span>3.1</span> Getting the image in</h3>
+                        <p>When you drop an image in, the browser decodes it, fixes the rotation using the photo's EXIF data, shrinks it to 2048px on the long side if it's bigger, and puts it on black so transparent PNGs don't act weird. That's all the prep. Nothing leaves your device.</p>
                     </div>
 
                     <div className="sl-step">
-                        <h3><span>3.2</span> The render pipeline</h3>
+                        <h3><span>3.2</span> Three passes, every frame</h3>
                         <Pipeline />
-                        <p><strong>The effect pass</strong> does the real work. For each pixel on screen, the shader works out which cell it belongs to, samples the source at that cell’s centre, and draws the mark. Sampling uses mipmaps picked to match the cell size, so a cell averages the area it covers rather than grabbing one random pixel. That one detail is the difference between a clean dither and a noisy one.</p>
-                        <p><strong>The glow</strong> comes from a separate bright pass: it keeps only the parts of the image that stand out from the background, blurs them twice at two radii, and adds them back. Glow follows the light, so dark areas stay dark.</p>
-                        <p><strong>The composite</strong> adds the “display” layer: scanlines, film noise, vignette, RGB channel offset, and a barrel distortion that bends the corners in like an old tube. The distortion is normalised so the middle of each edge stays put, which means turning it up never crops your subject.</p>
+                        <p>The effect pass is where the real work happens. For every pixel on screen, the shader works out which cell it's in, reads the image at the middle of that cell, and draws the mark. One small detail made a big difference here. I read the image from a mipmap that matches the cell size, so each cell gets the average of the area it covers instead of one random pixel. Skip that and the dither comes out noisy. Keep it and it's clean.</p>
+                        <p>Glow gets its own pass. It keeps only the parts of the image that stand out, blurs them twice at two different sizes, and adds them back on top. So the glow follows the light, and the dark areas stay dark.</p>
+                        <p>The last pass is what makes it feel like a screen: scanlines, film grain, a vignette, a bit of RGB split, and a barrel bend that curves the corners in like an old TV. I set the bend up so the middle of each edge never moves. Turn it all the way up and it still won't crop your subject.</p>
                     </div>
 
                     <div className="sl-step">
-                        <h3><span>3.3</span> The one effect that can’t live on the GPU</h3>
-                        <p>Error diffusion is sequential by nature. Each cell’s result depends on the error passed from the cells before it, so it can’t be computed in parallel. Scanlight runs it on the CPU instead.</p>
-                        <p>It scans in a serpentine pattern (left to right, then right to left), which avoids the diagonal “worm” artifacts a plain scan leaves. It caches the result by the settings that actually change it, then uploads it to the GPU as a small texture. Change the glow and nothing gets recomputed. Change the contrast and it does.</p>
+                        <h3><span>3.3</span> The effect that wouldn't go on the GPU</h3>
+                        <p>Error diffusion was the awkward one. Each cell depends on the error passed down from the cells before it, so you can't work them all out at the same time, and doing things at the same time is the whole point of a GPU. That one runs on the CPU instead.</p>
+                        <p>It scans back and forth (left to right, then right to left), because a plain scan leaves these diagonal, worm-like lines across the image. The result is cached against only the settings that change it, then sent to the GPU as a small texture. Change the glow and nothing gets recalculated. Change the contrast and it does.</p>
                     </div>
 
                     <div className="sl-step">
-                        <h3><span>3.4</span> Motion that loops properly</h3>
-                        <p>The animations are flicker, scan, pulse, wave, rain and glitch. They all follow one rule:</p>
-                        <blockquote className="sl-rule">Motion is a function of the loop’s phase (0 → 1), and everything completes a whole number of cycles.</blockquote>
-                        <p>Nothing keeps a running clock. Frame 0 and frame N are mathematically identical, so an exported loop never shows a seam, whether it plays for four seconds or four hours.</p>
-                        <p>This also means the playhead can be scrubbed. Every frame can be rebuilt on demand, so you can stop on the exact moment you want and export it as a still.</p>
+                        <h3><span>3.4</span> Loops without a seam</h3>
+                        <p>There are six animations: flicker, scan, pulse, wave, rain and glitch. I gave all of them one rule.</p>
+                        <blockquote className="sl-rule">Motion only depends on where you are in the loop, from 0 to 1, and everything finishes a whole number of cycles.</blockquote>
+                        <p>There's no clock ticking away in the background. The first frame and the last frame are exactly the same, so an exported loop never jumps, whether it plays for four seconds or four hours.</p>
+                        <p>I got a nice bonus out of that too. You can scrub the playhead, because any frame can be rebuilt on demand. Stop on the exact moment you like and save it as a still.</p>
                     </div>
                 </div>
             </section>
 
             <section id="sl-editor" className="sl-section">
                 <div className="sl-heading">
-                    <p className="case-study-eyebrow">04 / Designing the editor</p>
-                    <h2>Presets left, canvas centre,<br />inspector right.</h2>
-                    <p>I modelled the layout on the design tools people already know. People who open Scanlight already live in Figma. They shouldn’t have to learn where things are.</p>
+                    <p className="case-study-eyebrow">04 / The editor</p>
+                    <h2>I copied the layout<br />people already know.</h2>
+                    <p>Presets on the left, canvas in the middle, inspector on the right. The people I built this for already spend their day in Figma. I didn't see any reason to make them learn where things live.</p>
                 </div>
                 <figure className="sl-shot">
                     <img src="/scanlight/editor.webp" alt="The Scanlight editor: preset thumbnails on the left, a shield icon rendered as red LEDs in the centre, and tone, colour, glow and motion controls on the right" width="1440" height="900" loading="lazy" decoding="async" />
-                    <figcaption>The Red Signal preset applied to a sample image. Every value it set is visible, and editable, in the inspector.</figcaption>
+                    <figcaption>The Red Signal preset on a sample image. Every value it set is right there in the inspector, and you can change any of them.</figcaption>
                 </figure>
                 <ul className="sl-decisions">
                     {editorDecisions.map(([lead, body]) => <li key={lead}><h3>{lead}</h3><p>{body}</p></li>)}
@@ -236,34 +236,35 @@ export default function ScanlightCaseStudy({ tool }) {
             <section id="sl-landing" className="sl-section sl-split">
                 <p className="case-study-eyebrow">05 / The landing page</p>
                 <div>
-                    <h2>The landing page<br />is the product.</h2>
-                    <p>My first landing page was a headline, a glowing card and a feature list. It looked like every other AI-made launch page, so I threw it out.</p>
-                    <p>The replacement is built on one idea: <strong>nothing on the page is a picture.</strong> The giant wordmark is rendered live by the same engine the editor uses. Your cursor acts as a light moving across it. The effect list down the side isn’t a menu of features: hovering a row re-renders the whole page in that effect. Before you’ve uploaded anything, you’ve already used the tool.</p>
-                    <p>The rest stays out of the way: a strict grid, mono labels, hairline rules. Drop an image anywhere, paste it, or pick a sample if you don’t have one to hand.</p>
+                    <h2>I threw out my<br />first landing page.</h2>
+                    <p>The first version was a headline, a glowing card and a list of features. It looked like every other AI-made launch page out there, and I couldn't stand it. So I binned it.</p>
+                    <p>The new one runs on one idea: nothing on the page is a picture. The big wordmark is rendered live by the same engine as the editor, and your cursor works like a light moving across it. The list of effects down the side isn't a feature list either. Hover a row and the whole page re-renders in that effect. By the time you upload anything, you've already used the tool.</p>
+                    <p>Everything else stays quiet. A strict grid, mono labels, thin lines. Drop an image anywhere, paste one, or grab a sample if you don't have one handy.</p>
                 </div>
             </section>
 
             <section id="sl-export" className="sl-section">
                 <div className="sl-heading">
                     <p className="case-study-eyebrow">06 / Getting work out</p>
-                    <h2>A texture tool is only as good<br />as what you can take away.</h2>
-                    <p>So export got as much care as the canvas.</p>
+                    <h2>A texture tool is only as good as what you can take away from it.</h2>
+                    <p>So I spent about as much time on export as I did on the canvas.</p>
                 </div>
                 <div className="sl-export-grid">
-                    <div><p className="case-study-eyebrow">Images</p><p>PNG, JPG or WebP at 1× to 4× scale.</p></div>
-                    <div><p className="case-study-eyebrow">Video</p><p>MP4, encoded frame by frame with the browser’s WebCodecs encoder, so the loop is exact and doesn’t depend on screen recording. WebM is the fallback where that encoder isn’t available.</p></div>
-                    <div><p className="case-study-eyebrow">SVG</p><p>LED, Halftone, Ordered, Diffusion and ASCII export as real vector shapes, rebuilt on the CPU with the same maths as the shaders, so the vector matches the preview. Glow becomes an SVG blur filter. If a file gets heavy, the dialog says so and suggests lowering the density.</p></div>
+                    <div><p className="case-study-eyebrow">Images</p><p>PNG, JPG or WebP, anywhere from 1× to 4×.</p></div>
+                    <div><p className="case-study-eyebrow">Video</p><p>MP4, encoded frame by frame with the browser's own WebCodecs encoder. That way the loop is exact and doesn't depend on screen recording. Browsers without that encoder get WebM instead.</p></div>
+                    <div><p className="case-study-eyebrow">SVG</p><p>LED, Halftone, Ordered, Diffusion and ASCII all export as real vector shapes. They're rebuilt on the CPU with the same maths as the shaders, so the SVG matches what you saw. Glow turns into an SVG blur filter. And if a file starts getting heavy, the export dialog tells you and suggests lowering the density.</p></div>
                 </div>
                 <div className="sl-callout">
-                    <p className="case-study-eyebrow">…and straight into Figma</p>
-                    <p className="sl-callout-body">The Figma plugin runs the same engine and inspector inside Figma. Select a shape, pick a look, and apply it as a <strong>fill</strong>, a <strong>new layer</strong>, or <strong>editable vectors</strong>. Each result keeps its original pixels and its settings, so selecting it later reopens it exactly as you left it, and applying again updates it in place instead of stacking copies. <strong>Restore original</strong> brings back the untouched image.</p>
+                    <p className="case-study-eyebrow">And straight into Figma</p>
+                    <p className="sl-callout-body">I also built a Figma plugin that runs the same engine and inspector. Select a shape, pick a look, and apply it as a fill, a new layer or editable vectors. Each result remembers its original pixels and settings, so when you select it later it opens exactly how you left it. Apply again and it updates in place instead of stacking copies on top of each other. Changed your mind? Restore original brings back the untouched image.</p>
                 </div>
             </section>
 
             <section id="sl-details" className="sl-section sl-split">
-                <p className="case-study-eyebrow">07 / Small details</p>
+                <p className="case-study-eyebrow">07 / Small stuff</p>
                 <div>
-                    <h2>Details most people<br />won’t notice.</h2>
+                    <h2>Things you'll probably<br />never notice.</h2>
+                    <p>Some of my favourite bits of this project are the ones you'd only spot if they broke.</p>
                     <ul className="sl-detail-list">
                         {details.map((d) => <li key={d}>{d}</li>)}
                     </ul>
@@ -272,25 +273,26 @@ export default function ScanlightCaseStudy({ tool }) {
 
             <section id="sl-learned" className="sl-section">
                 <div className="sl-heading">
-                    <p className="case-study-eyebrow">08 / What I took from it</p>
-                    <h2>Three things I’d bring to the next tool.</h2>
+                    <p className="case-study-eyebrow">08 / What I learned</p>
+                    <h2>What I'm taking into the next one.</h2>
                 </div>
                 <div className="sl-lessons">
-                    <div><h3>Find the one abstraction and the UI follows.</h3><p>“Grid, brightness, mark” turned six effects into one set of controls. Most of the interface design was done the moment the model was clear.</p></div>
-                    <div><h3>Constraints are features.</h3><p>Running on-device was a privacy choice first, but it also made the tool instant, free to run, and easy to trust.</p></div>
-                    <div><h3>Make the output the hero.</h3><p>The best marketing for a rendering tool is letting people see it render, so the landing page does exactly that and nothing else.</p></div>
+                    <div><h3>Find the one idea and the UI follows.</h3><p>Once I had "grid, brightness, mark", six effects became one set of controls. Most of the interface was pretty much designed the moment that clicked.</p></div>
+                    <div><h3>Constraints can turn into features.</h3><p>I kept everything on the device for privacy. That same choice made it instant, free to run, and easy to trust.</p></div>
+                    <div><h3>Let the output do the selling.</h3><p>The best way to market a rendering tool is to let people watch it render. That's all the landing page does.</p></div>
                 </div>
             </section>
 
             <section id="sl-next" className="sl-section sl-split sl-last">
-                <p className="case-study-eyebrow">09 / What’s next</p>
+                <p className="case-study-eyebrow">09 / What's next</p>
                 <div>
-                    <h2>Where it goes from here.</h2>
+                    <h2>It's not done yet.</h2>
+                    <p>A few things I still want to add:</p>
                     <ul className="sl-detail-list">
-                        <li>GIF export, and motion exported into Figma as video fills</li>
+                        <li>GIF export, and sending motion into Figma as video fills</li>
                         <li>Stacking effects as layers</li>
                         <li>Saving your own presets</li>
-                        <li>A multi-image board for applying one look to a whole set and exporting it as a ZIP (built, currently switched off while the single-image flow gets polished)</li>
+                        <li>A board for putting one look on a whole batch of images and exporting them as a ZIP. I've actually built this one already. It's switched off while I polish the single-image flow.</li>
                     </ul>
                     {tool.url && (
                         <a className="sl-primary-link" href={tool.url} target="_blank" rel="noopener noreferrer">Try Scanlight <ArrowUpRight size={18} aria-hidden="true" /></a>
