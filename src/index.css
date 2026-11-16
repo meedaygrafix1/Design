@@ -181,6 +181,14 @@ button {
   color: #ffffff;
 }
 
+/* Three tabs have to fit a 320px-wide phone */
+@media (max-width: 480px) {
+  .tab-btn {
+    padding: 0.65rem 0.95rem;
+    font-size: 0.88rem;
+  }
+}
+
 .tab-slider {
   position: absolute;
   top: 6px;

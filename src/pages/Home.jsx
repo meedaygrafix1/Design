@@ -12,10 +12,12 @@ import Footer from '../components/Footer';
 import BlogCard from '../components/BlogCard';
 import { getPosts } from '../lib/hygraph';
 import { projects, testimonials, experiences } from '../data/projects';
+import { toolCards } from '../data/tools';
 
 const PROJECT_TABS = [
     { id: 'app', label: 'Web/Mobile App' },
     { id: 'website', label: 'Websites' },
+    { id: 'tools', label: 'Tools' },
 ];
 
 function Home() {
@@ -91,7 +93,7 @@ function Home() {
 
                     <div className="projects-grid" style={{ position: 'relative' }}>
                         <AnimatePresence mode="popLayout">
-                            {projects.filter(p => p.type === projectFilter).map((project) => (
+                            {(projectFilter === 'tools' ? toolCards : projects.filter(p => p.type === projectFilter)).map((project) => (
                                 <Motion.div
                                     key={project.title}
                                     layout={!reduceMotion}
@@ -107,6 +109,14 @@ function Home() {
                             ))}
                         </AnimatePresence>
                     </div>
+
+                    {projectFilter === 'tools' && (
+                        <div style={{ textAlign: 'center', marginTop: '1rem' }}>
+                            <Link to="/tools" className="pill-btn gray">
+                                All tools <ArrowUpRight size={18} />
+                            </Link>
+                        </div>
+                    )}
                 </section>
 
                 {/* Experience Section */}

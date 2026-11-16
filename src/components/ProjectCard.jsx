@@ -15,12 +15,12 @@ const addressFor = (project) => {
 
 export default function ProjectCard({ project }) {
     const reduceMotion = useReducedMotionPreference();
-    const isLive = Boolean(project.link);
+    const isLive = !project.path && Boolean(project.link);
 
     return (
         <Link
             className="project-card"
-            to={project.link || `/project/${project.slug}`}
+            to={project.path || project.link || `/project/${project.slug}`}
             target={isLive ? '_blank' : undefined}
             rel={isLive ? 'noopener noreferrer' : undefined}
             aria-label={`${project.title}: ${isLive ? 'view live site (opens in a new tab)' : 'view case study'}`}

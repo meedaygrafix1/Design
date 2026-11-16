@@ -9,6 +9,8 @@ import Home from './pages/Home';
 import ProjectDetail from './pages/ProjectDetail';
 import Articles from './pages/Articles';
 import ArticleDetail from './pages/ArticleDetail';
+import Tools from './pages/Tools';
+import ToolDetail from './pages/ToolDetail';
 import InteractiveCursor from './components/InteractiveCursor';
 
 function App() {
@@ -137,6 +139,7 @@ function App() {
             <div className="nav-links desktop-only" style={{ display: 'flex', gap: '1.5rem', fontSize: '0.9rem', fontWeight: 500 }}>
               <a href="#" onClick={(e) => handleNavClick(e, 'top')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>Home</a>
               <a href="#experience" onClick={(e) => handleNavClick(e, 'experience')} style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer' }}>Experience</a>
+              <Link to="/tools" style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer', textDecoration: 'none' }}>Tools</Link>
               <Link to="/articles" style={{ color: '#ffffff', opacity: 0.8, transition: 'opacity 0.3s', cursor: 'pointer', textDecoration: 'none' }}>Articles</Link>
             </div>
 
@@ -204,11 +207,11 @@ function App() {
                   paddingTop: '1rem'
                 }}
               >
-                {['Home', 'Experience', 'Articles'].map((item, idx) => (
-                  item === 'Articles' ? (
+                {['Home', 'Experience', 'Tools', 'Articles'].map((item, idx) => (
+                  item === 'Articles' || item === 'Tools' ? (
                     <Link
                       key={idx}
-                      to="/articles"
+                      to={`/${item.toLowerCase()}`}
                       onClick={() => setIsMenuOpen(false)}
                       style={{
                         color: '#ffffff',
@@ -271,6 +274,8 @@ function App() {
         <Route path="/project/:slug" element={<ProjectDetail />} />
         <Route path="/articles" element={<Articles />} />
         <Route path="/articles/:slug" element={<ArticleDetail />} />
+        <Route path="/tools" element={<Tools />} />
+        <Route path="/tools/:slug" element={<ToolDetail />} />
       </Routes>
     </div>
   );
