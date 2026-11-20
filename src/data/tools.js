@@ -15,10 +15,10 @@ import { lazy } from 'react';
 export const tools = [
     {
         slug: 'cover-studio',
-        name: 'Cover Studio',
+        name: 'Spidra Cover Hub',
         tagline: 'On-brand blog covers from a post title, in seconds, without waiting on a designer.',
         description:
-            'An internal tool that turns a blog post title into an on-brand cover. Claude composes it from a 3,000-icon library inside a fixed house style, then anyone on the team can edit it Figma-style and export PNG or SVG.',
+            'Spidra Cover Hub turns a blog post title into an on-brand cover. Claude builds it from the 3,000+ Kubai icons inside a fixed house style, and anyone on the team can edit it like a Figma file and export PNG or SVG.',
         tags: ['AI', 'Internal tool', 'React'],
         status: 'live',
         date: '2026-11',

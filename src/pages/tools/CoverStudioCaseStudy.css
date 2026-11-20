@@ -1,87 +1,36 @@
-/* Cover Studio: builds on the Scanlight case-study layout (sl-*) with the tool's own blueprint blue */
+/* Spidra Cover Hub: the shared tool layout (sl-*) with the tool's own blueprint blue */
 .cs-page.sl-page.case-study-page {
   --case-accent: #2563eb;
-  --case-panel: #eef3ff;
   --cs-blueprint: #f1f5fe;
   --cs-line: #d6e0f8;
 }
 
 body.dark .cs-page.sl-page.case-study-page {
   --case-accent: #6d9bff;
-  --case-panel: #121a2c;
   --cs-blueprint: #0f1626;
   --cs-line: #24314d;
 }
 
-.cs-page .sl-brief,
-.cs-page .sl-rule { border-left-color: var(--case-accent); }
-
-.cs-internal-note {
-  margin-top: 1.25rem;
-  font-size: .82rem;
-  color: var(--text-secondary);
-}
-
-.cs-internal-note::before {
-  content: '';
-  display: inline-block;
-  width: 6px;
-  height: 6px;
-  margin-right: .6rem;
-  border-radius: 50%;
-  background: var(--case-accent);
-  vertical-align: middle;
-}
-
 /* The product is light, so its media sits in a light frame */
-.cs-hero-media,
-.cs-loop {
+.cs-hero-media {
+  aspect-ratio: 1440 / 900;
   background: var(--cs-blueprint);
   border-color: var(--cs-line);
 }
-
-.cs-hero-media { aspect-ratio: 1440 / 900; }
 
 .cs-shot img {
   border-color: var(--cs-line);
   background: var(--cs-blueprint);
 }
 
-/* Pipeline drawn as a blueprint instead of Scanlight's dark UI */
-.cs-pipeline.sl-pipeline {
-  color: var(--text-primary);
-  background-color: var(--cs-blueprint);
-  background-image:
-    linear-gradient(var(--cs-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--cs-line) 1px, transparent 1px);
-  background-size: 24px 24px;
-  border-color: var(--cs-line);
-}
-
-.cs-pipeline .sl-pipe-node {
-  background: var(--card-bg, #fff);
-  border-color: var(--cs-line);
-  border-radius: 10px;
-}
-
-.cs-pipeline .sl-pipe-node strong { color: var(--text-primary); }
-.cs-pipeline .sl-pipe-node span { color: var(--text-secondary); }
-.cs-pipeline .sl-pipe-node small { color: var(--case-accent); }
-.cs-pipeline .sl-pipe-node--io { background: transparent; color: var(--text-secondary); }
-.cs-pipeline .sl-pipe-node--branch { border-color: color-mix(in srgb, var(--case-accent) 40%, transparent); }
-.cs-pipeline .sl-pipe-node--branch strong { color: var(--case-accent); }
-.cs-pipeline .sl-pipe-arrow { background: var(--case-accent); }
-.cs-pipeline .sl-pipe-arrow::after { border-left-color: var(--case-accent); }
-.cs-pipeline figcaption { color: var(--text-secondary); }
-.cs-pipeline .sl-pipe-branch-label { color: var(--case-accent); }
-
 /* Covers */
 .cs-loop {
   aspect-ratio: 1200 / 630;
+  margin: 2rem 0 1.5rem;
   border: 1px solid var(--cs-line);
   border-radius: 20px;
   overflow: hidden;
-  margin-bottom: 1.5rem;
+  background: var(--cs-blueprint);
 }
 
 .cs-loop video {
@@ -106,14 +55,13 @@ body.dark .cs-page.sl-page.case-study-page {
   border: 1px solid var(--cs-line);
 }
 
-.cs-gallery p {
+.sl-section .cs-gallery p {
   margin-top: .55rem;
-  font-size: .78rem !important;
-  line-height: 1.45 !important;
+  font-size: .78rem;
+  line-height: 1.45;
 }
 
 @media (max-width: 1000px) {
-  .cs-pipeline .sl-pipe-arrow::after { border-left-color: transparent; border-top-color: var(--case-accent); }
   .cs-gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
 
