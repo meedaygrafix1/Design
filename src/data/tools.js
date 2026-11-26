@@ -14,6 +14,25 @@ import { lazy } from 'react';
  */
 export const tools = [
     {
+        slug: 'skill-bank',
+        name: 'Skill Bank',
+        tagline: 'A searchable library of 772 AI agent skill repos, upfront about which ones actually work.',
+        description:
+            'Skill Bank is a searchable library of 772 AI agent skill repositories, built from 15 Spidra crawls of GitHub. It checks every repo for a real SKILL.md (185 have one), previews it before you download, and keeps every source traceable.',
+        tags: ['Data', 'AI agents', 'React'],
+        status: 'live',
+        date: '2026-11',
+        // url: add the live site here once it's public
+        industry: 'Web App · Data Library',
+        showcase: {
+            backdrop: '/backdrops/hills.webp',
+            device: 'browser',
+            aspect: '1440 / 1040',
+            screens: ['/skillbank/home.webp'],
+        },
+        page: lazy(() => import('../pages/tools/SkillBankCaseStudy')),
+    },
+    {
         slug: 'cover-studio',
         name: 'Spidra Cover Hub',
         tagline: 'On-brand blog covers from a post title, in seconds, without waiting on a designer.',
@@ -60,7 +79,7 @@ export const getTool = (slug) => tools.find((t) => t.slug === slug);
 
 // Live tools in the shape ProjectCard expects, for the homepage "Tools" tab
 export const toolCards = tools
-    .filter((t) => t.status === 'live')
+    .filter((t) => t.status === 'live' && t.showcase)
     .map((t) => ({
         title: t.name,
         path: `/tools/${t.slug}`,
