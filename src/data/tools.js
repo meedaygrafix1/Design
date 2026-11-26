@@ -22,7 +22,7 @@ export const tools = [
         tags: ['Data', 'AI agents', 'React'],
         status: 'live',
         date: '2026-11',
-        // url: add the live site here once it's public
+        url: 'https://skillbank-eight.vercel.app/',
         industry: 'Web App · Data Library',
         showcase: {
             backdrop: '/backdrops/hills.webp',

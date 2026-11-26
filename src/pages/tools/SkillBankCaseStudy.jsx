@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-import { ArrowLeft } from 'lucide-react';
+import { ArrowLeft, ArrowUpRight } from 'lucide-react';
 import ScrollIndicator from '../../components/ScrollIndicator';
 import Footer from '../../components/Footer';
 import useReducedMotionPreference from '../../hooks/useReducedMotionPreference';
@@ -152,6 +152,9 @@ export default function SkillBankCaseStudy({ tool }) {
                     A searchable library of 772 AI agent skill repositories, built from scraped GitHub data. It's upfront
                     about which ones you can actually use today.
                 </p>
+                {tool.url && (
+                    <a className="sl-text-link" href={tool.url} target="_blank" rel="noopener noreferrer">Open Skill Bank <ArrowUpRight size={17} aria-hidden="true" /></a>
+                )}
                 {media.hero ? (
                     <div className="sl-hero-media sb-hero-media">
                         <img
@@ -303,6 +306,9 @@ export default function SkillBankCaseStudy({ tool }) {
                 </ul>
                 <h3>Next</h3>
                 <p>587 repos don't have a <code>SKILL.md</code>. My guess is that more of them are worth digging into by hand than I'd like to admit. That's the next crawl.</p>
+                {tool.url && (
+                    <a className="sl-primary-link" href={tool.url} target="_blank" rel="noopener noreferrer">Browse Skill Bank <ArrowUpRight size={18} aria-hidden="true" /></a>
+                )}
             </section>
         </main>
         <Footer />
